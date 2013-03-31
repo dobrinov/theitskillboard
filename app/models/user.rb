@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
 
   has_many :university_programs
   has_many :universities, :through => :university_programs
+
+  has_many :projects
 end

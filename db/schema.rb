@@ -11,9 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331131525) do
+ActiveRecord::Schema.define(:version => 20130331171743) do
 
   create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "courses", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -25,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20130331131525) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.integer  "company_id"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.integer  "course_id"
   end
 
   create_table "skill_categories", :force => true do |t|
