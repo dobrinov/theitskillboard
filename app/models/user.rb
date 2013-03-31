@@ -6,5 +6,9 @@ class User < ActiveRecord::Base
   # TODO: Validate password restrictions
   # TODO: Validate emails
 
+  # Validations
   validates_presence_of :password, :on => :create
+
+  # Associations
+  has_many :companies, :through => :position
 end
