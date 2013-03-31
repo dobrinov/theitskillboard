@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
 
   # Associations
-  has_many :positions
-  has_many :companies, :through => :positions
+  has_many :employments
+  has_many :companies, :through => :employments
 
-  has_many :university_programs
-  has_many :universities, :through => :university_programs
+  has_many :studies
+  has_many :universities, :through => :studies
 
   has_many :projects
 end

@@ -1,5 +1,4 @@
-class Position < ActiveRecord::Base
-  attr_accessible :name
+class Employment < ActiveRecord::Base
 
   # Associations
   belongs_to :user
