@@ -2,9 +2,10 @@ class Project < ActiveRecord::Base
   attr_accessible :name
 
   # Associations
-  belogns_to :course
-  belogns_to :user
-  belogns_to :company
+  belongs_to :course
+  belongs_to :user
+  belongs_to :company
 
-  has_many :skills
+  has_many :skill_usages
+  has_many :skills, :through => :skill_usages
 end

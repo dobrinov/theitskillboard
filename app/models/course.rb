@@ -4,4 +4,7 @@ class Course < ActiveRecord::Base
   # Associations
   has_many :projects
   has_many :skills
+
+  has_many :skill_usages
+  has_many :skills, :through => :skill_usages
 end
