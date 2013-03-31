@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(:version => 20130331204442) do
   end
 
   create_table "employments", :force => true do |t|
+    t.string   "position"
+    t.date     "from_date"
+    t.date     "to_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
