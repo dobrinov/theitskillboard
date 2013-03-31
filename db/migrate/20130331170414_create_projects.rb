@@ -4,6 +4,10 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
 
       t.timestamps
+
+      t.integer :user_id
+      t.integer :company_id
+      t.integer :course_id
     end
   end
 end

@@ -4,6 +4,8 @@ class CreateSkills < ActiveRecord::Migration
       t.string :name
 
       t.timestamps
+
+      t.integer :skill_category_id
     end
   end
 end
