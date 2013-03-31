@@ -3,4 +3,7 @@ class SkillCategory < ActiveRecord::Base
 
   # Associations
   has_many :skills, :dependent => :destroy
+
+  belongs_to :parent_category, :class_name => "SkillCategory", :foreign_key => 'parent_skill_category_id'
+  has_many :subcategories,     :class_name => "SkillCategory", :foreign_key => 'parent_skill_category_id'
 end
