@@ -6,7 +6,7 @@ class Skill < ActiveRecord::Base
              :class_name  => 'SkillCategory',
              :foreign_key => 'skill_category_id'
 
-  has_many :skill_usages
-  has_many :projects, :through => :skill_usages
-  has_many :courses,  :through => :skill_usages
+  
+  has_and_belongs_to_many :projects
+  has_and_belongs_to_many :courses
 end

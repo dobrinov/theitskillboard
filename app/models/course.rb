@@ -5,6 +5,5 @@ class Course < ActiveRecord::Base
   has_many :projects
   has_many :skills
 
-  has_many :skill_usages
-  has_many :skills, :through => :skill_usages
+  has_and_belongs_to_many :skills
 end
