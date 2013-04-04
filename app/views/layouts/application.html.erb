@@ -12,23 +12,23 @@
   </head>
 
   <body>
-    <div id="wrapper">
+    <div class="wrapper wrapper-application">
 
       <%# ####################### HEADER ####################### %>
-      <header id="header">
+      <header class="header header-application">
         <div class="logo logo-applicaiton-main"></div>
         <%= yield :header %>
       </header>
 
       <%# #######################  BODY  ####################### %>
-      <div id="body">
+      <div class="body body-application">
         {BODY}
         <%= yield %>
       </div>
 
       <%# ####################### FOOTER ####################### %>
-      <footer id="footer">
-        {FOOTER}
+      <footer class="footer footer-application">
+        The IT skill board
         <%= yield :footer %>
       </footer>
 

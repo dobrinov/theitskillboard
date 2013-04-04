@@ -1,0 +1,10 @@
+.wrapper {
+  position: relative; 
+  display: block;
+}
+
+.wrapper-application {
+  max-width: $application_page_width;
+  margin: 20px auto;
+  padding: 0px;
+}
