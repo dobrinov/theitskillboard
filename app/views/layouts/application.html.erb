@@ -16,16 +16,19 @@
 
       <%# ####################### HEADER ####################### %>
       <header id="header">
+        <div class="logo logo-applicaiton-main"></div>
         <%= yield :header %>
       </header>
 
       <%# #######################  BODY  ####################### %>
       <div id="body">
+        {BODY}
         <%= yield %>
       </div>
 
       <%# ####################### FOOTER ####################### %>
       <footer id="footer">
+        {FOOTER}
         <%= yield :footer %>
       </footer>
 
