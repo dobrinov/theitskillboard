@@ -14,5 +14,10 @@ group :assets do
 end
 
 group :development do
-  gem 'rails-erd'
+end
+
+group :test do
+end
+
+group :production do
 end
