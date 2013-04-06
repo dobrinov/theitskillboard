@@ -7,7 +7,20 @@ class User < ActiveRecord::Base
   # TODO: Validate emails
 
   # Validations
-  validates_presence_of :password, :on => :create
+
+  validates :email,
+              :presence => true,
+              :uniqueness => true,
+              :format     => { 
+                :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/,
+                :message => "Enter valid email"
+              }
+
+  validates :password,
+              :confirmation => true
+
+  validates :password_confirmation,
+              :presence => true
 
   # Associations
   has_many :employments

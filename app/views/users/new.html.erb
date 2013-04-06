@@ -1,0 +1,27 @@
+<h1>Create account</h1>
+
+<%= form_for @user, html: { class: 'form' } do |f| %>
+
+  <div class="group">
+    <%= f.label :email, 'Email', class: 'label' %>
+    <%= f.email_field :email, placeholder: 'Enter your email', class: 'input' %> 
+    <%= error_messages_for(@user, :email) %>
+  </div>
+
+  <div class="group">
+    <%= f.label :password, 'Password', class: 'label' %>
+    <%= f.password_field :password, placeholder: 'Enter your password', class: 'input' %>
+    <%= error_messages_for(@user, :password) %>
+  </div>
+
+  <div class="group">
+    <%= f.label :password_confirmation, 'Password confirmation', class: 'label' %>
+    <%= f.password_field :password_confirmation, placeholder: 'Repeat the password', class: 'input' %> 
+    <%= error_messages_for(@user, :password_confirmation) %>
+  </div>
+
+  <div class="group">
+    <%= f.submit 'Create account', class: 'button primary' %> 
+  </div>
+
+<% end %>

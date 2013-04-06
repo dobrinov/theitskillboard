@@ -1,0 +1,24 @@
+.form {
+
+  .group {
+    display: block;
+    position: relative;
+    margin-bottom: 15px;
+
+    .label { display: block; }
+    .input { display: block; }
+
+    .error-message {
+      background-color: $color_red;
+      color: #ffffff;
+      padding: 1px 5px;
+
+      @include border-radius(3px);
+    }
+
+    .field_with_errors {
+      .label { color: $color_red; }
+      .input { border: 2px solid $color_red; }      
+    }
+  }
+}
