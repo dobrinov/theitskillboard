@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # TODO: Validate password restrictions
-  # TODO: Validate emails
 
   # Validations
 
@@ -23,6 +22,7 @@ class User < ActiveRecord::Base
               :presence => true
 
   # Associations
+  has_one  :profile
   has_many :employments
   has_many :companies, :through => :employments
 
