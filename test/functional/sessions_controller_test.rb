@@ -13,7 +13,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should login the user and redirect to root path" do
     post :create, { :email => @user.email, :password => 'qweqwe' }
-    assert_redirected_to root_path
+    assert_redirected_to profile_path(@user)
   end
 
   test "shold show validation errors on the login form in the credentials are not valid" do
