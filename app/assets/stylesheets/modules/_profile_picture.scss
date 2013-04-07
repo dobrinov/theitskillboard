@@ -1,0 +1,6 @@
+.profile-picture {
+  width: 88px;
+  height: 88px;
+
+  @include border-radius(44px);
+}
