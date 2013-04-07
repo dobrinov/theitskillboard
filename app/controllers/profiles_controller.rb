@@ -1,20 +1,26 @@
 class ProfilesController < ApplicationController
 
-  def index
-  end
+  before_filter :require_login, only: ['show', 'edit', 'update']
 
-  def new
-  end
-
-  def create
+  def show
   end
 
   def edit
+
+    if params[:section].nil? || !valid_edit_sections.include?(params[:section])
+      params[:section] = 'allsections'
+    end
+
   end
 
   def update
   end
 
-  def destroy
+  private
+
+  def valid_edit_sections
+    [
+      'profilepictureandname'
+    ]
   end
 end

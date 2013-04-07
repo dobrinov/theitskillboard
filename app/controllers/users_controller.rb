@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-  end
-
-  def show
-  end
-
   def new
     @user = User.new
   end
@@ -14,20 +8,14 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
 
     if @user.save
-      redirect_to user_path(@user), notice: 'Confirmation email sent. Please, check your email!'
+
+      @user.profile = Profile.create name: 'Your', surname: 'Name'
+
+      redirect_to profile_path(@user), notice: 'Confirmation email sent. Please, check your email!'
     else
       flash.now[:error] = 'Fix the problems with the inputs!'
       render :action => 'new'
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
 end

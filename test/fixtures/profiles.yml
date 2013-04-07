@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  surname: MyString
-
-two:
-  name: MyString
-  surname: MyString
+simple_user_profile:
+  name: Fred
+  surname: Perry
+  user_id: 1

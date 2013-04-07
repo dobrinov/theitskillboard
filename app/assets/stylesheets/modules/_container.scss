@@ -1,9 +1,32 @@
 .container {
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  @include border-radius(10px);
-  @include box-shadow(rgba(0, 0, 0, 0.3) 0px 1px 3px inset);
+  @include container;
+
+  padding: 30px;
+  text-decoration: none;
+  color: #ffffff;
+
+  &:hover {
+    @include container_hover;
+  }
+}
+
+.container-editable {
+  @extend .container;
+
+
+  .edit.button.primary {
+    visibility: hidden;
+
+    &.right {
+      float: right;
+      margin-top: 28px;
+
+      &.small { margin-top: 34px; }
+      &.large { margin-top: 24px; }
+    }
+  }
+
+  &:hover > .edit.button.primary { visibility: visible; }
 }
 
 .container-noresults {

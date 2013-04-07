@@ -23,6 +23,8 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should logout the user and go to the root path" do
+    login_as @user
+
     delete :destroy, { :id => @user.id }
     assert_redirected_to root_path
   end

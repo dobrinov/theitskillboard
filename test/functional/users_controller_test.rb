@@ -13,7 +13,13 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user => { :email => 'validemail@example.com', :password => 'qweqwe', :password_confirmation => 'qweqwe'}
     end
    
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to profile_path(assigns(:user))
+  end
+
+  test "should create profile for the user" do
+    assert_difference('Profile.count') do
+      post :create, :user => { :email => 'validemail@example.com', :password => 'qweqwe', :password_confirmation => 'qweqwe'}
+    end
   end
 
   test "should show form with error messages" do
