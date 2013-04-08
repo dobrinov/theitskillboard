@@ -30,12 +30,49 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
 
-  test "'profilepictureandname' parameter should render 'profile picture and name' form on edit profile page" do
+  test "render 'Profile picture and name' edit form" do
     login_as @user
 
     get :edit, { :id => @user.id, :section => 'profilepictureandname' }
     assert_response :success
     assert_template 'edit'
+    assert_equal css_select('input#section').first.attributes['value'], 'profilepictureandname', 'There should be a hidden field containing the section name'
+  end
+
+  test "render general information edit form" do
+    login_as @user
+
+    get :edit, { :id => @user.id, :section => 'generalinformation' }
+    assert_response :success
+    assert_template 'edit'
+    assert_equal css_select('input#section').first.attributes['value'], 'generalinformation', 'There should be a hidden field containing the section name'
+  end
+
+  test "render experience edit form" do
+    login_as @user
+
+    get :edit, { :id => @user.id, :section => 'experience' }
+    assert_response :success
+    assert_template 'edit'
+    assert_equal css_select('input#section').first.attributes['value'], 'experience', 'There should be a hidden field containing the section name'
+  end
+
+  test "render interests edit form" do
+    login_as @user
+
+    get :edit, { :id => @user.id, :section => 'interests' }
+    assert_response :success
+    assert_template 'edit'
+    assert_equal css_select('input#section').first.attributes['value'], 'interests', 'There should be a hidden field containing the section name'
+  end
+
+  test "render contacts edit form" do
+    login_as @user
+
+    get :edit, { :id => @user.id, :section => 'contacts' }
+    assert_response :success
+    assert_template 'edit'
+    assert_equal css_select('input#section').first.attributes['value'], 'contacts', 'There should be a hidden field containing the section name'
   end
 
   test "it should update the user picture and name" do

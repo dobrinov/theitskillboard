@@ -1,35 +1,50 @@
-<%= link_to edit_profile_path(:section => 'profilepictureandname'), class: 'profile-details profile-details-basic container-editable' do %>
+<%= link_to edit_profile_path(:section => 'profilepictureandname'),
+            class: 'profile-details profile-picture-and-name container-editable' do %>
   <%= image_tag current_user.profile.profile_picture.url(:small), class: 'profile-picture' %>
   <h1 class="name"><%= current_user.profile.name %> <%= current_user.profile.surname %></h1>
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
-<h2>General info</h2>
-<div class="container container-noresults">
-  <span>No general information available.</span>
-</div>
+<h2>General information</h2>
+<%= link_to edit_profile_path(:section => 'generalinformation'),
+            class: 'profile-details general-information container-editable no-results' do %>
+  <span class="message">No general information available</span>
+  <span class="hint">Click to edit</span>
+  <span class="edit button primary large right">Edit</span>
+<% end %>
 
 <h2>IT skills</h2>
-<div class="container container-noresults">
-  <span>No IT skills available.</span>
+<div class="profile-details it-skills container no-results">
+  <span class="message">No IT skills available.</span>
+  <span class="hint">Update your experience and this will be generated automatically</span>
 </div>
 
 <h2>Language skills</h2>
-<div class="container container-noresults">
-  <span>No language skills available.</span>
+<div class="profile-details language-skills container no-results">
+  <span class="message">No language skills available.</span>
+  <span class="hint">Update your experience experience and this will be generated automatically</span>
 </div>
 
-<h2>Experience timetable</h2>
-<div class="container container-noresults">
-  <span>No experience available.</span>
-</div>
+<h2>Experience</h2>
+<%= link_to edit_profile_path(:section => 'experience'),
+            class: 'profile-details experience container-editable no-results' do %>
+  <span class="message">No experience available</span>
+  <span class="hint">Click to edit</span>
+  <span class="edit button primary large right">Edit</span>
+<% end %>
 
 <h2>Interests</h2>
-<div class="container container-noresults">
-  <span>No interests.</span>
-</div>
+<%= link_to edit_profile_path(:section => 'interests'),
+            class: 'profile-details interests container-editable no-results' do %>
+  <span class="message">No interests</span>
+  <span class="hint">Click to edit</span>
+  <span class="edit button primary large right">Edit</span>
+<% end %>
 
 <h2>Contacts</h2>
-<div class="container container-noresults">
-  <span>No contacts.</span>
-</div>
+<%= link_to edit_profile_path(:section => 'contacts'),
+            class: 'profile-details contacts container-editable no-results' do %>
+  <span class="message">No contacts</span>
+  <span class="hint">Click to edit</span>
+  <span class="edit button primary large right">Edit</span>
+<% end %>
