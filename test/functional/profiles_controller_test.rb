@@ -38,4 +38,12 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
 
+  test "it should update the user picture and name" do
+    pending "Test the profile picture and name submission"
+  end
+
+  test "it should redirect to profile edit page without notification if wrong section is passed" do
+    pending "Test the redirect if the section hidden field is overridden."
+  end
+
 end

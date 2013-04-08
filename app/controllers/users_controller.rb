@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
       redirect_to profile_path(@user), notice: 'Confirmation email sent. Please, check your email!'
     else
-      flash.now[:error] = 'Fix the problems with the inputs!'
+      flash.now[:error] = 'Invalid form data'
       render :action => 'new'
     end
   end
