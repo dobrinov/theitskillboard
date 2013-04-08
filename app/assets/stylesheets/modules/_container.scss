@@ -4,15 +4,12 @@
   padding: 30px;
   text-decoration: none;
   color: #ffffff;
-
-  &:hover {
-    @include container_hover;
-  }
 }
 
 .container-editable {
   @extend .container;
 
+  cursor: pointer;
 
   .edit.button.primary {
     visibility: hidden;
@@ -27,6 +24,11 @@
   }
 
   &:hover > .edit.button.primary { visibility: visible; }
+
+
+  &:hover {
+    @include container_hover;
+  }
 }
 
 .container-noresults {
