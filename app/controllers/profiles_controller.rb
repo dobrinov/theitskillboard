@@ -14,6 +14,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    if current_user.profile.update_attributes(params[:profile])
+      redirect_to edit_profile_path(current_user), notice: 'Profile picture and name updated successfuly.'
+    else
+      render 'edit'
+    end
   end
 
   private

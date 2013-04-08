@@ -1,5 +1,5 @@
 <%= link_to edit_profile_path(:section => 'profilepictureandname'), class: 'profile-details profile-details-basic container-editable' do %>
-  <%= image_tag 'profile_photo_placeholder.png', class: 'profile-picture' %>
+  <%= image_tag current_user.profile.profile_picture.url(:small), class: 'profile-picture' %>
   <h1 class="name"><%= current_user.profile.name %> <%= current_user.profile.surname %></h1>
   <span class="edit button primary large right">Edit</span>
 <% end %>

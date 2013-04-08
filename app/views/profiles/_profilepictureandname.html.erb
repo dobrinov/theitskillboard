@@ -1,0 +1,28 @@
+<%= form_for current_user.profile, html: { :multipart => true, class: 'form container' } do |f| %>
+  <h1>Edit profile picture and name</h1>
+
+  <%= hidden_field_tag :section, 'profilepictureandname' %>
+
+  <div class="group">
+    <%= f.label      :profile_picture, class: 'label' %>
+    <%= f.file_field :profile_picture, class: 'input' %>
+    <%= error_messages_for(current_user.profile, :profile_picture) %>
+  </div>
+
+  <div class="group">
+    <%= f.label      :name, 'Name', class: 'label' %>
+    <%= f.text_field :name,         class: 'input' %>
+    <%= error_messages_for(current_user.profile, :name) %>
+  </div>
+
+  <div class="group">
+    <%= f.label      :surname, 'Surname', class: 'label' %>
+    <%= f.text_field :surname,            class: 'input' %>
+    <%= error_messages_for(current_user.profile, :surname) %>
+  </div>
+
+
+  <%= f.submit 'Save', class: 'button primary' %>
+
+  <%= link_to 'Cancel', edit_profile_path(current_user), class: 'button' %>
+<% end %>
