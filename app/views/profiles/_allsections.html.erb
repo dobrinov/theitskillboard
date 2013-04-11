@@ -42,8 +42,7 @@
 <% end %>
 
 <h2>Interests</h2>
-<%= link_to edit_profile_path(:section => 'interests'),
-            class: 'profile-details interests container-editable no-results' do %>
+<%= link_to new_profile_interest_path(@profile.id), class: 'profile-details interests container-editable no-results' do %>
   <span class="message">No interests</span>
   <span class="hint">Click to edit</span>
   <span class="edit button primary large right">Edit</span>

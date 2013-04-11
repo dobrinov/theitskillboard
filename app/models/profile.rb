@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :name, :surname, :profile_picture,
                   :birth_date, :country, :city, :nationality
 
-  accepts_nested_attributes_for :interests
+  # accepts_nested_attributes_for :interests
 
   has_attached_file :profile_picture,
                     :styles => {

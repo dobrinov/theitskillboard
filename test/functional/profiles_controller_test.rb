@@ -66,15 +66,6 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal css_select('input#section').first.attributes['value'], 'experience', 'There should be a hidden field containing the section name'
   end
 
-  test "render interests edit form" do
-    login_as @user
-
-    get :edit, { :id => @user.id, :section => 'interests' }
-    assert_response :success
-    assert_template 'edit'
-    assert_equal css_select('input#section').first.attributes['value'], 'interests', 'There should be a hidden field containing the section name'
-  end
-
   test "render contacts edit form" do
     login_as @user
 

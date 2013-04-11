@@ -23,8 +23,6 @@ class ProfilesController < ApplicationController
       generalinformation
     when 'experience'
       experience
-    when 'interests'
-      interests
     when 'contacts'
       contacts
     else
@@ -39,7 +37,6 @@ class ProfilesController < ApplicationController
       'profilepictureandname',
       'generalinformation',
       'experience',
-      'interests',
       'contacts'
     ]
   end
@@ -65,10 +62,6 @@ class ProfilesController < ApplicationController
   end
 
   def experience
-  end
-
-  def interests
-    raise params.inspect
   end
 
   def contacts
