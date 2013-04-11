@@ -54,6 +54,12 @@ class ProfilesController < ApplicationController
   end
 
   def generalinformation
+    if current_user.profile.update_attributes(params[:profile])
+      redirect_to edit_profile_path(current_user), notice: 'Profile general information updated successfuly.'
+    else
+      flash.now[:error] = 'Invalid form data'
+      render 'edit'
+    end
   end
 
   def experience
