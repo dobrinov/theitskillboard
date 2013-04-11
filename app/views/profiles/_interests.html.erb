@@ -1,9 +1,21 @@
-<%= form_for current_user.profile, html: { :multipart => true, class: 'form container' } do |f| %>
+<div class="container">
   <h1>Edit interests</h1>
+  <h2>Interests</h2>
 
-  <%= hidden_field_tag :section, 'interests' %>
 
-  <%= f.submit 'Save', class: 'button primary' %>
+  <h2>Add new interest</h2>
+  <%= form_for current_user.profile, html: { class: 'form' } do |f| %>
 
-  <%= link_to 'Cancel', edit_profile_path(current_user), class: 'button' %>
-<% end %>
+    <%= hidden_field_tag :section, 'interests' %>
+
+    <%= f.fields_for :interests do |builder| %>
+        <div class="group">
+          <%= builder.label      :interest, class: 'label' %>
+          <%= builder.text_field :interest, class: 'input' %>
+        </div>
+    <% end %>
+
+    <%= f.submit 'Add interest', class: 'button primary' %>
+    <%= link_to 'Done', edit_profile_path(current_user), class: 'button' %>
+  <% end %>
+</div>

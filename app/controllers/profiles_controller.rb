@@ -68,6 +68,7 @@ class ProfilesController < ApplicationController
   end
 
   def interests
+    raise params.inspect
   end
 
   def contacts
