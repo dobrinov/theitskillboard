@@ -1,15 +1,23 @@
 <%= link_to edit_profile_path(:section => 'profilepictureandname'),
             class: 'profile-details profile-picture-and-name container-editable' do %>
-  <%= image_tag current_user.profile.profile_picture.url(:small), class: 'profile-picture' %>
-  <h1 class="name"><%= current_user.profile.name %> <%= current_user.profile.surname %></h1>
+  <%= image_tag @profile.profile_picture.url(:small), class: 'profile-picture' %>
+  <h1 class="name"><%= @profile.full_name %></h1>
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
 <h2>General information</h2>
 <%= link_to edit_profile_path(:section => 'generalinformation'),
             class: 'profile-details general-information container-editable no-results' do %>
-  <span class="message">No general information available</span>
-  <span class="hint">Click to edit</span>
+  <% if @profile.general_information_added? %>
+    <%= @profile.birth_date %>
+    <%= @profile.country %>
+    <%= @profile.city %>
+    <%= @profile.nationality %>
+  <% else %>
+    <span class="message">No general information available</span>
+    <span class="hint">Click to edit</span>
+  <% end %>
+
   <span class="edit button primary large right">Edit</span>
 <% end %>
 

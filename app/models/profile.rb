@@ -16,4 +16,20 @@ class Profile < ActiveRecord::Base
 
   # Associations
   belongs_to :user
+
+  # Class methods
+
+  # Instance methods
+  def full_name
+    return "#{self.name} #{self.surname}"
+  end
+
+  def general_information_added?
+    return [
+      self.birth_date.present?,
+      self.country.present?,
+      self.city.present?,
+      self.nationality.present?
+    ].any?
+  end
 end

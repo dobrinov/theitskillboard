@@ -3,9 +3,11 @@ class ProfilesController < ApplicationController
   before_filter :require_login, only: ['show', 'edit', 'update']
 
   def show
+    @profile = current_user.profile
   end
 
   def edit
+    @profile = current_user.profile
 
     if params[:section].nil? || !valid_edit_sections.include?(params[:section])
       params[:section] = 'allsections'
