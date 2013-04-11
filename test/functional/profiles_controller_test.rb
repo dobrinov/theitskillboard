@@ -48,6 +48,15 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal css_select('input#section').first.attributes['value'], 'generalinformation', 'There should be a hidden field containing the section name'
   end
 
+  test "should update the profile general information" do
+    login_as @user
+
+    post :update, { :id => @user.id, :section => 'generalinformation', :profile => {'birth_date(3i)' => 20, 'birth_date(2i)' => 8, 'birth_date(1i)' => 1987 , :country => 'Bulgaria', :city => 'Sofia', :nationality => 'Bulgarian' } }
+
+    assert_response :redirect
+    assert_redirected_to :controller => 'profiles', :action => 'edit'
+  end
+
   test "render experience edit form" do
     login_as @user
 
