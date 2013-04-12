@@ -30,6 +30,12 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_template 'edit'
   end
 
+  test 'redirect to login page if not logged in' do
+    get :edit, { :id => @user.id, :section => 'profilepictureandname' }
+    assert_response :redirect
+    assert_redirected_to :controller => 'sessions', :action => 'new'
+  end
+
   test "render 'Profile picture and name' edit form" do
     login_as @user
 
@@ -66,21 +72,27 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_equal css_select('input#section').first.attributes['value'], 'experience', 'There should be a hidden field containing the section name'
   end
 
-  test "render contacts edit form" do
+  test "it should update the user names" do
     login_as @user
 
-    get :edit, { :id => @user.id, :section => 'contacts' }
-    assert_response :success
-    assert_template 'edit'
-    assert_equal css_select('input#section').first.attributes['value'], 'contacts', 'There should be a hidden field containing the section name'
-  end
+    name    = 'Deyan'
+    surname = 'Dobrinov'
 
-  test "it should update the user picture and name" do
-    pending "Test the profile picture and name submission"
+    post :update, { :id => @user.id, :section => 'profilepictureandname', :profile => {:name => name, :surname => surname} }
+
+    assert_response :redirect
+    assert_redirected_to :controller => 'profiles', :action => 'edit'
+    
+    assert_equal @user.profile.full_name, 'Deyan Dobrinov'
   end
 
   test "it should redirect to profile edit page without notification if wrong section is passed" do
-    pending "Test the redirect if the section hidden field is overridden."
+    login_as @user
+
+    post :update, { :id => @user.id, :section => 'invalidsection' }
+
+    assert_response :redirect
+    assert_redirected_to :controller => 'profiles', :action => 'edit'
   end
 
 end

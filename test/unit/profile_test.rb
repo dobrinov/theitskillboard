@@ -31,4 +31,8 @@ class ProfileTest < ActiveSupport::TestCase
     assert !profile.general_information_added?, 'The result should be false if the fields are nulled'
   end
 
+  test "that it should not be possible to associate more than one contact with the same type" do
+    pending "TODO"
+  end
+
 end

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_filter :require_login, only: ['show', 'edit', 'update']
+  before_filter :require_login
 
   def show
     @profile = current_user.profile
@@ -16,17 +16,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    case params[:section]
-    when 'profilepictureandname'
-      profilepictureandname
-    when 'generalinformation'
-      generalinformation
-    when 'experience'
-      experience
-    when 'contacts'
-      contacts
-    else
+
+    if params[:section].nil? || !valid_edit_sections.include?(params[:section])
       redirect_to edit_profile_path(current_user)
+    else
+      eval params[:section]
     end
   end
 
@@ -36,8 +30,7 @@ class ProfilesController < ApplicationController
     [
       'profilepictureandname',
       'generalinformation',
-      'experience',
-      'contacts'
+      'experience'
     ]
   end
 
@@ -62,9 +55,6 @@ class ProfilesController < ApplicationController
   end
 
   def experience
-  end
-
-  def contacts
   end
 
 end

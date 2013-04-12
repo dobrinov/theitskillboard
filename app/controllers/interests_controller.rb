@@ -1,8 +1,10 @@
 class InterestsController < ApplicationController
 
-  def new
-    @interests = current_user.profile.interests 
+  before_filter :require_login
+
+  def index
     @profile   = current_user.profile
+    @interests = @profile.interests
     @interest  = Interest.new
   end
 
@@ -13,9 +15,12 @@ class InterestsController < ApplicationController
     @profile.interests << @interest
 
     if @profile.save
-      redirect_to new_profile_interest_path(@profile.id), notice: 'Interest successfuly added'
+      flash[:notice] = 'Interest successfuly added'
     else
+      flash[:error] = 'Interest was not added'
     end
+
+    redirect_to profile_interests_path(@profile.id)
 
   end
 
@@ -28,7 +33,7 @@ class InterestsController < ApplicationController
       flash[:error] = "Inerest not removed"
     end
 
-    redirect_to new_profile_interest_path(@profile.id)
+    redirect_to profile_interests_path(@profile.id)
   end
 
 end

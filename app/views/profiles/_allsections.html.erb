@@ -6,8 +6,7 @@
 <% end %>
 
 <h2>General information</h2>
-<%= link_to edit_profile_path(:section => 'generalinformation'),
-            class: 'profile-details general-information container-editable no-results' do %>
+<%= link_to edit_profile_path(:section => 'generalinformation'), class: 'profile-details general-information container-editable no-results' do %>
   <% if @profile.general_information_added? %>
     <%= @profile.birth_date %>
     <%= @profile.country %>
@@ -42,16 +41,25 @@
 <% end %>
 
 <h2>Interests</h2>
-<%= link_to new_profile_interest_path(@profile.id), class: 'profile-details interests container-editable no-results' do %>
-  <span class="message">No interests</span>
-  <span class="hint">Click to edit</span>
+<%= link_to profile_interests_path(@profile.id), class: 'profile-details interests container-editable no-results' do %>
+  <% if @profile.interests.any? %>
+    <%= @profile.interests.map(&:name).join(', ') %>
+  <% else %>
+    <span class="message">No interests</span>
+    <span class="hint">Click to edit</span>
+  <% end %>
+
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
 <h2>Contacts</h2>
-<%= link_to edit_profile_path(:section => 'contacts'),
-            class: 'profile-details contacts container-editable no-results' do %>
-  <span class="message">No contacts</span>
-  <span class="hint">Click to edit</span>
+<%= link_to profile_contacts_path(@profile.id), class: 'profile-details contacts container-editable no-results' do %>
+  <% if @profile.contacts.any? %>
+    <%= @profile.contacts.map(&:address).join(', ') %>
+  <% else %>
+    <span class="message">No contacts</span>
+    <span class="hint">Click to edit</span>
+  <% end %>
+
   <span class="edit button primary large right">Edit</span>
 <% end %>
