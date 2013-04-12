@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Edit contacts</h1>
+
+  <% if @contacts.any? %>
+    <h2>Contacts</h2>
+
+    <% @contacts.each do |contact| %>
+      <div>
+        <%= form_for [@profile, contact], method: 'delete', html: { class: 'form' } do |f| %>
+          <%= contact.address %>
+          <%= f.hidden_field :id, :value => contact.id %>
+          <%= f.submit 'Delete', class: 'button small' %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <h2>Add new contact</h2>
+
+  <%= form_for [@profile, @contact], html: { class: 'form' } do |f| %>
+
+    <%= f.select     :contact_type, options_for_select(Contact.types) %>
+    <%= f.text_field :address %>
+
+    <%= f.submit 'Add', class: 'button' %>
+
+  <% end %>
+
+  <br/>
+  <%= link_to 'Done', edit_profile_path(current_user), class: 'button primary' %>
+</div>
