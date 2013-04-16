@@ -13,7 +13,7 @@
     <%= @profile.city %>
     <%= @profile.nationality %>
   <% else %>
-    <span class="message">No general information available</span>
+    <span class="message">No general information added.</span>
     <span class="hint">Click to edit</span>
   <% end %>
 
@@ -22,20 +22,28 @@
 
 <h2>IT skills</h2>
 <div class="profile-details it-skills container no-results">
-  <span class="message">No IT skills available.</span>
+  <span class="message">No IT skills data.</span>
   <span class="hint">Update your experience and this will be generated automatically</span>
 </div>
 
 <h2>Language skills</h2>
 <div class="profile-details language-skills container no-results">
-  <span class="message">No language skills available.</span>
+  <span class="message">No language skills data.</span>
   <span class="hint">Update your experience experience and this will be generated automatically</span>
 </div>
 
-<h2>Experience</h2>
+<h2>Education</h2>
 <%= link_to edit_profile_path(:section => 'experience'),
             class: 'profile-details experience container-editable no-results' do %>
-  <span class="message">No experience available</span>
+  <span class="message">No education data added.</span>
+  <span class="hint">Click to edit</span>
+  <span class="edit button primary large right">Edit</span>
+<% end %>
+
+<h2>Work experience</h2>
+<%= link_to edit_profile_path(:section => 'experience'),
+            class: 'profile-details experience container-editable no-results' do %>
+  <span class="message">No work experience data added.</span>
   <span class="hint">Click to edit</span>
   <span class="edit button primary large right">Edit</span>
 <% end %>
@@ -45,7 +53,7 @@
   <% if @profile.interests.any? %>
     <%= @profile.interests.map(&:name).join(', ') %>
   <% else %>
-    <span class="message">No interests</span>
+    <span class="message">No interests added.</span>
     <span class="hint">Click to edit</span>
   <% end %>
 
@@ -57,7 +65,7 @@
   <% if @profile.contacts.any? %>
     <%= @profile.contacts.map(&:address).join(', ') %>
   <% else %>
-    <span class="message">No contacts</span>
+    <span class="message">No contacts added.</span>
     <span class="hint">Click to edit</span>
   <% end %>
 
