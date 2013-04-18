@@ -7,7 +7,7 @@ class CreateStudies < ActiveRecord::Migration
 
       t.timestamps
 
-      t.integer :user_id
+      t.integer :profile_id
       t.integer :university_id
     end
   end

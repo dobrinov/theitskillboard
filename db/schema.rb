@@ -108,12 +108,13 @@ ActiveRecord::Schema.define(:version => 20130412095746) do
     t.date     "to_date"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "user_id"
+    t.integer  "profile_id"
     t.integer  "university_id"
   end
 
   create_table "universities", :force => true do |t|
     t.string   "name"
+    t.string   "website"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

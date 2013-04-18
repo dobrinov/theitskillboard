@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Edit education</h1>
+
+  <div>
+    <h2>Academic studies</h2>
+    <ul>
+      <% @profile.studies.each do |study| %>
+        <li><%= "#{study.program} in &quot;#{study.university.name}&quot; from #{study.from_date} to #{study.to_date}".html_safe %>
+          <ul>
+            <li>
+              <% if show_new_course_form_for?(study.id) %>
+                <%= link_to 'Cancel', profile_educations_path %>
+              <% else %>
+                <%= link_to 'Add taken course', profile_educations_path(current_user.profile.id, :new => 'course', :target => study.id) %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+      <li>
+        <% if show_new_university_form? %>
+          <%= render :partial => 'studies/form' %>
+          <%= link_to 'Cancel', profile_educations_path %>
+        <% else %>
+          <%= link_to 'Add new study', profile_educations_path(current_user.profile.id, :new => 'study') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

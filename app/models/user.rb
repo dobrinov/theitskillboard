@@ -25,8 +25,5 @@ class User < ActiveRecord::Base
   has_many :employments
   has_many :companies, :through => :employments
 
-  has_many :studies
-  has_many :universities, :through => :studies
-
   has_many :projects
 end

@@ -1,0 +1,28 @@
+<h3>Add new study</h3>
+
+<%= form_for [@profile, @study] do |f| %>
+
+  <%= f.fields_for :university do |uf| %>
+    <%= uf.label      :website, 'University website' %>
+    <%= uf.text_field :website %>
+    <br/><br/>
+  <% end %>
+
+  <%= f.label :program, 'Academic program' %>
+  <%= f.text_field :program %>
+
+  <br/><br/>
+  <%= f.label       :from_date %>
+  <%= f.date_select :from_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
+  <%= f.label       :to_date %>
+  <%= f.date_select :to_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
+  <%= f.submit 'Add' %>
+<% end %>

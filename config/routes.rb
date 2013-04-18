@@ -4,8 +4,10 @@ Theitskillboard::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :profiles, :only => [:show, :edit, :update] do
-    resources :interests, :only => [:index, :create, :destroy]
-    resources :contacts,  :only => [:index, :create, :destroy]
+    resources :interests,    :only => [:index, :create, :destroy]
+    resources :contacts,     :only => [:index, :create, :destroy]
+    resources :educations,   :only => [:index]
+    resources :studies, :only => [:create, :update, :destroy]
   end
 
   get ':action' => 'static#:action'

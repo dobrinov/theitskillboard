@@ -1,7 +1,10 @@
 class University < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :website
 
   # Associations
   has_many :studies
-  has_many :users, :through => :studies
+  has_many :profiles, :through => :studies
+
+  # Validations
+  validates :website, :presence => true, :uniqueness => true
 end

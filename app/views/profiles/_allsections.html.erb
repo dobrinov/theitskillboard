@@ -33,8 +33,7 @@
 </div>
 
 <h2>Education</h2>
-<%= link_to edit_profile_path(:section => 'experience'),
-            class: 'profile-details experience container-editable no-results' do %>
+<%= link_to profile_educations_path(@profile), class: 'profile-details experience container-editable no-results' do %>
   <span class="message">No education</span>
   <span class="hint">Click to edit</span>
   <span class="edit button primary large right">Edit</span>
@@ -49,7 +48,7 @@
 <% end %>
 
 <h2>Interests</h2>
-<%= link_to profile_interests_path(@profile.id), class: 'profile-details interests container-editable no-results' do %>
+<%= link_to profile_interests_path(@profile), class: 'profile-details interests container-editable no-results' do %>
   <% if @profile.interests.any? %>
     <%= @profile.interests.map(&:name).join(', ') %>
   <% else %>
@@ -61,7 +60,7 @@
 <% end %>
 
 <h2>Contacts</h2>
-<%= link_to profile_contacts_path(@profile.id), class: 'profile-details contacts container-editable no-results' do %>
+<%= link_to profile_contacts_path(@profile), class: 'profile-details contacts container-editable no-results' do %>
   <% if @profile.contacts.any? %>
     <%= @profile.contacts.map(&:address).join(', ') %>
   <% else %>

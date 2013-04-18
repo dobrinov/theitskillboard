@@ -2,8 +2,6 @@ class Profile < ActiveRecord::Base
   attr_accessible :name, :surname, :profile_picture,
                   :birth_date, :country, :city, :nationality
 
-  # accepts_nested_attributes_for :interests
-
   has_attached_file :profile_picture,
                     :styles => {
                       :small => '100x100>',
@@ -17,6 +15,9 @@ class Profile < ActiveRecord::Base
   #TODO: Add validations for birth_date, country, city and nationality
 
   # Associations
+  has_many :studies
+  has_many :universities, :through => :studies
+
   has_and_belongs_to_many :interests
   has_and_belongs_to_many :contacts
 
