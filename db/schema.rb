@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130412095746) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
+    t.date     "from_date"
+    t.date     "to_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -61,17 +63,17 @@ ActiveRecord::Schema.define(:version => 20130412095746) do
   create_table "profiles", :force => true do |t|
     t.string   "name"
     t.string   "surname"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "user_id"
+    t.string   "country"
+    t.string   "city"
+    t.string   "nationality"
+    t.date     "birth_date"
     t.string   "profile_picture_file_name"
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
-    t.date     "birth_date"
-    t.string   "country"
-    t.string   "city"
-    t.string   "nationality"
+    t.integer  "user_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "projects", :force => true do |t|
