@@ -10,6 +10,8 @@ class EducationsController < ApplicationController
     when 'study'
       @study = Study.new
       @study.build_university
+    when 'course'
+      @course = Course.new
     end
 
   end

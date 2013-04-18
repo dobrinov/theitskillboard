@@ -1,1 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+simple_user_profile_university:
+  id: 1
+  program: 'Simplicity'
+  from_date: <%= Time.now - 1.year %>
+  to_date: <%= Time.now - 9.months %>
+  profile_id: 1
+  university_id: 1

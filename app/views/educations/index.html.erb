@@ -9,6 +9,7 @@
           <ul>
             <li>
               <% if show_new_course_form_for?(study.id) %>
+                <%= render :partial => 'courses/form' %>
                 <%= link_to 'Cancel', profile_educations_path %>
               <% else %>
                 <%= link_to 'Add taken course', profile_educations_path(current_user.profile.id, :new => 'course', :target => study.id) %>
