@@ -1,1 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# Programming languages
+
+ruby:
+  id: 1
+  name: Ruby
+  skill_category_id: 1
+
+java:
+  id: 2
+  name: Java
+  skill_category_id: 2
+
+ruby_on_rails:
+  id: 2
+  name: Ruby On Rails
+  skill_category_id: 2
