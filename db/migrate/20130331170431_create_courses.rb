@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string  :name
       t.date    :from_date
       t.date    :to_date
-      t.integer :course_id
+      t.integer :study_id
 
       t.timestamps
     end

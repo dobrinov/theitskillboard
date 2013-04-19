@@ -1,4 +1,4 @@
-simple_user_profile_university:
+simple_user_study:
   id: 1
   program: 'Simplicity'
   from_date: <%= Time.now - 1.year %>

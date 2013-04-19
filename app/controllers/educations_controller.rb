@@ -11,6 +11,7 @@ class EducationsController < ApplicationController
       @study = Study.new
       @study.build_university
     when 'course'
+      @study  = Study.find(params[:target])
       @course = Course.new
     end
 

@@ -18,7 +18,7 @@ class StudiesController < ApplicationController
 
     @study.save
 
-    render 'educations/index'
+    redirect_to profile_educations_path
   end
 
   def update

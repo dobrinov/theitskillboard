@@ -7,7 +7,9 @@ Theitskillboard::Application.routes.draw do
     resources :interests,    :only => [:index, :create, :destroy]
     resources :contacts,     :only => [:index, :create, :destroy]
     resources :educations,   :only => [:index]
-    resources :studies, :only => [:create, :update, :destroy]
+    resources :studies, :only => [:create, :update, :destroy] do
+      resources :courses
+    end
   end
 
   get ':action' => 'static#:action'

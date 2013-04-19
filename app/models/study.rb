@@ -4,4 +4,5 @@ class Study < ActiveRecord::Base
   # Associations
   belongs_to :profile
   belongs_to :university
+  has_many   :courses
 end

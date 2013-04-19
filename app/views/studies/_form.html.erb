@@ -24,5 +24,8 @@
                     start_year: Time.now.year, end_year: Time.now.year - 50 %>
 
   <br/><br/>
-  <%= f.submit 'Add' %>
+
+  <%= f.submit 'Add', class: 'button primary' %>
+  <%= link_to 'Cancel', profile_educations_path, class: 'button' %>
+  <br/><br/>
 <% end %>
