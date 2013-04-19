@@ -3,3 +3,7 @@ simple_user_profile_contact:
   profile_id:   1
   address:      'simple.user@example.com'
   contact_type: 'email'
+
+email_contact:
+  address:      'email.contact@example.com'
+  contact_type: 'email'

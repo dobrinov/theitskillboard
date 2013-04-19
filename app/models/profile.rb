@@ -9,8 +9,10 @@ class Profile < ActiveRecord::Base
                     }, :default_url => '/assets/placeholders/profile_picture/:style/placeholder.png'
 
   # Validations
-  validates :name,    :presence => true
-  validates :surname, :presence => true
+  validates :name,     :presence => true
+  validates :surname,  :presence => true
+  validate  :duplicated_contact_types?
+
 
   #TODO: Add validations for birth_date, country, city and nationality
 
@@ -36,5 +38,11 @@ class Profile < ActiveRecord::Base
       self.city.present?,
       self.nationality.present?
     ].any?
+  end
+
+  def duplicated_contact_types?
+    unless self.contacts.uniq { |c| c[:contact_type] }.size == self.contacts.size
+      errors.add(:contacts, "can't have more than one of the same type")
+    end
   end
 end

@@ -2,6 +2,11 @@ require 'test_helper'
 
 class ProfileTest < ActiveSupport::TestCase
 
+  def setup
+    @profile       = profiles(:simple_user_profile)
+    @email_contact = contacts(:email_contact)
+  end
+
   test "full_name" do
     profile = Profile.new
     name    = profile.name    = 'Deyan'
@@ -32,7 +37,11 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test "that it should not be possible to associate more than one contact with the same type" do
-    pending "TODO"
+    @profile.contacts << @email_contact
+    assert @profile.save
+
+    @profile.contacts << @email_contact
+    assert !@profile.save
   end
 
 end
