@@ -11,6 +11,6 @@ java:
   skill_category_id: 2
 
 ruby_on_rails:
-  id: 2
+  id: 3
   name: Ruby On Rails
   skill_category_id: 2
