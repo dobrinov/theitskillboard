@@ -7,7 +7,7 @@
         <li><%= "#{study.program} in &quot;#{study.university.name}&quot; from #{study.from_date} to #{study.to_date}".html_safe %>
           <ul>
             <% study.courses.each do |course| %>
-              <li><%= "#{course.name} from #{course.from_date} to #{course.to_date}".html_safe %></li>
+              <li><%= "Taken course in #{course.name} from #{course.from_date} to #{course.to_date}".html_safe %></li>
             <% end %>
             <li>
               <% if show_new_course_form_for?(study.id) %>
@@ -28,4 +28,6 @@
       </li>
     </ul>
   </div>
+
+  <%= link_to 'Done', edit_profile_path(current_user), class: 'button primary' %>
 </div>
