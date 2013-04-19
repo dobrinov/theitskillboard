@@ -4,7 +4,7 @@ class Contact < ActiveRecord::Base
   # Validations
 
   # Associations
-  has_and_belongs_to_many :profiles
+  belongs_to :profile
 
   # Class methods
   def self.types

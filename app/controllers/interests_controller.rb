@@ -27,7 +27,7 @@ class InterestsController < ApplicationController
   def destroy
     @profile = current_user.profile
 
-    if Interest.find(params[:interest][:id]).destroy
+    if Interest.find(params[:id]).destroy
       flash[:notice] = "Inerest removed successfuly"
     else
       flash[:error] = "Inerest not removed"

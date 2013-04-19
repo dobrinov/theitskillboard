@@ -1,0 +1,5 @@
+simple_user_profile_contact:
+  id:           1
+  profile_id:   1
+  address:      'simple.user@example.com'
+  contact_type: 'email'

@@ -3,7 +3,8 @@ require 'test_helper'
 class InterestsControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:simple_user)
+    @user     = users(:simple_user)
+    @interest = interests(:programming)
   end
 
   test 'interests index action' do
@@ -32,7 +33,14 @@ class InterestsControllerTest < ActionController::TestCase
   end
 
   test 'delete profile interest' do
-    pending 'TODO'
+    login_as @user
+
+    assert_difference('Interest.count', -1) do
+      delete :destroy, { :profile_id => @user.profile.id, :id => @interest.id }
+    end
+
+    assert_response :redirect
+    assert_redirected_to :controller => 'interests', :action => 'index'
   end
 
 end

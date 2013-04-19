@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
   def destroy
     @profile = current_user.profile
 
-    if Contact.find(params[:contact][:id]).destroy
+    if Contact.find(params[:id]).destroy
       flash[:notice] = "Contact removed successfuly"
     else
       flash[:error] = "Contact not removed"

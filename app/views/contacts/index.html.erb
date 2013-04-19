@@ -6,9 +6,8 @@
 
     <% @contacts.each do |contact| %>
       <div>
+        <%= contact.address %>
         <%= form_for [@profile, contact], method: 'delete', html: { class: 'form' } do |f| %>
-          <%= contact.address %>
-          <%= f.hidden_field :id, :value => contact.id %>
           <%= f.submit 'Delete', class: 'button small' %>
         <% end %>
       </div>

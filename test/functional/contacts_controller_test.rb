@@ -3,7 +3,8 @@ require 'test_helper'
 class ContactsControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:simple_user)
+    @user    = users(:simple_user)
+    @contact = contacts(:simple_user_profile_contact)
   end
 
   test 'interests index action' do
@@ -32,7 +33,11 @@ class ContactsControllerTest < ActionController::TestCase
   end
 
   test 'deltete profile contact' do
-    pending 'TODO'
+    login_as @user
+
+    assert_difference('Contact.count', -1) do
+      delete :destroy, { :profile_id => @user.profile.id, :id => @contact.id }
+    end
   end
 
 end

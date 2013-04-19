@@ -15,11 +15,12 @@ class Profile < ActiveRecord::Base
   #TODO: Add validations for birth_date, country, city and nationality
 
   # Associations
+  has_many :contacts
+
   has_many :studies
   has_many :universities, :through => :studies
 
   has_and_belongs_to_many :interests
-  has_and_belongs_to_many :contacts
 
   # Class methods
 

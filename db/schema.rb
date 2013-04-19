@@ -22,13 +22,9 @@ ActiveRecord::Schema.define(:version => 20130419124520) do
   create_table "contacts", :force => true do |t|
     t.string   "contact_type"
     t.string   "address"
+    t.integer  "profile_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-  end
-
-  create_table "contacts_profiles", :force => true do |t|
-    t.integer "contact_id"
-    t.integer "profile_id"
   end
 
   create_table "courses", :force => true do |t|
