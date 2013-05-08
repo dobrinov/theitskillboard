@@ -40,7 +40,7 @@
 <% end %>
 
 <h2>Work experience</h2>
-<%= link_to edit_profile_path(:section => 'experience'),
+<%= link_to profile_work_experiences_path(@profile),
             class: 'profile-details experience container-editable no-results' do %>
   <span class="message">No work experience</span>
   <span class="hint">Click to edit</span>
