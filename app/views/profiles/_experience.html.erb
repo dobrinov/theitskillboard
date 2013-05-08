@@ -1,9 +1,0 @@
-<%= form_for current_user.profile, html: { class: 'form container' } do |f| %>
-  <h1>Edit experience</h1>
-
-  <%= hidden_field_tag :section, 'experience' %>
-
-  <%= f.submit 'Save', class: 'button primary' %>
-
-  <%= link_to 'Cancel', edit_profile_path(current_user), class: 'button' %>
-<% end %>
