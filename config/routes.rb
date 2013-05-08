@@ -8,7 +8,9 @@ Theitskillboard::Application.routes.draw do
     resources :contacts,     :only => [:index, :create, :destroy]
     resources :educations,   :only => [:index]
     resources :studies, :only => [:create, :update, :destroy] do
-      resources :courses
+      resources :courses, :only => [:create, :update, :destroy] do
+        resources :skills, :only => [:index, :create, :destroy]
+      end
     end
   end
 

@@ -11,8 +11,12 @@ class EducationsController < ApplicationController
       @study = Study.new
       @study.build_university
     when 'course'
-      @study  = Study.find(params[:target])
+      @study  = current_user.profile.studies.find(params[:target])
       @course = Course.new
+    when 'skill'
+      @course = Course.find(params[:target])
+      @study  = @course.study
+      @skill  = Skill.new
     end
 
   end
