@@ -13,4 +13,10 @@ class WorkExperiencesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'redirect to login page if not logged in' do
+    get :index, { :profile_id => @user.profile }
+    assert_response :redirect
+    assert_redirected_to :controller => 'sessions', :action => 'new'
+  end
+
 end
