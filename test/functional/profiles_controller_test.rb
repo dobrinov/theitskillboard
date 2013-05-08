@@ -63,15 +63,6 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_redirected_to :controller => 'profiles', :action => 'edit'
   end
 
-  test "render experience edit form" do
-    login_as @user
-
-    get :edit, { :id => @user.id, :section => 'experience' }
-    assert_response :success
-    assert_template 'edit'
-    assert_equal css_select('input#section').first.attributes['value'], 'experience', 'There should be a hidden field containing the section name'
-  end
-
   test "it should update the user names" do
     login_as @user
 

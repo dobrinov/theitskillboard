@@ -29,8 +29,7 @@ class ProfilesController < ApplicationController
   def valid_edit_sections
     [
       'profilepictureandname',
-      'generalinformation',
-      'experience'
+      'generalinformation'
     ]
   end
 
