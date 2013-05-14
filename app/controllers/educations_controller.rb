@@ -4,8 +4,6 @@ class EducationsController < ApplicationController
 
   def index
 
-    @profile = current_user.profile
-
     case params[:new]
     when 'study'
       @study = Study.new
