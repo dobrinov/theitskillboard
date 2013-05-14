@@ -1,3 +1,4 @@
 simple_company:
-  id: 1
-  name: Simple Company
+  id:      1
+  name:    Simple Company
+  website: www.nonexistingsimplecompany.com
