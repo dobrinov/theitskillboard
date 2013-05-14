@@ -1,6 +1,6 @@
 <h3>Add new course taken</h3>
 
-<%= form_for [@profile, @study, @course] do |f| %>
+<%= form_for [current_user.profile, @study, @course] do |f| %>
 
   <%= f.label :name, 'Course name' %>
   <%= f.text_field :name %>
