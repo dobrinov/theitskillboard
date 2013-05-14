@@ -19,4 +19,12 @@ class WorkExperiencesControllerTest < ActionController::TestCase
     assert_redirected_to :controller => 'sessions', :action => 'new'
   end
 
+  test 'rendering new employment form' do
+    login_as @user
+
+    get :index, { :profile_id => @user.profile.id, :new => 'employment' }
+    assert_response :success
+    assert_not_nil assigns(:employment)
+  end
+
 end

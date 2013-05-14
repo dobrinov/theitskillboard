@@ -2,6 +2,19 @@
   <h1>Edit work experience</h1>
 
   <div>
+    <ul>
+      <% current_user.profile.employments.each do |employment| %>
+        <li>
+          <%= "Worked as &quot;#{employment.position}&quot; in &quot;#{employment.company.name}&quot; from #{employment.from_date} to #{employment.to_date}".html_safe %></li>
+      <% end %>
+      <li>
+        <% if show_new_employment_form? %>
+          <%= render :partial => 'employments/form' %>
+        <% else %>
+          <%= link_to 'Add new employment', profile_work_experiences_path(current_user.profile.id, :new => 'employment') %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 
   <%= link_to 'Done', edit_profile_path(current_user), class: 'button primary' %>

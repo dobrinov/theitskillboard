@@ -6,6 +6,7 @@ Theitskillboard::Application.routes.draw do
   resources :profiles, :only => [:show, :edit, :update] do # This nesting could be removed
     resources :interests,    :only => [:index, :create, :destroy]
     resources :contacts,     :only => [:index, :create, :destroy]
+
     resources :educations,   :only => [:index]
 
     resources :studies, :only => [:create, :update, :destroy] do
@@ -15,6 +16,9 @@ Theitskillboard::Application.routes.draw do
     end
 
     resources :work_experiences, :only => [:index]
+
+    resources :employments, :only => [:create, :update, :destroy] do
+    end
 
   end
 
