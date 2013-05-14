@@ -1,6 +1,6 @@
 <h3>Add new skill</h3>
 
-<%= form_for [@profile, @study, @course, @skill] do |f| %>
+<%= form_for [current_user.profile, @study, @course, @skill] do |f| %>
   <%= select :skill, :id, Skill.all.collect {|s| [ s.name, s.id ] }, {:prompt => 'Select skill'} %>
   <%= f.submit %>
 <% end %>
