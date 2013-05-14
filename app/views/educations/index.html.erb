@@ -3,7 +3,7 @@
 
   <div>
     <ul>
-      <% @profile.studies.each do |study| %>
+      <% current_user.profile.studies.each do |study| %>
         <li><%= "#{study.program} in &quot;#{study.university.name}&quot; from #{study.from_date} to #{study.to_date}".html_safe %>
 
           
