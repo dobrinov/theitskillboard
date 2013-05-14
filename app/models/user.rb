@@ -22,8 +22,5 @@ class User < ActiveRecord::Base
 
   # Associations
   has_one  :profile
-  has_many :employments
-  has_many :companies, :through => :employments
-
   has_many :projects
 end

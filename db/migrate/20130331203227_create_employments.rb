@@ -7,7 +7,7 @@ class CreateEmployments < ActiveRecord::Migration
 
       t.timestamps
 
-      t.integer :user_id
+      t.integer :profile_id
       t.integer :company_id
     end
   end

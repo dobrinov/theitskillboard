@@ -19,6 +19,9 @@ class Profile < ActiveRecord::Base
   # Associations
   has_many :contacts
 
+  has_many :employments
+  has_many :companies, :through => :employments
+
   has_many :studies
   has_many :universities, :through => :studies
 

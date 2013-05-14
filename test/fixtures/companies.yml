@@ -1,1 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+simple_company:
+  id: 1
+  name: Simple Company

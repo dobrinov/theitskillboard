@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20130419124520) do
     t.date     "to_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
+    t.integer  "profile_id"
     t.integer  "company_id"
   end
 
