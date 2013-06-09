@@ -4,5 +4,6 @@ class Course < ActiveRecord::Base
   # Associations
   belongs_to              :study
   has_many                :projects
+
   has_and_belongs_to_many :skills
 end

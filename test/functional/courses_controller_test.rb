@@ -4,7 +4,7 @@ class CoursesControllerTest < ActionController::TestCase
 
   def setup
     @user  = users(:simple_user)
-    @study = studies(:simple_user_study)
+    @study = studies(:simple_user_study_in_simple_university)
   end
 
   test 'creatign a course for study' do

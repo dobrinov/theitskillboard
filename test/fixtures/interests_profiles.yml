@@ -1,3 +1,11 @@
-simple_user_profile_interest:
+simple_user_profile_programming:
   profile_id:  1
   interest_id: 1
+
+simple_user_profile_ux:
+  profile_id:  1
+  interest_id: 2
+
+simple_user_profile_startups:
+  profile_id:  1
+  interest_id: 3

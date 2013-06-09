@@ -3,8 +3,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  # Validations
+  # Associations
+  has_one  :profile
 
+  # Validations
   validates :email,
               :presence => true,
               :uniqueness => true,
@@ -15,12 +17,10 @@ class User < ActiveRecord::Base
 
   validates :password,
               :confirmation => true,
-              :length       => { :in => 6..20 }
+              :length       => { :in => 6..20 },
+              :on           => :create
 
   validates :password_confirmation,
-              :presence => true
-
-  # Associations
-  has_one  :profile
-  has_many :projects
+              :presence => true,
+              :on       => :create
 end

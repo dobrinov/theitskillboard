@@ -3,7 +3,8 @@ class Company < ActiveRecord::Base
 
   # Associations
   has_many :employments
-  has_many :users, :through => :employments
+  has_many :profiles, :through => :employments
 
   has_many :projects
+  has_many :impacts
 end

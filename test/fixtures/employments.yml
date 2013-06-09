@@ -1,7 +1,7 @@
-simple_user_employment:
+simple_user_employment_in_simple_company:
   id:         1
   profile_id: 1
   company_id: 1
-  position:   'Developer'
+  position:   ' Frontend Developer'
   from_date:  <%= Time.now - 1.year %>
   to_date:    <%= Time.now - 9.months %>

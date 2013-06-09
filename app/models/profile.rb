@@ -11,21 +11,20 @@ class Profile < ActiveRecord::Base
   # Validations
   validates :name,     :presence => true
   validates :surname,  :presence => true
-  validate  :duplicated_contact_types?
-
 
   #TODO: Add validations for birth_date, country, city and nationality
 
   # Associations
+  belongs_to :user
+
   has_many :contacts
+  has_and_belongs_to_many :interests
 
   has_many :employments
   has_many :companies, :through => :employments
 
   has_many :studies
   has_many :universities, :through => :studies
-
-  has_and_belongs_to_many :interests
 
   # Class methods
 
@@ -41,11 +40,5 @@ class Profile < ActiveRecord::Base
       self.city.present?,
       self.nationality.present?
     ].any?
-  end
-
-  def duplicated_contact_types?
-    unless self.contacts.uniq { |c| c[:contact_type] }.size == self.contacts.size
-      errors.add(:contacts, "can't have more than one of the same type")
-    end
   end
 end

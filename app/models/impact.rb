@@ -4,5 +4,6 @@ class Impact < ActiveRecord::Base
   # Associations
   belongs_to :company
   belongs_to :project
+
   has_and_belongs_to_many :skills
 end

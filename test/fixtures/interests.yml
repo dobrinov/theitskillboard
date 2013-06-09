@@ -1,3 +1,11 @@
 programming:
   id:   1
   name: Programming
+
+ux:
+  id:   2
+  name: UX
+
+startups:
+  id:   3
+  name: Startups

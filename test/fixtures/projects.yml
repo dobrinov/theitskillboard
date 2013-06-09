@@ -1,1 +1,12 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+simple_company_project:
+  id:          1
+  company_id:  1
+  name:        Simple Company Project
+  description: Simple company project for test purposes
+  website:     www.nonexistingsimplecompanyproject.com
+
+simple_course_project:
+  id:          2
+  course_id:   1
+  name:        Simple Course Project
+  description: Simple course project for test purposes

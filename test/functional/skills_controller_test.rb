@@ -4,7 +4,7 @@ class SkillsControllerTest < ActionController::TestCase
 
   def setup
     @user   = users(:simple_user)
-    @study  = studies(:simple_user_study)
+    @study  = studies(:simple_user_study_in_simple_university)
     @course = courses(:simple_user_study_course)
     @skill  = skills(:ruby)
   end

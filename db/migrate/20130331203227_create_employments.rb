@@ -5,10 +5,10 @@ class CreateEmployments < ActiveRecord::Migration
       t.date :from_date
       t.date :to_date
 
-      t.timestamps
-
       t.integer :profile_id
       t.integer :company_id
+
+      t.timestamps
     end
   end
 end

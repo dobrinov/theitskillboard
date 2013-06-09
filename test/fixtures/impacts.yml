@@ -1,11 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+simple_company_project_impact:
+  id:          1
+  project_id:  1
+  from:        <%= Time.now - 1.year %>
+  to:          <%= Time.now - 9.months %>
+  description: Implemented module for Simple project
 
-one:
-  from: 2013-06-03
-  to: 2013-06-03
-  description: MyText
-
-two:
-  from: 2013-06-03
-  to: 2013-06-03
-  description: MyText
+simple_company_impact:
+  id:          2
+  company_id:  1
+  from:        <%= Time.now - 2.years %>
+  to:          <%= Time.now - 8.months %>
+  description: Administrating the website of simple company.

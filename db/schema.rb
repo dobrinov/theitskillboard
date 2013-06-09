@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603185702) do
+ActiveRecord::Schema.define(:version => 20130603212329) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -46,18 +46,26 @@ ActiveRecord::Schema.define(:version => 20130603185702) do
     t.string   "position"
     t.date     "from_date"
     t.date     "to_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.integer  "profile_id"
     t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "impacts", :force => true do |t|
     t.date     "from"
     t.date     "to"
+    t.text     "title"
     t.text     "description"
+    t.integer  "project_id"
+    t.integer  "company_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "impacts_skills", :force => true do |t|
+    t.integer "impact_id"
+    t.integer "skill_id"
   end
 
   create_table "interests", :force => true do |t|
@@ -89,16 +97,12 @@ ActiveRecord::Schema.define(:version => 20130603185702) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
+    t.string   "description"
+    t.string   "website"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "company_id"
     t.integer  "course_id"
-  end
-
-  create_table "projects_skills", :force => true do |t|
-    t.integer "project_id"
-    t.integer "skill_id"
   end
 
   create_table "skill_categories", :force => true do |t|
