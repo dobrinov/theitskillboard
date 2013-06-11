@@ -4,4 +4,6 @@ class Employment < ActiveRecord::Base
   # Associations
   belongs_to :profile
   belongs_to :company
+
+  has_many :impacts
 end

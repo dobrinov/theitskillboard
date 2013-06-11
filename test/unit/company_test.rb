@@ -17,8 +17,4 @@ class CompanyTest < ActiveSupport::TestCase
   test 'can associate with projects' do
     assert @company.projects.first.kind_of?(Project)
   end
-
-  test 'can associate with impacts' do
-    assert @company.impacts.first.kind_of?(Impact)
-  end
 end

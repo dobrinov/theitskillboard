@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20130603212329) do
     t.text     "title"
     t.text     "description"
     t.integer  "project_id"
-    t.integer  "company_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "employment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "impacts_skills", :force => true do |t|

@@ -7,7 +7,7 @@ class CreateImpacts < ActiveRecord::Migration
       t.text :description
 
       t.integer :project_id
-      t.integer :company_id
+      t.integer :employment_id
 
       t.timestamps
     end
