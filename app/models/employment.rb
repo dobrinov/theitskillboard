@@ -5,5 +5,10 @@ class Employment < ActiveRecord::Base
   belongs_to :profile
   belongs_to :company
 
-  has_many :impacts
+  has_many :impacts, :dependent => :destroy
+
+  # Validation
+  validates :profile, :presence => true
+  validates :company, :presence => true
+
 end

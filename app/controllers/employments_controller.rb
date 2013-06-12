@@ -15,15 +15,24 @@ class EmploymentsController < ApplicationController
     @employment.profile = current_user.profile
     @employment.company = @company
 
-    @employment.save
+    if @employment.save
+      redirect_to profile_work_experiences_path
+    else
+      # Make it better
+      redirect_to profile_work_experiences_path
+    end
 
-    redirect_to profile_work_experiences_path
-  end
-
-  def update
   end
 
   def destroy
+    @employment = current_user.profile.employments.find(params[:id])
+
+    if @employment.destroy
+      redirect_to profile_work_experiences_path
+    else
+      # Make it better
+      redirect_to profile_work_experiences_path
+    end
   end
 
 end
