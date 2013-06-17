@@ -1,17 +1,17 @@
-<%= link_to edit_profile_path(:section => 'profilepictureandname'),
+<%= link_to profile_edit_profile_picture_and_name_path,
             class: 'profile-details profile-picture-and-name container-editable' do %>
-  <%= image_tag @profile.profile_picture.url(:small), class: 'profile-picture' %>
-  <h1 class="name"><%= @profile.full_name %></h1>
+  <%= image_tag current_user.profile.profile_picture.url(:small), class: 'profile-picture' %>
+  <h1 class="name"><%= current_user.profile.full_name %></h1>
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
 <h2>General information</h2>
-<%= link_to edit_profile_path(:section => 'generalinformation'), class: 'profile-details general-information container-editable no-results' do %>
-  <% if @profile.general_information_added? %>
-    <%= @profile.birth_date %>
-    <%= @profile.country %>
-    <%= @profile.city %>
-    <%= @profile.nationality %>
+<%= link_to profile_edit_location_nationality_and_age_path, class: 'profile-details general-information container-editable no-results' do %>
+  <% if current_user.profile.general_information_added? %>
+    <%= current_user.profile.birth_date %>
+    <%= current_user.profile.country %>
+    <%= current_user.profile.city %>
+    <%= current_user.profile.nationality %>
   <% else %>
     <span class="message">No general information</span>
     <span class="hint">Click to edit</span>
@@ -33,24 +33,23 @@
 </div>
 
 <h2>Education</h2>
-<%= link_to profile_educations_path(@profile), class: 'profile-details experience container-editable no-results' do %>
+<%= link_to '', class: 'profile-details experience container-editable no-results' do %>
   <span class="message">No education</span>
   <span class="hint">Click to edit</span>
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
 <h2>Work experience</h2>
-<%= link_to profile_work_experiences_path(@profile),
-            class: 'profile-details experience container-editable no-results' do %>
+<%= link_to profile_employments_path, class: 'profile-details experience container-editable no-results' do %>
   <span class="message">No work experience</span>
   <span class="hint">Click to edit</span>
   <span class="edit button primary large right">Edit</span>
 <% end %>
 
 <h2>Interests</h2>
-<%= link_to profile_interests_path(@profile), class: 'profile-details interests container-editable no-results' do %>
-  <% if @profile.interests.any? %>
-    <%= @profile.interests.map(&:name).join(', ') %>
+<%= link_to profile_interests_path, class: 'profile-details interests container-editable no-results' do %>
+  <% if current_user.profile.interests.any? %>
+    <%= current_user.profile.interests.map(&:name).join(', ') %>
   <% else %>
     <span class="message">No interests</span>
     <span class="hint">Click to edit</span>
@@ -60,9 +59,9 @@
 <% end %>
 
 <h2>Contacts</h2>
-<%= link_to profile_contacts_path(@profile), class: 'profile-details contacts container-editable no-results' do %>
-  <% if @profile.contacts.any? %>
-    <%= @profile.contacts.map(&:address).join(', ') %>
+<%= link_to profile_contacts_path, class: 'profile-details contacts container-editable no-results' do %>
+  <% if current_user.profile.contacts.any? %>
+    <%= current_user.profile.contacts.map(&:address).join(', ') %>
   <% else %>
     <span class="message">No contacts</span>
     <span class="hint">Click to edit</span>

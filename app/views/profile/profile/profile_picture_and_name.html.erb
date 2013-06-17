@@ -1,7 +1,5 @@
-<%= form_for current_user.profile, html: { :multipart => true, class: 'form container' } do |f| %>
+<%= form_for [:profile, current_user.profile], url: profile_profile_path, html: { :multipart => true, class: 'form container' } do |f| %>
   <h1>Edit profile picture and name</h1>
-
-  <%= hidden_field_tag :section, 'profilepictureandname' %>
 
   <div class="group">
     <%= f.label      :profile_picture, class: 'label' %>
@@ -21,8 +19,7 @@
     <%= error_messages_for(current_user.profile, :surname) %>
   </div>
 
-
   <%= f.submit 'Save', class: 'button primary' %>
 
-  <%= link_to 'Cancel', edit_profile_path(current_user), class: 'button' %>
+  <%= link_to 'Cancel', profile_edit_path, class: 'button' %>
 <% end %>

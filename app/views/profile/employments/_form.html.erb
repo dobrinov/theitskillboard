@@ -1,0 +1,31 @@
+<%= form_for Employment.new, url: profile_employments_path do |f| %>
+
+  <%= f.fields_for :company do |cf| %>
+    <%= cf.label      :name, 'Company name' %>
+    <%= cf.text_field :name %>
+
+    <%= cf.label      :website, 'Company website' %>
+    <%= cf.text_field :website %>
+  <% end %>
+
+  <br/><br/>
+  
+  <%= f.label :position, 'Position' %>
+  <%= f.text_field :position %>
+
+  <%= f.label       :from_date, 'From date' %>
+  <%= f.date_select :from_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <%= f.label       :to_date, 'To date' %>
+  <%= f.date_select :to_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
+
+  <%= f.submit 'Add employment', class: 'button primary' %>
+  <%= link_to 'Cancel', profile_employments_path, class: 'button' %>
+
+<% end %>

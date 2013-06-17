@@ -1,0 +1,11 @@
+<ul>
+  <% @employments.each do |employment| %>
+    <li><%= employment %></li>
+  <% end %>
+
+  <% if show_new_employment_form? %>
+    <li><%= render partial: 'form' %></li>
+  <% else %>
+    <li><%= link_to 'New employment', profile_employments_path(target: nil, new: 'employment') %></li>
+  <% end %>
+</ul>

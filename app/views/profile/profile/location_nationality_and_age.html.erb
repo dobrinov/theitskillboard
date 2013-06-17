@@ -1,7 +1,5 @@
-<%= form_for current_user.profile, html: { class: 'form container' } do |f| %>
+<%= form_for [:profile, current_user.profile], url: profile_profile_path, html: { class: 'form container' } do |f| %>
   <h1>Edit general information</h1>
-
-  <%= hidden_field_tag :section, 'generalinformation' %>
 
   <div class="group">
     <%= f.label       :birth_date, class: 'label' %>
@@ -32,5 +30,5 @@
 
   <%= f.submit 'Save', class: 'button primary' %>
 
-  <%= link_to 'Cancel', edit_profile_path(current_user), class: 'button' %>
+  <%= link_to 'Cancel', profile_edit_path, class: 'button' %>
 <% end %>

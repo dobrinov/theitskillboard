@@ -2,3 +2,8 @@ simple_company:
   id:      1
   name:    Simple Company
   website: www.nonexistingsimplecompany.com
+
+non_associated_company:
+  id:      2
+  name:    Non Associated Company
+  website: www.nonexistingnonassociatedcompany.com

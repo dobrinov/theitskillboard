@@ -3,25 +3,23 @@ Theitskillboard::Application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
 
-  resources :profiles, :only => [:show, :edit, :update] do # This nesting could be removed
-    resources :interests,    :only => [:index, :create, :destroy]
-    resources :contacts,     :only => [:index, :create, :destroy]
+  resources :profiles, :only => [:show]
 
-    resources :educations,   :only => [:index]
+  namespace :profile do
+    get "preview"                           => "profile#show"
+    get "edit"                              => "profile#edit"
+    get "profile_picture_and_name/edit"     => "profile#profile_picture_and_name",     as: 'edit_profile_picture_and_name'
+    get "location_nationality_and_age/edit" => "profile#location_nationality_and_age", as: 'edit_location_nationality_and_age'
+    put ""                                  => "profile#update",                       as: 'profile'
 
-    resources :studies, :only => [:create, :update, :destroy] do
-      resources :courses, :only => [:create, :update, :destroy] do
-        resources :skills, :only => [:index, :create, :destroy]
-      end
-    end
+    resources :contacts,    :only => [:index, :create, :destroy]
+    resources :interests,   :only => [:index, :create, :destroy]
 
-    resources :work_experiences, :only => [:index]
+    resources :employments, :only => [:index, :create]
 
-    resources :employments, :only => [:create, :update, :destroy] do
-    end
-
+    root :to => "profile#show"
   end
 
-  get ':action' => 'static#:action'
-  root :to => 'static#landingpage'
+  get ":action" => "static#:action"
+  root :to => "static#landingpage"
 end
