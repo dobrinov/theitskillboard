@@ -1,4 +1,4 @@
-module Profile::EmploymentHelper
+module Profile::EmploymentsHelper
 
   def show_new_employment_form?
     params[:new].present? && params[:new] == 'employment'

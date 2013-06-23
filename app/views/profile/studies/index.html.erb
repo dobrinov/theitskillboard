@@ -1,0 +1,25 @@
+<ul>
+  <% @studies.each do |study| %>
+    <li>
+      <%= study %>
+
+      <ul>
+        <% study.courses.each do |course| %>
+          <li><%= course %></li>
+        <% end %>
+
+        <% if show_new_course_form?(study.id, 'study') %>
+          <li><%= render partial: 'profile/courses/form' %></li>
+        <% else %>
+          <li><%= link_to 'New course', profile_studies_path(target_id: study.id, target_type: study.class.name.downcase, new: 'course') %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+
+  <% if show_new_study_form? %>
+    <li><%= render partial: 'form' %></li>
+  <% else %>
+    <li><%= link_to 'New study', profile_studies_path(target: nil, new: 'study') %></li>
+  <% end %>
+</ul>
