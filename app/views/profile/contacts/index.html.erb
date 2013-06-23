@@ -4,10 +4,10 @@
   <% if @contacts.any? %>
     <h2>Contacts</h2>
 
-    <%= @contacts.each do |contact| %>
+    <% @contacts.each do |contact| %>
       <div>
         <%= contact.address %>
-        <%= form_for contact, url:  method: 'delete', html: { class: 'form' } do |f| %>
+        <%= form_for contact, url: profile_contact_path(contact), method: 'delete', html: { class: 'form' } do |f| %>
           <%= f.submit 'Delete', class: 'button small' %>
         <% end %>
       </div>
@@ -16,15 +16,15 @@
 
   <h2>Add new contact</h2>
 
-  <%# form_for [@profile, @contact], html: { class: 'form' } do |f| %>
+  <%= form_for @contact, url: profile_contacts_path(@contact), html: { class: 'form' } do |f| %>
 
-    <%# f.select     :contact_type, options_for_select(Contact.types) %>
-    <%# f.text_field :address %>
+    <%= f.select     :contact_type, options_for_select(Contact.types) %>
+    <%= f.text_field :address %>
 
-    <%# f.submit 'Add', class: 'button' %>
+    <%= f.submit 'Add', class: 'button' %>
 
-  <%# end %>
+  <% end %>
 
   <br/>
-  <%# link_to 'Done', edit_profile_path(current_user), class: 'button primary' %>
+  <%= link_to 'Done', profile_edit_path, class: 'button primary' %>
 </div>
