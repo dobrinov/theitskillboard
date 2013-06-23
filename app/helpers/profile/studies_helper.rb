@@ -11,6 +11,6 @@ module Profile::StudiesHelper
       target_id.to_s == params[:target_id],
       target_type == params[:target_type]
     ].all?
-  end 
+  end
 
 end

@@ -16,7 +16,9 @@ Theitskillboard::Application.routes.draw do
     resources :interests,   :only => [:index, :create, :destroy]
 
     resources :employments, :only => [:index, :create]
-    resources :studies,     :only => [:index, :create]
+    resources :studies,     :only => [:index, :create] do
+      resources :courses, :only => [:create]
+    end
 
     root :to => "profile#show"
   end

@@ -1,6 +1,23 @@
 <h3>Add new course</h3>
 
-<%= form_for Course.new, url: 'todo' do |f| %>
+<%= form_for Course.new, url: profile_study_courses_path(study_id: params[:target_id]) do |f| %>
+
+  <%= f.label :name, 'Course name' %>
+  <%= f.text_field :name %>
+
+  <br/><br/>
+  <%= f.label       :from_date %>
+  <%= f.date_select :from_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
+  <%= f.label       :to_date %>
+  <%= f.date_select :to_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
 
   <%= f.submit 'Add', class: 'button primary' %>
   <%= link_to 'Cancel', profile_studies_path, class: 'button' %>
