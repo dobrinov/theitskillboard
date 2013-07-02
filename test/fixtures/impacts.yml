@@ -7,7 +7,6 @@ simple_user_employment_in_simple_company_impact:
 
 simple_user_employment_in_simple_company_impact_in_simple_company_project:
   id:            2
-  employment_id: 1
   project_id:    1
   from:          <%= Time.now - 2.years %>
   to:            <%= Time.now - 8.months %>

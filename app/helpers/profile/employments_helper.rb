@@ -22,4 +22,13 @@ module Profile::EmploymentsHelper
     ].all?
   end
 
+  def show_new_skill_form_for?(target_id, target_type)
+    [
+      params[:new].present?,
+      params[:new] == 'skill',
+      target_id.to_s == params[:target_id],
+      target_type == params[:target_type]
+    ].all?
+  end
+
 end

@@ -8,7 +8,21 @@
             <%= project %>
             <ul>
               <% project.impacts.each do |impact| %>
-                <%= impact %>
+                <li>
+                  <%= impact %>
+
+                  <ul>
+                    <% impact.skills.each do |skill| %>
+                      <li><%= skill %></li>
+                    <% end %>
+
+                    <% if show_new_skill_form_for?(impact.id, impact.class.name.downcase) %>
+                      <li><%= render partial: 'profile/skills/form' %></li>
+                    <% else %>
+                      <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: impact.class.name.downcase, new: 'skill') %></li>
+                    <% end %>
+                  </ul>
+                </li>
               <% end %>
 
               <% if show_new_impact_form_for?(project.id, project.class.name.downcase) %>
@@ -30,6 +44,18 @@
         <% employment.impacts.each do |impact| %>
           <li>
             <%= impact %>
+
+            <ul>
+              <% impact.skills.each do |skill| %>
+                <li><%= skill %></li>
+
+                <% if show_new_skill_form_for?(impact.id, impact.class.name.downcase) %>
+                  <li><%= render partial: 'profile/skills/form' %></li>
+                <% else %>
+                  <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: impact.class.name.downcase, new: 'skill') %></li>
+                <% end %>
+              <% end %>
+            </ul>
           </li>
 
           <% if show_new_impact_form_for?(employment.id, employment.class.name.downcase) %>
