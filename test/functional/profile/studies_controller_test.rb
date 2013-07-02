@@ -5,7 +5,7 @@ class Profile::StudiesControllerTest < ActionController::TestCase
   def setup
     @user       = users(:simple_user)
     @university = universities(:non_associated_university)
-    @studies    = studies(:simple_user_study_in_simple_university)
+    @study      = studies(:simple_user_study_in_simple_university)
 
     login_as @user
   end
@@ -23,7 +23,7 @@ class Profile::StudiesControllerTest < ActionController::TestCase
   end
 
   test 'render index with new course form' do
-    get :index, { new: 'course', target_id: @studies.id, target_type: @studies.class.name.downcase }
+    get :index, { new: 'course', target_id: @study.id, target_type: @study.class.name.downcase }
     assert_template :partial => 'profile/courses/_form', count: 1
     assert_response :success
   end
