@@ -1,9 +1,9 @@
 Theitskillboard::Application.routes.draw do
-  resources :users, :only => [:new, :create]
+  resources :users, only: [:new, :create]
 
-  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
-  resources :profiles, :only => [:show]
+  resources :profiles, only: [:show]
 
   namespace :profile do
     get "preview"                           => "profile#show"
@@ -12,15 +12,15 @@ Theitskillboard::Application.routes.draw do
     get "location_nationality_and_age/edit" => "profile#location_nationality_and_age", as: 'edit_location_nationality_and_age'
     put ""                                  => "profile#update",                       as: 'profile'
 
-    resources :contacts,    :only => [:index, :create, :destroy]
-    resources :interests,   :only => [:index, :create, :destroy]
+    resources :contacts,    only: [:index, :create, :destroy]
+    resources :interests,   only: [:index, :create, :destroy]
 
-    resources :employments, :only => [:index, :create]
-    resources :studies,     :only => [:index, :create] do
-      resources :courses, :only => [:create]
+    resources :employments, only: [:index, :create]
+    resources :studies,     only: [:index, :create] do
+      resources :courses, only: [:create]
     end
 
-    root :to => "profile#show"
+    root to: "profile#show"
   end
 
   get ":action" => "static#:action"
