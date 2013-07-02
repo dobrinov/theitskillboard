@@ -25,18 +25,17 @@
         <% else %>
           <li><%= link_to 'New project', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'project') %></li>
         <% end %>
-
-        <% if show_new_impact_form_for?(employment.id, employment.class.name.downcase) %>
-          <li><%= render partial: 'profile/impacts/form' %></li>
-        <% else %>
-          <li><%= link_to 'New impact', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'impact') %></li>
-        <% end %>
       </ul>
       <ul>
         <% employment.impacts.each do |impact| %>
           <li>
             <%= impact %>
           </li>
+            <% if show_new_impact_form_for?(employment.id, employment.class.name.downcase) %>
+            <li><%= render partial: 'profile/impacts/form' %></li>
+          <% else %>
+            <li><%= link_to 'New impact', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'impact') %></li>
+          <% end %>
         <% end %>
       </ul>
     </li>
