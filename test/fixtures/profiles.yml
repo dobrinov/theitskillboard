@@ -7,3 +7,13 @@ simple_user_profile:
   country:     Bulgaria
   city:        Sofia
   nationality: Bulgarian
+
+second_simple_user_profile:
+  id:          2
+  user_id:     2
+  name:        Second
+  surname:     Stephenson
+  birth_date:  <%= Time.now - 30.years %>
+  country:     Germany
+  city:        Munich
+  nationality: Bulgarian

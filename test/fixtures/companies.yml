@@ -7,3 +7,23 @@ non_associated_company:
   id:      2
   name:    Non Associated Company
   website: www.nonexistingnonassociatedcompany.com
+
+sap:
+  id:      3
+  name:    SAP
+  website: www.sap.com
+
+hp:
+  id:      4
+  name:    hp
+  website: www.hp.com
+
+google:
+  id:      5
+  name:    Google
+  website: www.google.com
+
+microsoft:
+  id:      6
+  name:    Microsoft
+  website: www.microsoft.com

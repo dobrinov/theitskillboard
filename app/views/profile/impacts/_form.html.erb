@@ -1,1 +1,24 @@
-{IMPACT FORM}
+<%= form_for [:profile, current_user.employments.detect { |e| e.id.to_s == params[:target_id] }, Impact.new] do |f| %>
+
+  <%= hidden_field_tag :target_id, params[:target_id] %>
+  <%= hidden_field_tag :target_type, params[:target_type] %>
+
+  <%= f.label :description, 'Description' %>
+  <%= f.text_field :description %>
+
+  <%= f.label       :from, 'From date' %>
+  <%= f.date_select :from, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <%= f.label       :to, 'To date' %>
+  <%= f.date_select :to, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+                    include_blank: true,
+                    start_year: Time.now.year, end_year: Time.now.year - 50 %>
+
+  <br/><br/>
+
+  <%= f.submit 'Add impact', class: 'button primary' %>
+  <%= link_to 'Cancel', profile_employments_path, class: 'button' %>
+
+<% end %>

@@ -23,4 +23,33 @@ class User < ActiveRecord::Base
   validates :password_confirmation,
               :presence => true,
               :on       => :create
+
+  def employments
+    self.profile.employments.to_a
+  end
+
+  def companies
+    self.profile.employments.includes(:company).collect_concat { |e| e.company }
+  end
+
+  def impacts
+    self.profile.employments.includes(:impacts).collect_concat { |e| e.impacts }
+  end
+
+  def projects
+    self.profile.employments.includes(company: :projects).collect_concat { |e| e.company.projects }
+  end
+
+  def studies
+    #TODO
+  end
+
+  def universities
+    #TODO
+  end
+
+  def skills
+    #TODO
+  end
+
 end
