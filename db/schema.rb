@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130603212329) do
   end
 
   create_table "impacts", :force => true do |t|
-    t.date     "from"
-    t.date     "to"
+    t.date     "from_date"
+    t.date     "to_date"
     t.text     "title"
     t.text     "description"
     t.integer  "project_id"

@@ -6,13 +6,13 @@
   <%= f.label :description, 'Description' %>
   <%= f.text_field :description %>
 
-  <%= f.label       :from, 'From date' %>
-  <%= f.date_select :from, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+  <%= f.label       :from_date, 'From date' %>
+  <%= f.date_select :from_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
                     include_blank: true,
                     start_year: Time.now.year, end_year: Time.now.year - 50 %>
 
-  <%= f.label       :to, 'To date' %>
-  <%= f.date_select :to, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
+  <%= f.label       :to_date, 'To date' %>
+  <%= f.date_select :to_date, order: [:month, :year], :use_month_numbers => true, :discard_day => true,
                     include_blank: true,
                     start_year: Time.now.year, end_year: Time.now.year - 50 %>
 

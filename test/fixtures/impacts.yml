@@ -1,13 +1,13 @@
 simple_user_employment_in_simple_company_impact:
   id:            1
   employment_id: 1
-  from:          <%= Time.now - 1.year %>
-  to:            <%= Time.now - 9.months %>
+  from_date:     <%= Time.now - 1.year %>
+  to_date:       <%= Time.now - 9.months %>
   description:   Administrating the website of simple company.
 
 simple_user_employment_in_simple_company_impact_in_simple_company_project:
   id:            2
   project_id:    1
-  from:          <%= Time.now - 2.years %>
-  to:            <%= Time.now - 8.months %>
+  from_date:     <%= Time.now - 2.years %>
+  to_date:       <%= Time.now - 8.months %>
   description:   Implemented module for Simple project.

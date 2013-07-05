@@ -17,8 +17,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
         target_type: "employment",
         impact: {
           description: "description",
-          from:        Time.now - 1.year,
-          to:          Time.now - 2.months
+          from_date:    Time.now - 1.year,
+          to_date:      Time.now - 2.months
         }
       }
     end
@@ -33,8 +33,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
         target_type: "project",
         impact: {
           description: "description",
-          from:        Time.now - 1.year,
-          to:          Time.now - 2.months
+          from_date:    Time.now - 1.year,
+          to_date:      Time.now - 2.months
         }
       }
     end
@@ -48,8 +48,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
         target_id:   1,
         impact: {
           description: "description",
-          from:        Time.now - 1.year,
-          to:          Time.now - 2.months
+          from_date:    Time.now - 1.year,
+          to_date:      Time.now - 2.months
         }
       }
     end
@@ -63,8 +63,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
         target_type: "employment",
         impact: {
           description: "description",
-          from:        Time.now - 1.year,
-          to:          Time.now - 2.months
+          from_date:    Time.now - 1.year,
+          to_date:      Time.now - 2.months
         }
       }
     end
@@ -79,8 +79,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
         target_type: "employment",
         impact: {
           description: "description",
-          from:        Time.now - 1.year,
-          to:          Time.now - 2.months
+          from_date:    Time.now - 1.year,
+          to_date:      Time.now - 2.months
         }
       }
     end

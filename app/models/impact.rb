@@ -1,6 +1,5 @@
 class Impact < ActiveRecord::Base
-  attr_accessible :description, :from, :to
-  # change to from_date and to_date
+  attr_accessible :description, :from_date, :to_date
 
   # Associations
   belongs_to :employment

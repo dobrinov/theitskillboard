@@ -1,8 +1,8 @@
 class CreateImpacts < ActiveRecord::Migration
   def change
     create_table :impacts do |t|
-      t.date :from
-      t.date :to
+      t.date :from_date
+      t.date :to_date
       t.text :title
       t.text :description
 
