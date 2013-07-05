@@ -72,7 +72,7 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
     assert_redirected_to profile_employments_path
   end
 
-  test 'create with missing not owned by the yser target id' do
+  test 'create with not owned by the yser target id' do
     assert_no_difference 'Impact.count' do
       post :create, {
         target_id:   666,
