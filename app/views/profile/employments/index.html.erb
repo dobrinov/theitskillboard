@@ -26,7 +26,12 @@
               <% end %>
 
               <% if show_new_impact_form_for?(project.id, project.class.name.downcase) %>
-                <li><%= render partial: 'profile/impacts/form' %></li>
+                <li>
+                  <%= render \
+                    partial: 'profile/impacts/form',
+                    locals: { target: current_user.projects.detect { |e| e.id.to_s == params[:target_id] }}
+                  %>
+                </li>
               <% else %>
                 <li><%= link_to 'New impact', profile_employments_path(target_id: project.id, target_type: project.class.name.downcase, new: 'impact') %></li>
               <% end %>
@@ -60,7 +65,12 @@
         <% end %>
 
         <% if show_new_impact_form_for?(employment.id, employment.class.name.downcase) %>
-          <li><%= render partial: 'profile/impacts/form' %></li>
+          <li>
+              <%= render \
+                partial: 'profile/impacts/form',
+                locals: { target: current_user.employments.detect { |e| e.id.to_s == params[:target_id] }}
+              %>
+            </li>
         <% else %>
           <li><%= link_to 'New impact', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'impact') %></li>
         <% end %>

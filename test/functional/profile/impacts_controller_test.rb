@@ -13,8 +13,8 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
   test 'create employment impact with valida data' do
     assert_difference 'Impact.count', 1 do
       post :create, {
-        target_id:   @employment.id,
-        target_type: "employment",
+        employment_id: @employment.id,
+        target_type:   "employment",
         impact: {
           description: "description",
           from_date:    Time.now - 1.year,
@@ -29,7 +29,7 @@ class Profile::ImpactsControllerTest < ActionController::TestCase
   test 'create project impact with valida data' do
     assert_difference 'Impact.count', 1 do
       post :create, {
-        target_id:   @project.id,
+        project_id:  @project.id,
         target_type: "project",
         impact: {
           description: "description",

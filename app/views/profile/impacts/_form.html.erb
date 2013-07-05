@@ -1,6 +1,5 @@
-<%= form_for [:profile, current_user.employments.detect { |e| e.id.to_s == params[:target_id] }, Impact.new] do |f| %>
+<%= form_for [:profile, target, Impact.new] do |f| %>
 
-  <%= hidden_field_tag :target_id, params[:target_id] %>
   <%= hidden_field_tag :target_type, params[:target_type] %>
 
   <%= f.label :description, 'Description' %>
