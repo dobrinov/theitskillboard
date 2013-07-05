@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def target_type_name_for(object)
-    object.to_s.downcase
+    (object.is_a?(Class) ? object.to_s : object.class.name).downcase
   end
 
   def current_user

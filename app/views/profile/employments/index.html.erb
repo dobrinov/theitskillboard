@@ -1,78 +1,75 @@
 <ul>
   <% @employments.each do |employment| %>
-    <li>
-      <%= employment %>
+    <li><%= employment %>
+
       <ul>
         <% employment.company.projects.each do |project| %>
-          <li>
-            <%= project %>
+          <li><%= project %>
+
             <ul>
               <% project.impacts.each do |impact| %>
-                <li>
-                  <%= impact %>
+                <li><%= impact %>
 
                   <ul>
                     <% impact.skills.each do |skill| %>
                       <li><%= skill %></li>
                     <% end %>
 
-                    <% if show_new_skill_form_for?(impact.id, impact.class.name.downcase) %>
+                    <% if show_new_skill_form_for?(impact.id, target_type_name_for(impact)) %>
                       <li><%= render partial: 'profile/skills/form' %></li>
                     <% else %>
-                      <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: impact.class.name.downcase, new: 'skill') %></li>
+                      <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: target_type_name_for(impact), new: 'skill') %></li>
                     <% end %>
                   </ul>
                 </li>
               <% end %>
 
-              <% if show_new_impact_form_for?(project.id, project.class.name.downcase) %>
+              <% if show_new_impact_form_for?(project.id, target_type_name_for(project)) %>
                 <li>
-                  <%= render \
-                    partial: 'profile/impacts/form',
-                    locals: { target: current_user.projects.detect { |e| e.id.to_s == params[:target_id] }}
+                  <%= render partial: 'profile/impacts/form', locals: { target: project }
                   %>
                 </li>
               <% else %>
-                <li><%= link_to 'New impact', profile_employments_path(target_id: project.id, target_type: project.class.name.downcase, new: 'impact') %></li>
+                <li><%= link_to 'New impact', profile_employments_path(target_id: project.id, target_type: target_type_name_for(project), new: 'impact') %></li>
               <% end %>
             </ul>
           </li>
         <% end %>
 
-        <% if show_new_project_form_for?(employment.id, employment.class.name.downcase) %>
-          <li><%= render partial: 'profile/projects/form' %></li>
+        <% if show_new_project_form_for?(employment.id, target_type_name_for(employment)) %>
+          <li>
+            <%= render partial: 'profile/projects/form', locals: { target: employment }
+            %>
+          </li>
         <% else %>
-          <li><%= link_to 'New project', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'project') %></li>
+          <li><%= link_to 'New project', profile_employments_path(target_id: employment.id, target_type: target_type_name_for(employment), new: 'project') %></li>
         <% end %>
       </ul>
       <ul>
         <% employment.impacts.each do |impact| %>
-          <li>
-            <%= impact %>
+          <li><%= impact %>
 
             <ul>
               <% impact.skills.each do |skill| %>
                 <li><%= skill %></li>
 
-                <% if show_new_skill_form_for?(impact.id, impact.class.name.downcase) %>
+                <% if show_new_skill_form_for?(impact.id, target_type_name_for(impact)) %>
                   <li><%= render partial: 'profile/skills/form' %></li>
                 <% else %>
-                  <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: impact.class.name.downcase, new: 'skill') %></li>
+                  <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: target_type_name_for(impact), new: 'skill') %></li>
                 <% end %>
               <% end %>
             </ul>
           </li>
         <% end %>
 
-        <% if show_new_impact_form_for?(employment.id, employment.class.name.downcase) %>
+        <% if show_new_impact_form_for?(employment.id, target_type_name_for(employment)) %>
           <li>
-              <%= render \
-                partial: 'profile/impacts/form',
-                locals: { target: current_user.employments.detect { |e| e.id.to_s == params[:target_id] }}
+              <%= render partial: 'profile/impacts/form', locals: { target: employment }
               %>
             </li>
         <% else %>
-          <li><%= link_to 'New impact', profile_employments_path(target_id: employment.id, target_type: employment.class.name.downcase, new: 'impact') %></li>
+          <li><%= link_to 'New impact', profile_employments_path(target_id: employment.id, target_type: target_type_name_for(employment), new: 'impact') %></li>
         <% end %>
       </ul>
     </li>
