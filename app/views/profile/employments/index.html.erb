@@ -52,12 +52,12 @@
             <ul>
               <% impact.skills.each do |skill| %>
                 <li><%= skill %></li>
+              <% end %>
 
-                <% if show_new_skill_form_for?(impact.id, target_type_name_for(impact)) %>
-                  <li><%= render partial: 'profile/skills/form', locals: { target: impact } %></li>
-                <% else %>
-                  <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: target_type_name_for(impact), new: 'skill') %></li>
-                <% end %>
+              <% if show_new_skill_form_for?(impact.id, target_type_name_for(impact)) %>
+                <li><%= render partial: 'profile/skills/form', locals: { target: impact } %></li>
+              <% else %>
+                <li><%= link_to 'New skill', profile_employments_path(target_id: impact.id, target_type: target_type_name_for(impact), new: 'skill') %></li>
               <% end %>
             </ul>
           </li>
