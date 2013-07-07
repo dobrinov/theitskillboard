@@ -32,24 +32,34 @@ class User < ActiveRecord::Base
     self.profile.employments.includes(:company).collect_concat { |e| e.company }
   end
 
-  def impacts
-    self.profile.employments.includes(:impacts).collect_concat { |e| e.impacts }
+  def impacts # TODO: Optimize queries
+    employments = self.profile.employments.includes(company:[projects:[:impacts]])
+    projects    = employments.collect_concat { |e| e.company.projects }
+
+    employments.collect_concat { |e| e.impacts } + projects.collect_concat { |p| p.impacts }
   end
 
-  def projects
-    self.profile.employments.includes(company: :projects).collect_concat { |e| e.company.projects }
+  def projects # TODO: Optimize queries
+    employments = self.profile.employments.includes(company:[:projects])
+    courses     = self.profile.studies.includes(:courses).collect_concat { |s| s.courses }
+
+    employments.collect_concat { |e| e.company.projects } + courses.collect_concat { |c| c.project }
   end
 
   def studies
-    #TODO
+    self.profile.studies.to_a
+  end
+
+  def courses
+    self.studies.collect_concat { |s| s.courses }
   end
 
   def universities
-    #TODO
+    self.profile.studies.includes(:university).collect_concat { |s| s.university }
   end
 
   def skills
-    #TODO
+    self.impacts.collect_concat { |i| i.skills } + self.courses.collect_concat { |i| i.skills }
   end
 
 end

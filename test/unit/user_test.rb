@@ -19,6 +19,8 @@ class UserTest < ActiveSupport::TestCase
       assert employment.kind_of?(Employment)
       assert employment.profile == @user.profile
     end
+
+    assert employments.count == Employment.joins(:profile).where(profile_id: @user.profile.id).count
   end
 
   test "user companies" do
@@ -39,6 +41,13 @@ class UserTest < ActiveSupport::TestCase
     impacts.each do |impact|
       assert impact.kind_of?(Impact)
     end
+
+    impacts_count = [
+      Impact.joins(:employment).where(employments: {profile_id: User.first.profile.id}).count,
+      Impact.joins(project: [company: :employments]).where(employments: {profile_id: User.first.profile.id}).count
+    ].inject{ |sum,x| sum + x }
+
+    assert impacts_count == impacts.count
   end
 
   test "user projects" do
