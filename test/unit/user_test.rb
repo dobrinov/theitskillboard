@@ -70,6 +70,8 @@ class UserTest < ActiveSupport::TestCase
 
   test "user skills" do
     pending
+    #  Skill.joins(impacts: :employment).where(employments: {profile_id: x.profile.id})
+    #  Skill.joins(impacts: [project: [company: :employments]]).where(employments: {profile_id: x.profile.id})
   end
 
 end
