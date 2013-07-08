@@ -12,24 +12,28 @@ Theitskillboard::Application.routes.draw do
     get "location_nationality_and_age/edit" => "profile#location_nationality_and_age", as: "edit_location_nationality_and_age"
     put ""                                  => "profile#update",                       as: ""
 
-    resources :contacts,    only: [:index, :create, :destroy]
-    resources :interests,   only: [:index, :create, :destroy]
+    resources :contacts, only: [:index, :create, :destroy]
+    resources :interests, only: [:index, :create, :destroy]
 
     resources :employments, only: [:index, :create] do
       resources :projects, only: [:create]
-      resources :impacts,  only: [:create]
+      resources :impacts, only: [:create]
     end
 
     resources :projects, only: [:create] do
-      resources :impacts,  only: [:create]
+      resources :impacts, only: [:create]
     end
 
     resources :impacts, only: [:create] do
-      resources :skills,  only: [:create]
+      resources :skills, only: [:create]
     end
 
-    resources :studies,     only: [:index, :create] do
+    resources :studies, only: [:index, :create] do
       resources :courses, only: [:create]
+    end
+
+    resources :courses, only: [:create] do
+      resources :skills, only: [:create]
     end
 
     root to: "profile#show"

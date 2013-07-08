@@ -14,11 +14,22 @@ class Profile::SkillsController < Profile::CommonController
         flash[:error] = 'Skill was not added.'
       end
 
+      redirect_to profile_employments_path
+    when target_type_name_for(Course)
+      @course = current_user.courses.detect { |c| c.id.to_s == params[:course_id] }
+      redirect_to(profile_studies_path) and return unless @course.present?
+
+      if @course.skills << @skill
+        flash[:notice] = 'Skill added successfuly.'
+      else
+        flash[:error] = 'Skill was not added.'
+      end
+      
+      redirect_to profile_studies_path
     else
-      # Do nothing
+      redirect_to profile_path
     end
 
-    redirect_to profile_employments_path
   end
 
 end

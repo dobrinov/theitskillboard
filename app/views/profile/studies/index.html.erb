@@ -6,12 +6,28 @@
       <ul>
         <% study.courses.each do |course| %>
           <li><%= course %></li>
+
+          <ul>
+            <% course.skills.each do |skill| %>
+              <li><%= skill %></li>
+            <% end %>
+
+            <% if show_new_skill_form_for?(course.id, target_type_name_for(course)) %>
+              <li><%= render partial: 'profile/skills/form', locals: { target: course } %></li>
+            <% else %>
+              <li><%= link_to 'New skill', profile_studies_path(target_id: course.id, target_type: target_type_name_for(course), new: 'skill') %></li>
+            <% end %>
+          </ul>
+
+          <ul>
+            <li>Add course project</li>
+          </ul>
         <% end %>
 
         <% if show_new_course_form?(study.id, 'study') %>
           <li><%= render partial: 'profile/courses/form' %></li>
         <% else %>
-          <li><%= link_to 'New course', profile_studies_path(target_id: study.id, target_type: study.class.name.downcase, new: 'course') %></li>
+          <li><%= link_to 'New course', profile_studies_path(target_id: study.id, target_type: target_type_name_for(study), new: 'course') %></li>
         <% end %>
       </ul>
     </li>

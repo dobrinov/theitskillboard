@@ -58,7 +58,7 @@ class Profile::EmploymentsControllerTest < ActionController::TestCase
   end
 
   test 'create new employment of existing company' do
-    assert_difference lambda { @user.profile.employments.count }, 1 do
+    assert_difference lambda { User.find(@user.id).employments.count }, 1 do
       assert_no_difference 'Company.count' do
         post :create, {
           employment: { 
@@ -79,7 +79,7 @@ class Profile::EmploymentsControllerTest < ActionController::TestCase
   end
 
   test 'create new employment of non existing company' do
-    assert_difference [lambda { @user.profile.employments.count }, 'Company.count'], 1 do
+    assert_difference [lambda { User.find(@user.id).employments.count }, 'Company.count'], 1 do
       post :create, {
         employment: { 
           company: { 

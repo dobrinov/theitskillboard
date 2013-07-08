@@ -29,7 +29,7 @@ class Profile::StudiesControllerTest < ActionController::TestCase
   end
 
   test 'create study of existing university' do
-    assert_difference lambda { @user.profile.studies.count }, 1 do
+    assert_difference lambda { User.find(@user.id).studies.count }, 1 do
       assert_no_difference 'University.count' do
         post :create, {
           study: {
@@ -50,7 +50,7 @@ class Profile::StudiesControllerTest < ActionController::TestCase
   end
 
   test 'create study of non existing university' do
-    assert_difference [lambda { @user.profile.studies.count }, 'Study.count'], 1 do
+    assert_difference [lambda { User.find(@user.id).studies.count }, 'Study.count'], 1 do
       post :create, {
         study: {
           university: {
