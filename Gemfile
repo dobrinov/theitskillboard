@@ -18,6 +18,7 @@ group :development do
 end
 
 group :test do
+  gem 'ruby-prof'
 end
 
 group :production do
