@@ -59,7 +59,15 @@ class User < ActiveRecord::Base
   end
 
   def skills
-    self.impacts.collect_concat { |i| i.skills } + self.courses.collect_concat { |i| i.skills }
+    theoretically_developed_skills + professionally_developed_skills
+  end
+
+  def theoretically_developed_skills
+    Skill.joins(courses:[:study]).select('studies.profile_id, skills.*').where('studies.profile_id' => self.profile.id)
+  end
+
+  def professionally_developed_skills
+    Skill.joins(impacts:[:employment]).select('employments.profile_id, skills.*').where('employments.profile_id' => self.profile.id)
   end
 
   def experience_in_days_for(skill)
