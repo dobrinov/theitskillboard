@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def skills
-    theoretically_developed_skills + professionally_developed_skills
+    (theoretically_developed_skills + professionally_developed_skills).uniq { |skill| skill.id }
   end
 
   def theoretically_developed_skills
