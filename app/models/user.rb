@@ -62,4 +62,22 @@ class User < ActiveRecord::Base
     self.impacts.collect_concat { |i| i.skills } + self.courses.collect_concat { |i| i.skills }
   end
 
+  def experience_in_days_for(skill)
+    professional_experience_in_days_for(skill) + theoretical_experience_in_days_for(skill)
+  end
+
+  def theoretical_experience_in_days_for(skill)
+    courses = Course.joins(:skills, :study).select('studies.profile_id, skills.id, courses.id, courses.from_date, courses.to_date').where('studies.profile_id' => skill.id, 'skills.id' => self.profile.id)
+
+    courses.map(&:duration_in_days).inject(0, &:+) # days
+  end
+
+  def professional_experience_in_days_for(skill)
+    impacts = []
+    impacts.concat(Impact.joins(:skills, project:[company:[:employments]]).select("skills.id, employments.profile_id, impacts.id, impacts.from_date as from_date, impacts.to_date as to_date").where('employments.profile_id' => self.profile.id, 'skills.id' => skill.id))
+    impacts.concat(Impact.joins(:skills, :employment)                     .select('skills.id, employments.profile_id, impacts.id, impacts.from_date, impacts.to_date')                        .where('employments.profile_id' => self.profile.id, 'skills.id' => skill.id))
+
+    impacts.map(&:duration_in_days).inject(0, &:+) # days
+  end
+
 end

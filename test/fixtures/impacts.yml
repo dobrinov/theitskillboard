@@ -11,3 +11,10 @@ simple_user_employment_in_simple_company_impact_in_simple_company_project:
   from_date:     <%= Time.now - 2.years %>
   to_date:       <%= Time.now - 8.months %>
   description:   Implemented module for Simple project.
+
+second_simple_user_employment_in_simple_company_impact:
+  id:            3
+  employment_id: 2
+  from_date:     <%= Time.now - 3.year %>
+  to_date:       <%= Time.now - 6.months %>
+  description:   Administrating the company web servers.
