@@ -75,12 +75,8 @@ class User < ActiveRecord::Base
     skills
   end
 
-  def course_works_for_skill
-    course_works = []
-
-    course_works.concat()
-
-    course_works
+  def courseworks_for_skill(skill)
+    Project.joins(course:[:study, :skills]).where('studies.profile_id' => self.profile.id, 'skills.id' => skill.id).uniq { |project| project.id }
   end
 
   def experience_in_days_for(skill)

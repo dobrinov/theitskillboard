@@ -29,7 +29,7 @@
           <%= skill.name %> =
           <%= current_user.professional_experience_in_days_for(skill) %> days professional exp +
           <%= current_user.theoretical_experience_in_days_for(skill) %> days theoretical exp +
-          ? course works
+          <%= current_user.courseworks_for_skill(skill).count %> course works
         </li>
       <% end %>
     </ul>
