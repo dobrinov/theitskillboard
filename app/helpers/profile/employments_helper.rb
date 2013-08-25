@@ -31,4 +31,13 @@ module Profile::EmploymentsHelper
     ].all?
   end
 
+  def show_new_coursework_form_for?(target_id, target_type)
+    [
+      params[:new].present?,
+      params[:new] == 'coursework',
+      target_id.to_s == params[:target_id],
+      target_type == params[:target_type]
+    ].all?
+  end
+
 end

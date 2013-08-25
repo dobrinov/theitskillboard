@@ -34,6 +34,7 @@ Theitskillboard::Application.routes.draw do
 
     resources :courses, only: [:create] do
       resources :skills, only: [:create]
+      resources :courseworks, only: [:create]
     end
 
     root to: "profile#show"
