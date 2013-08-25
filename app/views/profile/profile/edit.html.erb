@@ -22,8 +22,21 @@
 
 <h2>IT skills</h2>
 <div class="profile-details it-skills container no-results">
-  <span class="message">No IT skills</span>
-  <span class="hint">Update your experience and this will be generated automatically</span>
+  <% if @skills.any? %>
+    <ul>
+      <% @skills.each do |skill| %>
+        <li>
+          <%= skill.name %> =
+          <%= current_user.professional_experience_in_days_for(skill) %> professional exp +
+          <%= current_user.theoretical_experience_in_days_for(skill) %> theoretical exp +
+          ? course works
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <span class="message">No IT skills</span>
+    <span class="hint">Update your experience and this will be generated automatically</span>
+  <% end %>
 </div>
 
 <h2>Language skills</h2>

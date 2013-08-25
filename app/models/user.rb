@@ -67,7 +67,12 @@ class User < ActiveRecord::Base
   end
 
   def professionally_developed_skills
-    Skill.joins(impacts:[:employment]).select('employments.profile_id, skills.*').where('employments.profile_id' => self.profile.id)
+    skills = []
+
+    skills.concat(Skill.joins(impacts:[:employment]).where('employments.profile_id' => self.profile.id))
+    skills.concat(Skill.joins(impacts:[project:[company:[:employments]]]).where('employments.profile_id' => self.profile.id))
+
+    skills
   end
 
   def experience_in_days_for(skill)
@@ -75,7 +80,7 @@ class User < ActiveRecord::Base
   end
 
   def theoretical_experience_in_days_for(skill)
-    courses = Course.joins(:skills, :study).select('studies.profile_id, skills.id, courses.id, courses.from_date, courses.to_date').where('studies.profile_id' => skill.id, 'skills.id' => self.profile.id)
+    courses = Course.joins(:skills, :study).where('studies.profile_id' => self.profile.id, 'skills.id' => skill.id)
 
     courses.map(&:duration_in_days).inject(0, &:+) # days
   end

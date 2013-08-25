@@ -4,6 +4,7 @@ class Profile::ProfileController < Profile::CommonController
   end
 
   def edit
+    @skills = current_user.skills
   end
 
   def profile_picture_and_name
