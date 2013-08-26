@@ -79,6 +79,14 @@ class User < ActiveRecord::Base
     Project.joins(course:[:study, :skills]).where('studies.profile_id' => self.profile.id, 'skills.id' => skill.id).uniq { |project| project.id }
   end
 
+  def experience_index_for(skill)
+    mpe = skill.max_profesional_experience_in_days
+    dpe = self.professional_experience_in_days_for(skill)
+    dte = self.theoretical_experience_in_days_for(skill)
+
+    ((dpe + dte).to_f * 10 / mpe).round(2)
+  end
+
   def experience_in_days_for(skill)
     professional_experience_in_days_for(skill) + theoretical_experience_in_days_for(skill)
   end

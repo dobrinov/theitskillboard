@@ -26,10 +26,7 @@
     <ul>
       <% @skills.each do |skill| %>
         <li>
-          <%= skill.name %> =
-          <%= current_user.professional_experience_in_days_for(skill) %> days professional exp +
-          <%= current_user.theoretical_experience_in_days_for(skill) %> days theoretical exp +
-          <%= current_user.courseworks_for_skill(skill).count %> course works
+          <%= skill.name %> = <%= current_user.experience_index_for(skill) %>
         </li>
       <% end %>
     </ul>
