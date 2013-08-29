@@ -1,6 +1,7 @@
 class Profile::ProfileController < Profile::CommonController
 
   def show
+    @skills = current_user.skills
   end
 
   def edit

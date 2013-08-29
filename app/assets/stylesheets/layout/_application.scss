@@ -1,0 +1,16 @@
+header {
+}
+
+section {
+  margin: 20px 0px;
+}
+
+footer {
+  text-align: center;
+  font-style: italic;
+  color: $dark_gray;
+
+  .logo {
+    float: left;
+  }
+}

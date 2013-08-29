@@ -12,41 +12,31 @@
   </head>
 
   <body>
-    <div class="wrapper wrapper-application">
+    <div class="container">
+      <header class="container">
+        <%= link_to '', root_path, data: { module: 'logo' } %>
 
-      <%# ####################### HEADER ####################### %>
-      <header class="header header-application">
-        <%= link_to '', root_path, class: 'logo logo-applicaiton-main' %>
-
-        <nav class="navigation navigation-user not-authenticated">
+        <nav>
           <ul>
+            <li><%= link_to 'Preview profile', profile_preview_path %></li>
+            <li><%= link_to 'Edit profile', profile_edit_path %></li>
+            <li><%= link_to 'Create account', new_user_path %></li>
             <% if logged_in? %>
-              <li><%= profile_link %></li>
-              <li><%= link_to 'Sign out', session_path(current_user), :method => :delete, class: 'button small' %></li>
-            <% else %>
-              <li><%= link_to 'Create account', new_user_path, class: 'button primary small' %></li>
-              <li><%= link_to 'Sign in', new_session_path, class: 'button small' %></li>
+              <li><%= link_to 'Sign out', session_path(current_user), :method => :delete %></li>
             <% end %>
           </ul>
         </nav>
 
         <%= yield :header %>
       </header>
-
-      <%# #######################  FLASH  ###################### %>
-      <%= render_flash_messages %>
-
-      <%# #######################  BODY  ####################### %>
-      <div class="body body-application">
+      <section class="container">
         <%= yield %>
-      </div>
-
-      <%# ####################### FOOTER ####################### %>
-      <footer class="footer footer-application">
+      </section>
+      <footer class="container">
         The IT skill board
+
         <%= yield :footer %>
       </footer>
-
     </div>
   </body>
 

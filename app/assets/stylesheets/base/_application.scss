@@ -1,5 +1,18 @@
+$light_gray: #ccc;
+$gray: #999;
+$dark_gray: #333;
+
 body {
   font-size: 12px;
   color: #fff;
   background: image-url('bg_maze_black.png');
+
+  > .container {
+    max-width: 960px;
+    margin: 10px auto;
+  }
+}
+
+.container {
+  outline: 1px dotted red;
 }

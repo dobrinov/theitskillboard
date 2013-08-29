@@ -1,1 +1,48 @@
-<%= user.inspect %>
+<div class="container">
+  <div>
+    <%= image_tag profile.profile_picture.url(:small) %>
+  </div>
+  <div>
+    <h1><%= profile.full_name %></h1>
+    <p>Software developer</p>
+  </div>
+</div>
+
+<div class="container">
+  <h2>General information</h2>
+
+  <ul>
+    <li><%= profile.birth_date %></li>
+    <li><%= profile.country %></li>
+    <li><%= profile.city %></li>
+    <li><%= profile.nationality %></li>
+  </ul>
+</div>
+
+<div class="container">
+  <h2>IT skills</h2>
+  <ul>
+    <% skills.each do |skill| %>
+      <li>
+        <h4><%= skill.name %></h4>
+        <div><%= user.experience_index_for(skill) %></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="container">
+  <h2>Language skills</h2>
+</div>
+
+<div class="container">
+  <h2>Timetable</h2>
+</div>
+
+<div class="container">
+  <h2>Interests</h2>
+</div>
+
+<div class="container">
+  <h2>Contacts</h2>
+</div>
