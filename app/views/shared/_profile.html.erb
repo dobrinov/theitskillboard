@@ -1,4 +1,4 @@
-<div class="container">
+<div data-module="container">
   <div>
     <%= image_tag profile.profile_picture.url(:small) %>
   </div>
@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>General information</h2>
 
   <ul>
@@ -19,7 +19,7 @@
   </ul>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>IT skills</h2>
   <ul>
     <% skills.each do |skill| %>
@@ -31,18 +31,28 @@
   </ul>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>Language skills</h2>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>Timetable</h2>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>Interests</h2>
+  <ul>
+    <% interests.each do |interest| %>
+      <li><%= interest.name %></li>
+    <% end %>
+  </ul>
 </div>
 
-<div class="container">
+<div data-module="container">
   <h2>Contacts</h2>
+  <ul>
+    <% contacts.each do |contact| %>
+      <li><%= contact.address %></li>
+    <% end %>
+  </ul>
 </div>

@@ -7,12 +7,32 @@ body {
   color: #fff;
   background: image-url('bg_maze_black.png');
 
-  > .container {
+  > [data-module="container"] {
     max-width: 960px;
     margin: 10px auto;
   }
 }
 
-.container {
+h1, h2, h3, h4, h5, h6 {
+  padding: 0px;
+  margin: 0px
+}
+
+ul {
+  padding: 0px 0px 0px 25px;
+  margin: 0px
+}
+
+li {
+  padding: 0px;
+  margin: 0px
+}
+
+p {
+  padding: 0px;
+  margin: 0px
+}
+
+[data-module="container"] {
   outline: 1px dotted red;
 }
