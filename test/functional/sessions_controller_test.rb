@@ -29,4 +29,21 @@ class SessionsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "should not be able to destroy session if not logged in" do
+    delete :destroy, { :id => @user.id }
+    assert_redirected_to new_session_path
+  end
+
+  test "should not be able to access the new session path if logged in" do
+    login_as @user
+    get :new
+    assert_redirected_to root_path
+  end
+
+  test "should not be able to create new session path if logged in" do
+    login_as @user
+    post :create, { email: @user.email, password: @user.password }
+    assert_redirected_to root_path
+  end
+
 end

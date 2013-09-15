@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
     @_current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
   end
 
-  def require_login
+  def require_authenticated
     redirect_to new_session_path unless logged_in?
+  end
+
+  def require_not_authenticated
+    redirect_to root_path if logged_in?
   end
 
   def logged_in?

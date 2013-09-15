@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
-  before_filter :require_login, only: ['destroy']
+  before_filter :require_authenticated,     only:   ['destroy']
+  before_filter :require_not_authenticated, except: ['destroy']
 
   def new
   end
