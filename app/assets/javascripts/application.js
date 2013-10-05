@@ -1,7 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require modernizr
-//= require_tree .
+//= require functions
+//= require module
+//= require_tree ./modules/
 
 $().ready(function(){
   window.application = new Application();
