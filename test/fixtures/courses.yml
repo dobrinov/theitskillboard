@@ -1,6 +1,0 @@
-simple_user_study_course:
-  id:        1
-  study_id:  1
-  name:      'Simple programming'
-  from_date: <%= Time.now - 11.months %>
-  to_date:   <%= Time.now - 10.months %>

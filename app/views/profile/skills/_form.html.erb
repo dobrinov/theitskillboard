@@ -1,8 +1,0 @@
-<h3>Add new skill</h3>
-
-<%= form_for [:profile, target, Skill.new] do |f| %>
-  <%= hidden_field_tag :target_type, target_type_name_for(target) %>
-
-  <%= select :skill, :id, Skill.all.collect {|s| [ s.name, s.id ] }, {:prompt => 'Select skill'} %>
-  <%= f.submit %>
-<% end %>

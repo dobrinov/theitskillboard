@@ -1,9 +1,0 @@
-simple_university:
-  id: 1
-  name: Simple University
-  website: www.simpleuniversity.com
-
-non_associated_university:
-  id: 2
-  name: Non Associated University
-  website: www.nonassociateduniversity.com

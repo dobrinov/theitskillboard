@@ -1,7 +1,0 @@
-simple_user_study_in_simple_university:
-  id:            1
-  profile_id:    1
-  university_id: 1
-  program:       'Simplicity'
-  from_date:     <%= Time.now - 1.year %>
-  to_date:       <%= Time.now - 9.months %>
