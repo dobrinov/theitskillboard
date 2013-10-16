@@ -1,11 +1,10 @@
 @import 'base';
 
-[data-module="container"] {
-  @include base;
+@for $i from 1 through 16 {
 
-  /* Components */
+  [data-module="container-#{$i}"] {
+    @include base;
 
-  /* States */
-
-  /* Modifiers */
+    width: 60px * $i;
+  }
 }

@@ -12,8 +12,8 @@
   </head>
 
   <body>
-    <div data-module="container">
-      <header data-module="container">
+    <div id="wrapper" class="clearfix">
+      <header data-module="container-16">
         <%= link_to '', root_path, data: { module: 'logo', js: true } %>
 
         <nav>
@@ -29,10 +29,10 @@
 
         <%= yield :header %>
       </header>
-      <section data-module="container">
+      <section data-module="container-16">
         <%= yield %>
       </section>
-      <footer data-module="container">
+      <footer data-module="container-16">
         The IT skill board
 
         <%= yield :footer %>

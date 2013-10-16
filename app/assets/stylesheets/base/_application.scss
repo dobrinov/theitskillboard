@@ -7,9 +7,10 @@ body {
   color: #333;
   background: image-url('cream_pixels.png');
 
-  > [data-module="container"] {
-    max-width: 960px;
+  > #wrapper {
+    width: 960px;
     margin: 10px auto;
+    outline: 3px dotted blue;
   }
 }
 
@@ -31,8 +32,4 @@ li {
 p {
   padding: 0px;
   margin: 0px
-}
-
-[data-module="container"] {
-  outline: 1px dotted red;
 }

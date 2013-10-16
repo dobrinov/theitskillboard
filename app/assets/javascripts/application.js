@@ -15,8 +15,6 @@ function Application() {
 }
 
 Application.prototype.initializeModules = function(){
-  // TODO: Should also initialize new modules on DOM change
-
   var self = this;
 
   $('*[data-module][data-js="true"]').each(function(){

@@ -1,9 +1,12 @@
 @mixin base {
   position: relative;
   display: block;
+  float: left;
 
   margin: 0px;
   padding: 0px;
+
+  outline: 1px dotted red;
 
   /* Components */
 
