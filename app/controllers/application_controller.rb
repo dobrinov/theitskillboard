@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to do this."
-      redirect_to new_session_path
+      redirect_to new_session_path(referrer_param => current_path)
     end
   end
 

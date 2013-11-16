@@ -1,14 +1,17 @@
 class SessionsController < ApplicationController
 
   before_action :require_login, only: [:destroy]
-  before_action :require_no_login, only: [:create]
+  # before_action :require_no_login, only: [:new, :create]
+
+  def new
+  end
 
   def create
     user = User.find_by_email(params[:email])
     
     if user && user.authenticate(params[:password])
       login(user)
-      redirect_to my_profile_path, notice: 'Signed in!'
+      redirect_to back_or_default(my_profile_path), notice: 'Signed in!'
     else
       flash.now[:error] = 'Invalid email or password'
       render 'new'

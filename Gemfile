@@ -8,9 +8,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem "redirectr", "~> 0.0.8"
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :doc do
   gem 'sdoc', require: false
 end
-
-gem 'bcrypt-ruby', '~> 3.1.2'
