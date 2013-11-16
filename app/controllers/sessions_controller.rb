@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       login(user)
-      redirect_to root_path, notice: 'Signed in!'
+      redirect_to my_profile_path, notice: 'Signed in!'
     else
       flash.now[:error] = 'Invalid email or password'
       render 'new'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     @_current_user = session[:current_user_id] = nil
-    redirect_to root_path, notice: 'Signed out!'
+    redirect_to new_session_path, notice: 'Signed out!'
   end
 
 end

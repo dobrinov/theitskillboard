@@ -7,6 +7,12 @@ Theitskillboard::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  namespace :my do
+    resource :profile, only: [:show]
+  end
+
+  resources :profiles, only: [:show]
+
   get ":action" => "static#:action"
   root :to => "static#landingpage"
 end
