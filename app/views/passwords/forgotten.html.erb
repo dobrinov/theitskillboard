@@ -1,0 +1,6 @@
+<h1>Forgotten password</h1>
+
+<%= form_tag send_email_change_password_path do %>
+  <%= email_field_tag :email, params[:email], placeholder: 'Email' %>
+  <%= submit_tag 'Send change password email' %>
+<% end %>

@@ -5,6 +5,11 @@ Theitskillboard::Application.routes.draw do
     post 'confirm',      to: 'users#confirm'
   end
 
+  resource :password, only: [:edit, :update] do
+    get   'forgotten',         to: 'passwords#forgotten'
+    post  'send_email_change', to: 'passwords#send_email_change'
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :my do

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :require_login, only: [:confirmation, :confirm]
-  before_action :require_no_login, only: [:new, :create]
+  before_action :require_no_login, only: [:new, :create, :forgotten_password, :reset_password]
 
   # GET new user
   def new

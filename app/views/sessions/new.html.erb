@@ -1,8 +1,14 @@
 <h1>Sign in</h1>
+
 <br/>
+
 <%= form_tag sessions_path do %>
   <%= hidden_field_tag :referrer, referrer_path %>
   <%= email_field_tag :email, params[:email], placeholder: 'Email' %>
   <%= password_field_tag :password, nil, placeholder: 'Password' %>
   <%= submit_tag 'Sign in' %>
 <% end %>
+
+<br/>
+
+<%= link_to 'Forgotten password?', forgotten_password_path %>
