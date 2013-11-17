@@ -1,5 +1,7 @@
 class PasswordsController < ApplicationController
 
+  before_action :require_no_login
+
   # GET forgotten
   def forgotten
   end
