@@ -10,17 +10,19 @@
     <%# Main navigation %>
 
     <%# Profile navigation %>
-    <nav>
-      <ul>
-        <% if logged_in? %>
-          <li><%= current_user.email %></li>
-          <li><%= button_to 'Sign out', session_path(current_user), :method => :delete %></li>
-        <% else %>
-          <li><%= link_to 'Sign up', new_user_path %></li>
-          <li><%= link_to 'Sign in', new_session_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+    <header>
+      <nav>
+        <ul>
+          <% if logged_in? %>
+            <li><%= current_user.email %></li>
+            <li><%= button_to 'Sign out', session_path(current_user), :method => :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign up', new_user_path %></li>
+            <li><%= link_to 'Sign in', new_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
 
     <%# Flash messages %>
     <% flash.each do |name, msg| -%>
@@ -28,6 +30,10 @@
     <% end -%>
 
     <%= yield %>
+
+    <footer>
+      The it skill board
+    </footer>
 
   </body>
 </html>
