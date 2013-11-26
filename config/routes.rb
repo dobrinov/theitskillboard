@@ -14,6 +14,8 @@ Theitskillboard::Application.routes.draw do
 
   namespace :my do
     resource :profile, only: [:show]
+
+    root :to => "profiles#show"
   end
 
   resources :profiles, only: [:show]

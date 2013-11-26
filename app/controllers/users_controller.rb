@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def confirm
     if params[:confirmation_code] == current_user.confirmation_code
       current_user.activate!
-      redirect_to root_path, notice: 'Your user has been successfuly activated!'
+      redirect_to my_root_path, notice: 'Your user has been successfuly activated!'
     else
       flash.now[:error] = 'The entered confirmation code is invalid.'
       render 'confirmation'
