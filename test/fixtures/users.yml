@@ -1,11 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% password_digest = User.new(:password => 'qweqwe').password_digest %>
 
-one:
-  email: MyString
-  name: MyString
-  surname: MyString
-
-two:
-  email: MyString
-  name: MyString
-  surname: MyString
+simple_user:
+  email: simple.user@example.com
+  name: Simple
+  surname: User
+  password_digest: <%= password_digest %>
+  confirmation_code: QWEQWE
+  state: active
+  gender: m
+  birthdate: <%= Time.now - 25.years %>
+  nationality: Bulgarian
+  city: Sofia
+  country: Bulgaria
