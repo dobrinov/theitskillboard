@@ -15,11 +15,16 @@ ActiveRecord::Schema.define(version: 20131107221354) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "name"
-    t.string   "surname"
+    t.string   "name",              default: "Your"
+    t.string   "surname",           default: "Name"
     t.string   "password_digest"
     t.string   "confirmation_code"
     t.string   "state"
+    t.string   "gender"
+    t.date     "birthdate"
+    t.string   "nationality"
+    t.string   "city"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
