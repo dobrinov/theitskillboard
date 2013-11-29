@@ -1,23 +1,38 @@
 <h1><%= user.name %> <%= user.surname %></h1>
 
+<!-- GENERAL INFORMATION -->
+<h2>General information</h2>
 <% if has_general_information_for?(user) %>
-  <h2>General information</h2>
   <ul>
-    <li>
-      <span>Age</span>
-      <span><%= user.birthdate %></span>
-    </li>
-    <li>
-      <span>Gender</span>
-      <span><%= user.gender %></span>
-    </li>
-    <li>
-      <span>Location</span>
-      <span><%= user.city %>, <%= user.country %></span>
-    </li>
-    <li>
-      <span>Nationality</span>
-      <span><%= user.nationality %></span>
-    </li>
+
+    <% if user.birthdate.present? %>
+      <li>
+        <span>Age</span>
+        <span><%= user.birthdate %></span>
+      </li>
+    <% end %>
+
+    <% if user.gender.present? %>
+      <li>
+        <span>Gender</span>
+        <span><%= user.gender %></span>
+      </li>
+    <% end %>
+
+    <% if location_string_for?(user) %>
+      <li>
+        <span>Location</span>
+        <span><%= location_string_for(user) %></span>
+      </li>
+    <% end %>
+
+    <% if user.nationality.present? %>
+      <li>
+        <span>Nationality</span>
+        <span><%= user.nationality %></span>
+      </li>
+    <% end %>
   </ul>
+<% else %>
+  <span><strong><%= user.name %></strong> still haven't added any general information about himself.</span>
 <% end %>
