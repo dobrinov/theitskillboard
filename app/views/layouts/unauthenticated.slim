@@ -1,0 +1,10 @@
+doctype html
+html class="no-js"
+  head
+    title The IT skill board
+    = stylesheet_link_tag    "unauthenticated", media: "all"
+    = javascript_include_tag "unauthenticated"
+    = csrf_meta_tags
+
+  body
+    == yield
