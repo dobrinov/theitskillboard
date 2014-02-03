@@ -9,3 +9,8 @@
 
 /* Layout */
 @import "layout/application";
+
+/* ********** BEM ********** */
+@import "bem/container/*";
+@import "bem/grid/*";
+@import "bem/logo/*";

@@ -7,5 +7,15 @@ html class="no-js"
     = csrf_meta_tags
 
   body
-    div class="l-top-line"
-    == yield
+    header class="l-header"
+      div class="l-top-line"
+      div class="container container_centered"
+        = link_to(root_path, class: bem_class_for(:logo))
+          = image_tag('logo.png', class: 'logo__image')
+
+    div class="l-body container container_centered"
+      == yield
+
+    footer class="l-footer"
+      div class="container container_centered"
+        | The IT skill board / 2014
