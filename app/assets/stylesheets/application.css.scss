@@ -1,8 +1,12 @@
 /* Mixins */
 @import "compass";
+@import "mixins/inputs";
 
 /* Normalize.css */
 @import "normalize";
+
+/* Colors */
+@import "colors/palette";
 
 /* The IT skill board base style */
 @import "base";
@@ -11,6 +15,7 @@
 @import "layout/application";
 
 /* ********** BEM ********** */
+@import "bem/button/*";
 @import "bem/container/*";
 @import "bem/grid/*";
 @import "bem/logo/*";

@@ -1,7 +1,7 @@
 .l-top-line {
   display: block;
   height: 5px;
-  background-color: #AD151F;
+  background-color: $red_3;
 }
 
 .l-header {
@@ -23,6 +23,6 @@
 }
 
 .l-footer {
-  color: #AD151F;
+  color: $red_3;
   text-align: center;
 }
