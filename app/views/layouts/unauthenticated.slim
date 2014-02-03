@@ -13,6 +13,12 @@ html class="no-js"
         = link_to(root_path, class: bem_class_for(:logo))
           = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
+    - if flash.any?
+      = content_tag(:div, class: "l-messages container container_centered")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
+
     div class="l-body container container_centered"
       == yield
 

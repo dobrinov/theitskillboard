@@ -6,7 +6,6 @@
 
 .l-header {
   > .container {
-    height: 65px;
     margin-top: 5px;
   }
 }
@@ -14,7 +13,12 @@
 .l-logo {
 }
 
+.l-messages {
+  margin-top: 15px !important;
+}
+
 .l-body {
+  margin-top: 15px !important;
 }
 
 .l-footer {

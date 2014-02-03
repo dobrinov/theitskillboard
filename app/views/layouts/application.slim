@@ -17,6 +17,12 @@ html class="no-js"
           = content_tag(:li)
             = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
 
+    - if flash.any?
+      = content_tag(:div, class: "l-messages container container_centered")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
+
     div class="l-body container container_centered"
       == yield
 
