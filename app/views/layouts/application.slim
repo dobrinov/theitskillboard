@@ -10,8 +10,12 @@ html class="no-js"
     header class="l-header"
       div class="l-top-line"
       div class="container container_centered"
-        = link_to(root_path, class: bem_class_for(:logo))
-          = image_tag('logo.png', class: 'logo__image')
+        = link_to(root_path, class: "l-logo #{bem_class_for(:logo)}")
+          = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
+
+        = content_tag(:ul, class: "#{bem_class_for(:navigation, ['user'])} l-user-navigation")
+          = content_tag(:li)
+            = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
 
     div class="l-body container container_centered"
       == yield

@@ -6,11 +6,18 @@
 
 .l-header {
   > .container {
-    margin-top: 5px;
+    // margin-top: 5px;
+    outline: 1px dotted red;
   }
 }
 
+.l-user-navigation {
+  margin-top: 17px !important;
+  float: right;
+}
+
 .l-logo {
+  float: left;
 }
 
 .l-body {
