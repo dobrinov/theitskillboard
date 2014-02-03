@@ -1,8 +1,0 @@
-<h1>Enter your new password</h1>
-
-<%= form_for @user, url: password_path, :method => :put do |f| %>
-  <%= hidden_field_tag 'user[id]', @user.id %>
-  <%= f.password_field :password, placeholder: 'New password' %>
-  <%= f.password_field :password_confirmation, placeholder: 'Confirm new password' %>
-  <%= f.submit 'Change' %>
-<% end %>

@@ -1,8 +1,0 @@
-<h1>Confirm your account</h1>
-<br/>
-Your code is <strong><%= current_user.confirmation_code %></strong>.
-<br/>
-<%= form_tag confirm_user_path do %>
-  <%= text_field_tag :confirmation_code %>
-  <%= submit_tag %>
-<% end %>
