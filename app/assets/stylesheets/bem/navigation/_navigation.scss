@@ -1,7 +1,10 @@
 .navigation {
   position: relative;
   display: block;
+  line-height: 1;
   margin: 0px;
   padding: 0px;
   list-style: none;
+
+  @include clrfix;
 }
