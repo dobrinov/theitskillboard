@@ -6,7 +6,9 @@
 
 .l-header {
   > .container {
+    text-align: center;
     margin-top: 5px;
+        height: 60px;
   }
 }
 
@@ -14,8 +16,13 @@
   float: left;
 }
 
+.l-profile-navigation {
+  display: inline-block !important;
+  margin-top: 10px !important;
+}
+
 .l-user-navigation {
-  margin-top: 17px !important;
+  margin-top: 10px !important;
   float: right;
 }
 

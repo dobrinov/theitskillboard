@@ -1,3 +1,6 @@
-= link_to('Register', new_user_path, class: 'button button_primary')
-span &nbsp;&nbsp;
-= link_to('Log in', new_session_path, class: 'button button_primary')
+- content_for(:header)
+  = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
+    = content_tag(:li, class: 'navigation__item navigation__item_first')
+      = link_to('Create an account', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
+    = content_tag(:li, class: 'navigation__item navigation__item_last')
+      = link_to('Log in', new_session_path, class: bem_class_for(:button))

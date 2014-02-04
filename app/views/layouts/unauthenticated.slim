@@ -2,6 +2,7 @@ doctype html
 html class="no-js"
   head
     title The IT skill board
+    meta name="viewport" content="width=device-width, user-scalable=no"
     = stylesheet_link_tag    "unauthenticated", media: "all"
     = javascript_include_tag "unauthenticated"
     = csrf_meta_tags
@@ -10,8 +11,10 @@ html class="no-js"
     header class="l-header"
       div class="l-top-line"
       div class="container container_centered"
-        = link_to(root_path, class: bem_class_for(:logo))
+        = link_to(root_path, class: "l-logo #{bem_class_for(:logo)}")
           = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
+
+        == yield(:header)
 
     - if flash.any?
       = content_tag(:div, class: "l-messages container container_centered")

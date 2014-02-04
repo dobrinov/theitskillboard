@@ -7,10 +7,17 @@
 .l-header {
   > .container {
     margin-top: 5px;
+    height: 60px;
   }
 }
 
 .l-logo {
+  float: left;
+}
+
+.l-user-navigation {
+  float: right;
+  margin-top: 10px !important;
 }
 
 .l-messages {

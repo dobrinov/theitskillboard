@@ -1,1 +1,26 @@
-| edit.slim
+- content_for(:header)
+  = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-profile-navigation")
+    = content_tag(:li)
+      = link_to('Preview your profile', my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'Profile picture', class: bem_class_for(:grid, [10]))
+
+br
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'General information', class: bem_class_for(:grid, [10]))
+
+br
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'IT skills', class: bem_class_for(:grid, [10]))
+
+br
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'Language skills', class: bem_class_for(:grid, [10]))

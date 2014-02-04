@@ -3,7 +3,7 @@ body {
 }
 
 * {
-  @include box-sizing('border-box')
+  @include box-sizing('border-box');
 }
 
 // Overwrite the styles for the button_to forms
@@ -27,9 +27,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 0;
 }
 
-h1, .h1 { font-size: 36px; }
-h2, .h2 { font-size: 30px; }
-h3, .h3 { font-size: 24px; }
+h1, .h1 { font-size: 30px; }
+h2, .h2 { font-size: 26px; }
+h3, .h3 { font-size: 22px; }
 h4, .h4 { font-size: 18px; }
 h5, .h5 { font-size: 14px; }
 h6, .h6 { font-size: 12px; }
@@ -41,5 +41,10 @@ input {
   @include input-default;
   display: inline-block;
   border: 1px solid $gray_4;
-  height: 28px;
+  // height: 28px;
+}
+
+.input_block {
+  width: 100%;
+  display: block;
 }

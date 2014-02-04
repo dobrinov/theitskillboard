@@ -2,6 +2,7 @@ doctype html
 html class="no-js"
   head
     title The IT skill board
+    meta name="viewport" content="width=device-width, user-scalable=no"
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -10,12 +11,14 @@ html class="no-js"
     header class="l-header"
       div class="l-top-line"
       div class="container container_centered"
-        = link_to(root_path, class: "l-logo #{bem_class_for(:logo)}")
+        = link_to(my_root_path, class: "l-logo #{bem_class_for(:logo)}")
           = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
-        = content_tag(:ul, class: "#{bem_class_for(:navigation, ['user'])} l-user-navigation")
+        = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
           = content_tag(:li)
             = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+
+        == yield(:header)
 
     - if flash.any?
       = content_tag(:div, class: "l-messages container container_centered")
