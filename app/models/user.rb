@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :email,
               :presence   => true,
               :uniqueness => true,
-              :format     => { 
+              :format     => {
                 :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/,
                 :message => "Enter valid email"
               }
@@ -19,7 +19,10 @@ class User < ActiveRecord::Base
               :presence => true,
               :on       => :create
 
-  # Associations
-  has_many :words
+  # Avatar Paperclip configuration
+  has_attached_file :avatar,
+                    :styles      => { small: "100x100>", thumb: "50x50>" },
+                    :default_url => "/assets/placeholders/profile_picture/:style/placeholder.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 end

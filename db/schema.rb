@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20131209162432) do
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "name"
+    t.string   "surname"
+    t.string   "definition"
+    t.string   "gender"
+    t.string   "country"
+    t.string   "city"
+    t.string   "nationality"
+    t.date     "birth_date"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
