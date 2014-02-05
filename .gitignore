@@ -17,3 +17,6 @@
 
 # Ignore all test coverage files.
 /coverage
+
+# Ignore paperclip uploaded files
+/public/system

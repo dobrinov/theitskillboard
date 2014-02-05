@@ -1,0 +1,20 @@
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'Edit profile picture', class: bem_class_for(:grid, [10]))
+
+    = content_tag(:div, class: bem_class_for(:grid, [2]))
+      = profile_picture_for(@user, :small)
+
+    = content_tag(:div, class: bem_class_for(:grid, [8]))
+      = form_for(@user, url: my_profile_avatar_path, html: {class: "#{bem_class_for(:form)} #{bem_class_for(:row)}"}) do |f|
+        = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group")
+          = f.file_field :avatar, class: 'input_block'
+        = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group_actions")
+          = f.submit 'Change', class: bem_class_for(:button, ['primary', 'large', 'block'])
+
+      - if @user.avatar.exists?
+        br
+
+        = content_tag(:div, class: bem_class_for(:row))
+          = content_tag(:div, class: bem_class_for(:grid, [10]))
+            = button_to('Delete', my_profile_avatar_path, {:method => :delete, class: bem_class_for(:button, ['danger', 'block'])})

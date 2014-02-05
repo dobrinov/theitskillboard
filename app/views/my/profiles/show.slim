@@ -3,4 +3,6 @@
     = content_tag(:li)
       = link_to('Edit your profile', edit_my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
 
-| THIS IS THE PREVIEW PAGE OF YOUR PROFILE
+= content_tag(:div, class: 'row')
+  = content_tag(:div, class: bem_class_for(:grid, [10]))
+    = profile_picture_for(@user, :small)

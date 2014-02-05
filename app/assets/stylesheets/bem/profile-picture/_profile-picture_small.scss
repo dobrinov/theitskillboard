@@ -1,0 +1,12 @@
+.profile-picture_small {
+  border-width: 5px;
+  width: 110px;
+  height: 110px;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  @include border-radius(55px);
+}

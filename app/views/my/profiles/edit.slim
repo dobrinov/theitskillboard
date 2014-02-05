@@ -5,7 +5,8 @@
 
 = content_tag(:div, class: bem_class_for(:dialog))
   = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'Profile picture', class: bem_class_for(:grid, [10]))
+    = content_tag(:div, class: bem_class_for(:grid, [10]))
+      = profile_picture_for(@user, :small, { url: edit_my_profile_avatar_path, text: @user.avatar.exists? ? 'Edit' : 'Upload' })
 
 br
 
@@ -24,3 +25,15 @@ br
 = content_tag(:div, class: bem_class_for(:dialog))
   = content_tag(:div, class: 'row')
     = content_tag(:h2, 'Language skills', class: bem_class_for(:grid, [10]))
+
+br
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'Interests', class: bem_class_for(:grid, [10]))
+
+br
+
+= content_tag(:div, class: bem_class_for(:dialog))
+  = content_tag(:div, class: 'row')
+    = content_tag(:h2, 'Contacts', class: bem_class_for(:grid, [10]))

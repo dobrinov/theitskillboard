@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   # Avatar Paperclip configuration
   has_attached_file :avatar,
-                    :styles      => { small: "100x100>", thumb: "50x50>" },
+                    :styles      => { small: "100x100#", thumb: "50x50#" },
                     :default_url => "/assets/placeholders/profile_picture/:style/placeholder.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

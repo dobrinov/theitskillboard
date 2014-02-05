@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20131209162432) do
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.string   "name"
-    t.string   "surname"
+    t.string   "name",                default: "Random"
+    t.string   "surname",             default: "Developer"
     t.string   "definition"
     t.string   "gender"
     t.string   "country"

@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string :email
       t.string :password_digest
-      t.string :name
-      t.string :surname
+      t.string :name,    :default => 'Random'
+      t.string :surname, :default => 'Developer'
       t.string :definition
       t.string :gender
       t.string :country

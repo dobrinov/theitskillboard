@@ -3,7 +3,9 @@ Theitskillboard::Application.routes.draw do
   resource  :session, only: [:new, :create, :destroy]
 
   namespace :my do
-    resource :profile
+    resource :profile do
+      resource :avatar, only: [:edit, :update, :destroy]
+    end
 
     root to: "profiles#show"
   end

@@ -1,0 +1,21 @@
+.profile-picture {
+  position: relative;
+  display: inline-block;
+  border-style: solid;
+  border-color: $gray_5;
+  overflow: hidden;
+  @include box-sizing('border-box');
+  vertical-align: middle;
+  text-align: center;
+
+  img {
+    text-align: center;
+    vertical-align: center;
+  }
+
+  .profile-picture__action { display: none; }
+
+  &:hover {
+    .profile-picture__action { display: block; }
+  }
+}

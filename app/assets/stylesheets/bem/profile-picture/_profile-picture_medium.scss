@@ -1,0 +1,12 @@
+.profile-picture_medium {
+  border-width: 10px;
+  width: 320px;
+  height: 320px;
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include border-radius(160px);
+}
