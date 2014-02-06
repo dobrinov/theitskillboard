@@ -7,6 +7,12 @@ class My::AvatarsController < My::CommonController
   def update
     @user = current_user
 
+    if user_params.nil?
+      flash.now[:alert] = 'Select a profile picture.'
+      render :edit
+      return
+    end
+
     if @user.update_attributes(user_params)
       flash[:notice] = 'Profile picture uploaded.'
     else
@@ -33,7 +39,7 @@ class My::AvatarsController < My::CommonController
   private
 
   def user_params
-    params.require(:user).permit(:avatar)
+    params.require(:user).permit(:avatar) if params[:user].present?
   end
 
 end
