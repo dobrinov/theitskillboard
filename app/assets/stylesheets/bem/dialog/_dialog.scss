@@ -1,8 +1,0 @@
-.dialog {
-  position: relative;
-  background-color: $white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  @include border-radius(10px);
-  @include single-box-shadow($gray_4, 0px, -1px, 1px, 0px, true);
-}

@@ -6,3 +6,7 @@
 = content_tag(:div, class: 'row')
   = content_tag(:div, class: bem_class_for(:grid, [10]))
     = profile_picture_for(@user, :small)
+    = content_tag(:div, class: bem_class_for(:'profile-names'))
+      = content_tag(:div, @user.name, class: 'profile-names__name')
+      = content_tag(:div, @user.surname, class: 'profile-names__surname')
+      = content_tag(:div, @user.definition, class: 'profile-names__definition')

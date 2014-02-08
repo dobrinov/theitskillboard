@@ -1,0 +1,14 @@
+.form__actions {
+  margin-top: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: -10px;
+  padding: 10px;
+  @include border-bottom-radius(10px);
+  text-align: left;
+  background-color: $gray_6;
+
+  .button {
+    margin-right: 5px;
+  }
+}

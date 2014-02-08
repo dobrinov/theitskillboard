@@ -1,9 +1,5 @@
 class My::AvatarsController < My::CommonController
 
-  def edit
-    @user = current_user
-  end
-
   def update
     @user = current_user
 

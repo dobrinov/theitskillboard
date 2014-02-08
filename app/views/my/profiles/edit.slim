@@ -3,37 +3,69 @@
     = content_tag(:li)
       = link_to('Preview your profile', my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:div, class: bem_class_for(:grid, [10]))
-      = profile_picture_for(@user, :small, { url: edit_my_profile_avatar_path, text: @user.avatar.exists? ? 'Edit' : 'Upload' })
+
+/ # Profile picture ###############################################################
+
+= form_for(@user, url: my_profile_avatar_path, html: { class: 'form' }) do |f|
+  h1 class="form__title" Profile picture
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_12"
+        label class="form__label" Profile picture
+        = f.file_field(:avatar, class: 'input_block')
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit('Upload', class: 'button button_primary button_large form__action_proceed')
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
+
 
 br
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'General information', class: bem_class_for(:grid, [10]))
+/ # General information ###########################################################
 
-br
+= form_for(@user, url: my_profile_path, html: { class: 'form' }) do |f|
+  h1 class="form__title" General information
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'IT skills', class: bem_class_for(:grid, [10]))
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_4"
+        = f.label(:name, 'Name', class: 'form__label')
+        = f.text_field(:name, placeholder: 'What is your first name?', class: 'input_block')
 
-br
+      div class="form__group grid_4"
+        = f.label(:surname, 'Surame', class: 'form__label')
+        = f.text_field(:surname, placeholder: 'What is your last name?', class: 'input_block')
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'Language skills', class: bem_class_for(:grid, [10]))
+      div class="form__group grid_4"
+        = f.label(:definition, 'Definition', class: 'form__label')
+        = f.text_field(:definition, placeholder: 'How do you define yourself?', class: 'input_block')
 
-br
+    div class="row"
+      div class="form__group grid_8"
+        label class="form__label" Birthdate
+        = date_select(:user, :birth_date,
+                       start_year: Time.now.year, end_year: Time.now.year - 100,
+                       order: [:day, :month, :year], with_css_classes: true)
+      div class="form__group grid_4"
+        = f.label(:gender, 'Gender', class: 'form__label')
+        = f.select(:gender, options_for_select([["Male", "m"],["Female", "f"]], @user.gender), {}, { class: 'input_block' })
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'Interests', class: bem_class_for(:grid, [10]))
+    div class="row"
+      div class="form__group grid_4"
+        = f.label(:country, 'Country', class: 'form__label')
+        = f.text_field(:country, placeholder: 'The country where you live?', class: 'input_block')
+      div class="form__group grid_4"
+        = f.label(:city, 'City', class: 'form__label')
+        = f.text_field(:city, placeholder: 'The city where you live?', class: 'input_block')
+      div class="form__group grid_4"
+        = f.label(:nationality, 'Nationality', class: 'form__label')
+        = f.text_field(:nationality, placeholder: 'What is your nationality?', class: 'input_block')
 
-br
-
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h2, 'Contacts', class: bem_class_for(:grid, [10]))
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit('Update', class: 'button button_primary button_large form__action_proceed')
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")

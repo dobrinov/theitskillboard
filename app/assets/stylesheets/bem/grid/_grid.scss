@@ -7,17 +7,17 @@
 }
 
 /* Dynamic modifiers */
-@for $i from 1 through 10 {
+@for $i from 1 through 12 {
   .grid_#{$i} {
-    width: ($i * 10%);
+    width: ($i * 100%/12);
     padding: 0 10px;
     float: left;
   }
 }
 
-@for $i from 1 through 9 {
+@for $i from 1 through 11 {
   .grid_push_#{$i} {
-    margin-left: ($i * 10%);
+    margin-left: ($i * 100%/12);
   }
 }
 

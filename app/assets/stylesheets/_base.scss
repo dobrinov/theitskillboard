@@ -37,10 +37,11 @@ h6, .h6 { font-size: 12px; }
 
 // Inputs
 
-input {
+input, select {
   @include input-default;
   display: inline-block;
   border: 1px solid $gray_4;
+  background-color: $white;
   // height: 28px;
 }
 

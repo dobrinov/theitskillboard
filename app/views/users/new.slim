@@ -4,17 +4,25 @@
       = link_to('Log in', new_session_path, class: bem_class_for(:button))
 
 
-= content_tag(:div, class: bem_class_for(:dialog))
-  = content_tag(:div, class: 'row')
-    = content_tag(:h1, 'Create an account', class: bem_class_for(:grid, [10]))
+= form_for(@user, html: { class: 'form' }) do |f|
+  h1 class="form__title" Create an account
 
-  = content_tag(:div, class: 'row')
-    = form_for(@user, html: { class: 'form' }) do |f|
-      = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group")
-        = f.email_field :email, placeholder: "Enter your email", class: 'input_block'
-      = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group")
-        = f.password_field :password, placeholder: 'Enter your password', class: 'input_block'
-      = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group")
-        = f.password_field :password_confirmation, placeholder: 'Re-enter your password', class: 'input_block'
-      = content_tag(:div, class: "#{bem_class_for(:grid, [10])} form__group_actions")
-        = f.submit 'Create your account', class: bem_class_for(:button, ['primary', 'large', 'block'])
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_4"
+        = f.label(:email, 'Email', class: 'form__label')
+        = f.text_field(:email, placeholder: 'Enter your email', class: 'input_block')
+
+      div class="form__group grid_4"
+        = f.label(:password, 'Password', class: 'form__label')
+        = f.password_field(:password, placeholder: 'Enter a password', class: 'input_block')
+
+      div class="form__group grid_4"
+        = f.label(:password_confirmation, 'Password confirmation', class: 'form__label')
+        = f.password_field(:password_confirmation, placeholder: 'Re-enter the password', class: 'input_block')
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit('Create your account', class: 'button button_primary button_large form__action_proceed')
+        = link_to('Cancel', root_path, class: "button form__action_cancel")
