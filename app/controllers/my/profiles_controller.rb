@@ -11,6 +11,7 @@ class My::ProfilesController < My::CommonController
 
   def update
     @user = current_user
+    @skill_categories = current_user.skill_categories
 
     if @user.update_attributes(user_params)
       flash.now[:notice] = "Profile updated."
