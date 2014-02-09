@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140208111124) do
 
   create_table "skill_categories", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.integer  "parent_skill_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"

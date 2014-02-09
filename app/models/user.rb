@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  # Associations
+  has_many :skill_categories
+
   # Validations
   validates :email,
               :presence   => true,
