@@ -1,6 +1,7 @@
 /* Mixins */
 @import "compass";
 @import "mixins/inputs";
+@import "mixins/clearfix";
 
 /* Normalize.css */
 @import "normalize";
@@ -25,3 +26,4 @@
 @import "bem/profile-names/*";
 @import "bem/profile-picture/*";
 @import "bem/row/*";
+@import "bem/skill-tree/*";

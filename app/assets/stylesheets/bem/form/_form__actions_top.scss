@@ -1,0 +1,11 @@
+.form__actions_top {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  @include clrfix;
+
+  .button {
+    float: right;
+    margin-left: 5px;
+  }
+}
