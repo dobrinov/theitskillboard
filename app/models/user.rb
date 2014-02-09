@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # Associations
-  has_many :skill_categories
+  has_many :skill_categories, dependent: :destroy
 
   # Validations
   validates :email,

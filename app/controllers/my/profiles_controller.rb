@@ -6,6 +6,7 @@ class My::ProfilesController < My::CommonController
 
   def edit
     @user = current_user
+    @skill_categories = current_user.skill_categories
   end
 
   def update
