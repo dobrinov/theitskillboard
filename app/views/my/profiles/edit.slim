@@ -48,10 +48,11 @@ br
         label class="form__label" Birthdate
         = date_select(:user, :birth_date,
                        start_year: Time.now.year, end_year: Time.now.year - 100,
-                       order: [:day, :month, :year], with_css_classes: true)
+                       order: [:day, :month, :year], with_css_classes: true, include_blank: true)
+
       div class="form__group grid_4"
         = f.label(:gender, 'Gender', class: 'form__label')
-        = f.select(:gender, options_for_select([["Male", "m"],["Female", "f"]], @user.gender), {}, { class: 'input_block' })
+        = f.select(:gender, options_for_select([["Male", "m"],["Female", "f"]], @user.gender), {include_blank: 'What is your gender?'}, { class: 'input_block' })
 
     div class="row"
       div class="form__group grid_4"
@@ -69,3 +70,5 @@ br
       div class="form__group_actions grid_12"
         = f.submit('Update', class: 'button button_primary button_large form__action_proceed')
         = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
+
+/ # IT skills #####################################################################
