@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209162432) do
+ActiveRecord::Schema.define(version: 20140208111124) do
+
+  create_table "skill_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "parent_skill_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string   "name"
+    t.integer  "skill_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.string   "name",                default: "Random"
-    t.string   "surname",             default: "Developer"
+    t.string   "name"
+    t.string   "surname"
     t.string   "definition"
     t.string   "gender"
     t.string   "country"

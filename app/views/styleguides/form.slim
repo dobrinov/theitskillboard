@@ -15,6 +15,7 @@ form class="form"
 
 br
 
+
 / General information
 
 form class="form"
@@ -22,34 +23,34 @@ form class="form"
 
   div class="form__content"
     div class="row"
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Name
         input placeholder="What is your first name?" class="input_block"
 
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Surname
         input placeholder="What is your last name?" class="input_block"
 
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Definition
         input placeholder="How do you define yourself?" class="input_block"
 
     div class="row"
-      div class="form__group grid_6"
+      div class="form__group grid_8"
         label class="form__label" Birthdate
         input class="input_block"
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Gender
         input class="input_block"
 
     div class="row"
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Country
         input placeholder="The country where you live?" class="input_block"
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" City
         input placeholder="The city where you live?" class="input_block"
-      div class="form__group grid_3"
+      div class="form__group grid_4"
         label class="form__label" Nationality
         input placeholder="What is your nationality?" class="input_block"
 
@@ -58,3 +59,68 @@ form class="form"
       div class="form__group_actions grid_12"
         input type="submit" value="Update" class="button button_primary button_large form__action_proceed"
         a href="#" class="button form__action_cancel" Cancel
+
+br
+
+/ IT Skills
+
+form class="form"
+  h1 class="form__title" Skills
+
+  div class="form__actions_top"
+    a href="#" class="button button_primary" New skill category
+
+  div class="form__content"
+    div class="row"
+      div class="form__group_actions grid_12"
+        ul class="skill-tree"
+          li class="skill-tree__element"
+            div class="skill-tree__element__text"
+              | IT skills
+              div class="skill-tree__element__actions"
+                a href="#" class="button button_small" Edit
+                a href="#" class="button button_small button_danger" Delete
+            ul class="skill-tree"
+              li class="skill-tree__element"
+                div class="skill-tree__element__text"
+                  | Programming languages
+                  div class="skill-tree__element__actions"
+                    a href="#" class="button button_small" Edit
+                    a href="#" class="button button_small button_danger" Delete
+              li class="skill-tree__element"
+                div class="skill-tree__element__text"
+                  | Frameworks
+                  div class="skill-tree__element__actions"
+                    a href="#" class="button button_small" Edit
+                    a href="#" class="button button_small button_danger" Delete
+                ul class="skill-tree"
+                  li class="skill-tree__element"
+                    div class="skill-tree__element__text"
+                      | Programming languages
+                      div class="skill-tree__element__actions"
+                        a href="#" class="button button_small" Edit
+                        a href="#" class="button button_small button_danger" Delete
+                  li class="skill-tree__element"
+                    div class="skill-tree__element__text"
+                      | Frameworks
+                      div class="skill-tree__element__actions"
+                        a href="#" class="button button_small" Edit
+                        a href="#" class="button button_small button_danger" Delete
+              li class="skill-tree__element"
+                div class="skill-tree__element__text"
+                  | Operating systems
+                  div class="skill-tree__element__actions"
+                    a href="#" class="button button_small" Edit
+                    a href="#" class="button button_small button_danger" Delete
+              li class="skill-tree__element"
+                div class="skill-tree__element__text"
+                  | Graphic software
+                  div class="skill-tree__element__actions"
+                    a href="#" class="button button_small" Edit
+                    a href="#" class="button button_small button_danger" Delete
+          li class="skill-tree__element"
+            div class="skill-tree__element__text"
+              | Language skills
+              div class="skill-tree__element__actions"
+                a href="#" class="button button_small" Edit
+                a href="#" class="button button_small button_danger" Delete
