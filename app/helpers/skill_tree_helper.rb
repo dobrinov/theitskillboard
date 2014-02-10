@@ -21,7 +21,7 @@ module SkillTreeHelper
     content_tag(:div, class: "skill-tree__element__text") do
       [
         skill_category.name,
-        skill_tree_element_actions(skill_category)        
+        skill_tree_element_actions(skill_category)
       ].join.html_safe
     end
   end
@@ -34,6 +34,12 @@ module SkillTreeHelper
         link_to('Delete', my_skill_category_path(skill_category), confirm: 'Delete skill category?', method: :delete, class: "button button_small button_danger")
       ].join.html_safe
     end
+  end
+
+  def edit_skill_tree
+  end
+
+  def preview_skill_tree
   end
 
 end

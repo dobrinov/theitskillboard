@@ -1,0 +1,36 @@
+.sc_tree__category__name {
+  .sc_tree__category_level_1 & { font-size: 26px; font-weight: bold; }
+  .sc_tree__category_level_2 & { font-size: 20px; font-weight: normal; }
+}
+
+.sc_tree__category__contents {
+  cursor: default;
+  background-color: $gray_6;
+  padding: 20px 20px;
+  @include border-radius(6px);
+}
+
+.sc_tree__category__contents_empty {
+  color: $gray_5;
+  text-align: center;
+  font-style: italic;
+
+    p {
+      margin: 0 0 10px 0;
+    }
+
+  .button {
+    width: 20%;
+    padding-left: 0;
+    padding-right: 0;
+    visibility: hidden;
+    margin: 0px 5px;
+  }
+
+  &:hover {
+    .button {
+      visibility: visible;
+      display: inline-block;
+    }
+  }
+}
