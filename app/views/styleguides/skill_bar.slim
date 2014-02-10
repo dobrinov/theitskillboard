@@ -1,0 +1,7 @@
+- (0..10).each do |degree|
+  div class="row"
+    div class="grid_12"
+      = content_tag(:div, class: "skill-bar skill-bar_#{degree}") do
+        div class="skill-bar__lavel"
+          | Ruby on Rails
+        div class="skill-bar__degree"
