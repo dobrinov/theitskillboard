@@ -7,7 +7,7 @@ module ApplicationHelper
     content_tag(:div, class: bem_class_for(:'profile-picture', profile_picture_modifiers)) do
       elements = []
 
-      elements << image_tag(user.avatar(size))
+      elements << image_tag(asset_path(user.avatar(size)))
 
       if action.present? && action[:url].present? && action[:text].present?
         elements << link_to(action[:text], action[:url], class: "#{bem_class_for(:button, ['primary'])} profile-picture__action")
