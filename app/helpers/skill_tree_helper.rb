@@ -10,7 +10,7 @@ module SkillTreeHelper
         contents << content_tag(:li, link_to('New category', new_my_skill_category_path(parent_skill_category_id: skill_tree[:id])))
       end
 
-      if skill_tree[:sub_categories].empty?
+      if (level != 0) && skill_tree[:sub_categories].empty?
         contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])))
       end
 
