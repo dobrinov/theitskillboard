@@ -1,95 +1,62 @@
 module SkillTreeHelper
 
-  def skill_tree(skill_categories, parent_skill_category_id=nil)
-    current_level_skill_categories = skill_categories.select do |skill_category|
-      skill_category.parent_skill_category_id == parent_skill_category_id
-    end
-
+  def skill_tree(skill_tree, level=0)
     content_tag(:ul) do
-      current_level_skill_categories.map do |skill_category|
-        content_tag(:li) do
-          [
-            skill_tree_element_text(skill_category),
-            skill_tree(skill_categories - current_level_skill_categories, skill_category.id)
-          ].join.html_safe
-        end
-      end.join.html_safe
+      contents = []
+      contents << skill_tree_categories_list(skill_tree[:sub_categories], level)
+      contents << skill_tree_skills_list(skill_tree[:skills])
+
+      if (level == 1) && skill_tree[:skills].empty?
+        contents << content_tag(:li, link_to('New category', new_my_skill_category_path(parent_skill_category_id: skill_tree[:id])))
+      end
+
+      if skill_tree[:sub_categories].empty?
+        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])))
+      end
+
+      contents.join.html_safe
     end
   end
 
-  def skill_tree_element_text(skill_category)
-    content_tag(:div) do
-      [
-        skill_category.name,
-        skill_tree_element_actions(skill_category)
-      ].join.html_safe
-    end
+  def skill_tree_categories_list(categories, level)
+    categories.map do |category|
+      content_tag(:li, class: 'row') do
+        [
+          skill_tree_category_name(category),
+          skill_tree_category_actions(category),
+          skill_tree(category, level+1)
+        ].join.html_safe
+      end
+    end.join.html_safe
   end
 
-  def skill_tree_element_actions(skill_category)
-    content_tag(:div) do
-      [
-        link_to('New skill sub category', new_my_skill_category_path(parent_skill_category_id: skill_category.id), class: "button button_small"),
-        link_to('Edit', edit_my_skill_category_path(skill_category), class: "button button_small"),
-        link_to('Delete', my_skill_category_path(skill_category), confirm: 'Delete skill category?', method: :delete, class: "button button_small button_danger")
-      ].join.html_safe
-    end
+  def skill_tree_category_name(category)
+    category[:name]
   end
 
-  def edit_skill_tree
+  def skill_tree_category_actions(category)
+    [
+      link_to('Edit', edit_my_skill_category_path(category[:id])),
+      link_to('Delete', my_skill_category_path(category[:id]), data: { confirm: 'Delete skill category?' }, method: :delete)
+    ].join.html_safe
   end
 
-  def preview_skill_tree
+  def skill_tree_skills_list(skills)
+    skills.map do |skill|
+      content_tag(:li, class: 'grid_3') do
+        [
+          skill_bar(skill.name, skill.level),
+          skill_tree_skill_actions(skill)
+        ].join.html_safe
+      end
+    end.join.html_safe
   end
 
-  def zkill_tree(skill_tree, level=0)
-    content_tag(:ul) do
-      skill_tree[:sub_trees].collect do |sc|
-        content_tag(:li) do
-          [
-            sc[:category].name,
-            zkill_tree_category_skills(sc[:skills]),
-            zkill_tree_category_actions(sc[:category], sc[:sub_trees], sc[:skills], level),
-            zkill_tree(sc, level+1)
-          ].join.html_safe
-        end
-      end.join.html_safe
-    end
-  end
-
-  def zkill_tree_category_skills(skills)
-    content_tag(:ul) do
-      skills.map do |skill|
-        content_tag(:li) do
-          [
-            "#{skill.name}(#{skill.level})",
-            zkill_tree_category_skill_actions(skill)
-          ].join.html_safe
-        end
-      end.join.html_safe
-    end
-  end
-
-  def zkill_tree_category_skill_actions(skill)
+  def skill_tree_skill_actions(skill)
     [
       link_to('Edit', edit_my_skill_path(skill)),
-      link_to('Delete', my_skill_path(skill), confirm: 'Delete skill?', method: :delete)
-    ]
-  end
-
-  def zkill_tree_category_actions(category, sub_trees, skills, level)
-    actions = []
-
-    if level < 1 && skills.empty?
-      actions << link_to('New sub category', new_my_skill_category_path(parent_skill_category_id: category.id))
-    end
-
-    if sub_trees.empty?
-      actions << link_to('New skill', new_my_skill_path(skill_category_id: category.id))
-    end
-
-    actions << link_to('Edit', edit_my_skill_category_path(category))
-    actions << link_to('Delete', my_skill_category_path(category), confirm: 'Delete skill category?', method: :delete)
+      link_to('Delete', my_skill_path(skill), data: { confirm: 'Delete skill?' }, method: :delete)
+    ].join.html_safe
   end
 
 end

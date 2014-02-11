@@ -2,10 +2,10 @@
   display: block;
   position: relative;
   padding: 1px;
-  height: 9px;
   margin: 20px 0 0 0;
   border: 1px solid $gray_3;
   box-sizing: border-box;
+  @include border-radius(4px);
 }
 
 /* Dynamic modifiers */
@@ -15,7 +15,7 @@
     @if $i > 3 and $i <= 7  { border-color: $yellow_3; }
     @if $i > 7 and $i <= 10 { border-color: $green_3;  }
 
-    .skill-bar__degree {
+    .skill-bar__level {
       @if            $i <= 3  { background-color: $red_3;    }
       @if $i > 3 and $i <= 7  { background-color: $yellow_3; }
       @if $i > 7 and $i <= 10 { background-color: $green_3;  }

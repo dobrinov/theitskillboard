@@ -1,5 +1,6 @@
-.skill-bar__degree {
+.skill-bar__level {
   display: block;
   height: 5px;
   background-color: $gray_3;
+  @include border-radius(2px);
 }

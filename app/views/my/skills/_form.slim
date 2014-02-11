@@ -11,7 +11,7 @@
 
       div class="form__group grid_12"
         label class="form__label" Level of experience
-        = f.number_field(:level, placeholder: 'Level of experience', class: 'input_block', in: (0..10))
+        = skill_bar_slider(f)
 
   div class="form__actions"
     div class="row"
