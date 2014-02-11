@@ -80,11 +80,9 @@ div class="form"
   h1 class="form__title" Skills
 
   div class="form__actions_top"
-    = link_to('New skill category', new_my_skill_category_path, class: "button")
-
-  skill_category_tree(skill_categories)
+    = link_to('New category', new_my_skill_category_path, class: "button")
 
   div class="form__content"
   div class="row"
     div class="form__group grid_12"
-     = skill_tree(@skill_categories)
+     = zkill_tree(@skill_tree)

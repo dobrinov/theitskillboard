@@ -1,0 +1,20 @@
+= form_for([:my, @skill], html: { class: 'form' }) do |f|
+  h1 class="form__title" New skill
+
+  = hidden_field_tag(:skill_category_id, params[:skill_category_id])
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_12"
+        label class="form__label" Skill name
+        = f.text_field(:name, placeholder: 'Name of the skill', class: 'input_block')
+
+      div class="form__group grid_12"
+        label class="form__label" Level of experience
+        = f.number_field(:level, placeholder: 'Level of experience', class: 'input_block', in: (0..10))
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit("Create", class: "button button_primary button_large form__action_proceed")
+        = link_to('Cancel', back_or_default(edit_my_profile_path), class: "button form__action_cancel")

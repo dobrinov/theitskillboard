@@ -8,6 +8,7 @@ Theitskillboard::Application.routes.draw do
     end
 
     resources :skill_categories, only: [:new, :create, :edit, :update, :destroy]
+    resources :skills, only: [:new, :create, :edit, :update, :destroy]
 
     root to: "profiles#show"
   end

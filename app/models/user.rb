@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :skill_categories, dependent: :destroy
+  has_many :skills, dependent: :destroy
 
   # Validations
   validates :email,
