@@ -7,11 +7,11 @@ module SkillTreeHelper
       contents << skill_tree_skills_list(skill_tree[:skills])
 
       if (level == 1) && skill_tree[:skills].empty?
-        contents << content_tag(:li, link_to('New category', new_my_skill_category_path(parent_skill_category_id: skill_tree[:id])))
+        contents << content_tag(:li, link_to('New category', new_my_skill_category_path(parent_skill_category_id: skill_tree[:id])), class: "skill-tree__element skill-tree__element_new")
       end
 
       if (level != 0) && skill_tree[:sub_categories].empty?
-        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])), class: "skill-tree__skill")
+        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])), class: "skill-tree__element skill-tree__element_new")
       end
 
       contents.join.html_safe
@@ -49,7 +49,7 @@ module SkillTreeHelper
 
   def skill_tree_skills_list(skills)
     skills.map do |skill|
-      content_tag(:li, class: 'skill-tree__skill') do
+      content_tag(:li, class: 'skill-tree__element skill-tree__skill') do
         contents = []
 
         contents << skill_bar(skill.name, skill.level)
