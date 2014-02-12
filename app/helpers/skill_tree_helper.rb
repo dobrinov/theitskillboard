@@ -30,7 +30,7 @@ module SkillTreeHelper
   end
 
   def skill_tree_category_name(category, level)
-    content_tag(:div) do
+    content_tag(:div, class: "skill-tree__category") do
       contents = []
 
       contents << content_tag("h#{level+1}", category[:name], class: "skill-tree__category-name")
@@ -42,8 +42,8 @@ module SkillTreeHelper
 
   def skill_tree_category_actions(category)
     [
-      link_to('Edit', edit_my_skill_category_path(category[:id])),
-      link_to('Delete', my_skill_category_path(category[:id]), data: { confirm: 'Delete skill category?' }, method: :delete)
+      link_to('Edit', edit_my_skill_category_path(category[:id]), class: 'button'),
+      link_to('Delete', my_skill_category_path(category[:id]), data: { confirm: 'Delete skill category?' }, method: :delete, class: 'button button_danger')
     ].join.html_safe
   end
 
@@ -62,8 +62,8 @@ module SkillTreeHelper
 
   def skill_tree_skill_actions(skill)
     [
-      link_to('Edit', edit_my_skill_path(skill)),
-      link_to('Delete', my_skill_path(skill), data: { confirm: 'Delete skill?' }, method: :delete)
+      link_to('Edit', edit_my_skill_path(skill), class: 'button'),
+      link_to('Delete', my_skill_path(skill), data: { confirm: 'Delete skill?' }, method: :delete, class: 'button button_danger')
     ].join.html_safe
   end
 

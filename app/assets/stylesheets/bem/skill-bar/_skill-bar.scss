@@ -4,6 +4,7 @@
   padding: 1px;
   margin: 20px 0 0 0;
   border: 1px solid $gray_3;
+  cursor: default;
   box-sizing: border-box;
   @include border-radius(4px);
 }

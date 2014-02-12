@@ -1,12 +1,14 @@
 .skill-tree_level-2 {
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   border-left: 2px solid $gray_6;
+
   &:hover {
     border-color: $gray_5;
     background-color: $gray_6;
     @include border-right-radius(10px);
   }
-
-  padding: 10px;
 
   .skill-tree__category-name {
     font-size: 16px;
@@ -45,6 +47,4 @@
       text-align: center;
     }
   }
-
-  margin-bottom: 20px;
 }

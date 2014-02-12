@@ -1,2 +1,14 @@
 .skill-tree__category {
+  cursor: default;
+
+  .button {
+    margin-left: 5px;
+    visibility: hidden;
+  }
+
+  &:hover {
+    .button {
+      visibility: visible;
+    }    
+  }
 }

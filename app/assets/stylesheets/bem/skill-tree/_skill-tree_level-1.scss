@@ -1,11 +1,13 @@
 .skill-tree_level-1 {
   border-left: 2px solid $gray_6;
+  padding-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+
   &:hover {
     border-color: $gray_5;
   }
 
-  padding-left: 5px;
-  margin-bottom: 10px;
   .skill-tree__category-name {
     font-size: 18px;
     font-weight: normal;
