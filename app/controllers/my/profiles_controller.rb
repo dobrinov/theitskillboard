@@ -6,12 +6,12 @@ class My::ProfilesController < My::CommonController
 
   def edit
     @user = current_user
-    @skill_tree = build_skill_tree(current_user.skill_categories, current_user.skills)
+    @skill_tree = build_skill_tree(current_user.skill_categories, current_user.skills.order(level: :desc))
   end
 
   def update
     @user = current_user
-    @skill_tree = build_skill_tree(current_user.skill_categories, current_user.skills)
+    @skill_tree = build_skill_tree(current_user.skill_categories, current_user.skills.order(level: :desc))
 
     if @user.update_attributes(user_params)
       flash.now[:notice] = "Profile updated."
