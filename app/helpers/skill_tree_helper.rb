@@ -1,7 +1,7 @@
 module SkillTreeHelper
 
   def skill_tree(skill_tree, level=0)
-    content_tag(:ul) do
+    content_tag(:ul, class: "skill-tree skill-tree_level-#{level} row") do
       contents = []
       contents << skill_tree_categories_list(skill_tree[:sub_categories], level)
       contents << skill_tree_skills_list(skill_tree[:skills])
@@ -11,7 +11,7 @@ module SkillTreeHelper
       end
 
       if (level != 0) && skill_tree[:sub_categories].empty?
-        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])))
+        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])), class: "skill-tree__skill")
       end
 
       contents.join.html_safe
@@ -20,18 +20,24 @@ module SkillTreeHelper
 
   def skill_tree_categories_list(categories, level)
     categories.map do |category|
-      content_tag(:li, class: 'row') do
+      content_tag(:li) do
         [
-          skill_tree_category_name(category),
-          skill_tree_category_actions(category),
+          skill_tree_category_name(category, level),
           skill_tree(category, level+1)
         ].join.html_safe
       end
     end.join.html_safe
   end
 
-  def skill_tree_category_name(category)
-    category[:name]
+  def skill_tree_category_name(category, level)
+    content_tag(:div) do
+      contents = []
+
+      contents << content_tag("h#{level+1}", category[:name], class: "skill-tree__category-name")
+      contents << skill_tree_category_actions(category)
+
+      contents.join.html_safe
+    end
   end
 
   def skill_tree_category_actions(category)
@@ -43,11 +49,13 @@ module SkillTreeHelper
 
   def skill_tree_skills_list(skills)
     skills.map do |skill|
-      content_tag(:li, class: 'grid_3') do
-        [
-          skill_bar(skill.name, skill.level),
-          skill_tree_skill_actions(skill)
-        ].join.html_safe
+      content_tag(:li, class: 'skill-tree__skill') do
+        contents = []
+
+        contents << skill_bar(skill.name, skill.level)
+        contents << skill_tree_skill_actions(skill)
+
+        contents.join.html_safe
       end
     end.join.html_safe
   end
