@@ -95,6 +95,10 @@ br
 div class="form"
   h1 class="form__title" Experience timetable
 
+  div class="form__actions_top"
+    = link_to('New employment', new_my_employment_path, class: "button")
+    = link_to('New study', new_my_study_path, class: "button")
+
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
