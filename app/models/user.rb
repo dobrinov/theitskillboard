@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :skill_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
 
+  has_many :experiences, dependent: :destroy
+
   # Validations
   validates :email,
               :presence   => true,
