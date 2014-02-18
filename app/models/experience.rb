@@ -1,7 +1,7 @@
 class Experience < ActiveRecord::Base
-  belongs_to :user
-
   before_save :unset_to_date, if: :ongoing?
+
+  belongs_to :user
 
   def unset_to_date
     self.to = nil
