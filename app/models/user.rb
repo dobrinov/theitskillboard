@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :skills, dependent: :destroy
 
   has_many :experiences, dependent: :destroy
+  has_many :employments, dependent: :destroy
+  has_many :studies, dependent: :destroy
 
   # Validations
   validates :email,
