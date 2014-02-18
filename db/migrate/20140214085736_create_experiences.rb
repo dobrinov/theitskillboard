@@ -4,6 +4,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.string :at
       t.date :from
       t.date :to
+      t.string :website
       t.string :type
       t.integer :user_id
 
