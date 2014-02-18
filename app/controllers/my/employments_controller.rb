@@ -18,9 +18,18 @@ class My::EmploymentsController < ApplicationController
   end
 
   def edit
+    @employment = current_user.employments.find(params[:id])
   end
 
   def update
+    @employment = current_user.employments.find(params[:id])
+
+    if @employment.update_attributes(employment_params)
+      redirect_to back_or_default(edit_my_profile_path), notice: "Employment updated."
+    else
+      flash.now[:error] = "Employment was not updated."
+      render :edit
+    end
   end
 
   def destroy
