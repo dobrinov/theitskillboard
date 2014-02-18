@@ -27,9 +27,9 @@
       div class="form__group grid_6"
 
       div class="form__group grid_6"
-        = check_box_tag(:still_not_finished)
+        = f.check_box(:ongoing)
         | &nbsp;&nbsp;
-        label for="still_not_finished" I still work here.
+        = f.label :ongoing, 'I still work here.'
 
 
 

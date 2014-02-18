@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140214085736) do
     t.date     "from"
     t.date     "to"
     t.string   "website"
+    t.boolean  "ongoing"
     t.string   "type"
     t.integer  "user_id"
     t.datetime "created_at"

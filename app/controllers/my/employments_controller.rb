@@ -29,7 +29,7 @@ class My::EmploymentsController < ApplicationController
   private
 
   def employment_params
-    params.require(:employment).permit(:at, :website, :from, :to, :type)
+    params.require(:employment).permit(:at, :website, :from, :to, :ongoing, :type)
   end
 
   def set_experience_type_in_params

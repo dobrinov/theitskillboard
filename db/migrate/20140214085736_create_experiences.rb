@@ -5,6 +5,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.date :from
       t.date :to
       t.string :website
+      t.boolean :ongoing
       t.string :type
       t.integer :user_id
 
