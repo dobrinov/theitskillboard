@@ -1,0 +1,14 @@
+= form_for([:my, @study], html: { class: 'form' }) do |f|
+  h1 class="form__title" New study
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_12"
+        label class="form__label" University name
+        = f.text_field(:at, placeholder: 'What is the name of the university?', class: 'input_block')
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit("Create", class: "button button_primary button_large form__action_proceed")
+        = link_to('Cancel', back_or_default(edit_my_profile_path), class: "button form__action_cancel")
