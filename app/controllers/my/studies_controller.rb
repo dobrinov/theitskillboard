@@ -33,6 +33,15 @@ class My::StudiesController < ApplicationController
   end
 
   def destroy
+    @study = current_user.studies.find(params[:id])
+
+    if @study.destroy
+      flash.now[:notice] = "Study deleted."
+    else
+      flash.now[:error] = "Study was not deleted."
+    end
+
+    redirect_to back_or_default(edit_my_profile_path)
   end
 
   private

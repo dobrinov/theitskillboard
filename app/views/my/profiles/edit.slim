@@ -108,4 +108,4 @@ div class="form"
               = experience.at
               = experience_period_for(experience)
               = link_to('Edit', experience_edit_path_for(experience), class: 'button')
-              = link_to('Delete', experience_path_for(experience), data: { confirm: 'Delete experience?' }, method: :delete, class: 'button button_danger')
+              = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')

@@ -33,6 +33,15 @@ class My::EmploymentsController < ApplicationController
   end
 
   def destroy
+    @employment = current_user.employments.find(params[:id])
+
+    if @employment.destroy
+      flash.now[:notice] = "Employment deleted."
+    else
+      flash.now[:error] = "Employment was not deleted."
+    end
+
+    redirect_to back_or_default(edit_my_profile_path)
   end
 
   private
