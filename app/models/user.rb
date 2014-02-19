@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :studies, dependent: :destroy
 
   has_many :interests, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   # Validations
   validates :email,
