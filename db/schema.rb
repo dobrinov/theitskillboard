@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214085736) do
+ActiveRecord::Schema.define(version: 20140219212700) do
 
   create_table "experiences", force: true do |t|
     t.string   "at"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20140214085736) do
     t.string   "website"
     t.boolean  "ongoing"
     t.string   "type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interests", force: true do |t|
+    t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :employments, dependent: :destroy
   has_many :studies, dependent: :destroy
 
+  has_many :interests, dependent: :destroy
+
   # Validations
   validates :email,
               :presence   => true,
