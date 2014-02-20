@@ -14,7 +14,8 @@
 ActiveRecord::Schema.define(version: 20140219214221) do
 
   create_table "contacts", force: true do |t|
-    t.string   "name"
+    t.string   "ctype"
+    t.string   "value"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,17 @@
+= form_for([:my, @contact], html: { class: 'form' }) do |f|
+  h1 class="form__title" New contact
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_6"
+        label class="form__label" Type
+        = f.select(:ctype, options_for_select(Contact.types, @contact.ctype), {include_blank: 'What kind of contact is this?'}, { class: 'input_block' })
+      div class="form__group grid_6"
+        label class="form__label" Contact
+        = f.text_field(:value, class: 'input_block')
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = f.submit("Save", class: "button button_primary button_large form__action_proceed")
+        = link_to('Cancel', back_or_default(edit_my_profile_path), class: "button form__action_cancel")

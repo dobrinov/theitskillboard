@@ -148,6 +148,6 @@ div class="form"
         ul
           - current_user.contacts.each do |contact|
             li
-              = contact.name
+              = "#{contact.value} (#{contact_type_label_for(contact.ctype)})"
               = link_to('Edit', edit_my_contact_path(contact), class: 'button')
               = link_to('Delete', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
