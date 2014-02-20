@@ -7,8 +7,8 @@
         label class="form__label" Type
         = f.select(:ctype, options_for_select(Contact.types, @contact.ctype), {include_blank: 'What kind of contact is this?'}, { class: 'input_block' })
       div class="form__group grid_6"
-        label class="form__label" Contact
-        = f.text_field(:address, class: 'input_block')
+        label class="form__label" Value
+        = f.text_field(:address, placeholder: 'URL, email or phone number', class: 'input_block')
 
   div class="form__actions"
     div class="row"
