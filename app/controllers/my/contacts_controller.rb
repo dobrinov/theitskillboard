@@ -45,7 +45,7 @@ class My::ContactsController < My::CommonController
   private
 
   def contact_params
-    params.require(:contact).permit(:ctype, :value)
+    params.require(:contact).permit(:ctype, :address)
   end
 
 end
