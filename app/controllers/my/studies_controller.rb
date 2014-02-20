@@ -1,13 +1,11 @@
 class My::StudiesController < ApplicationController
 
-  before_action :set_experience_type_in_params, only: [:create, :update]
-
   def new
     @study = Study.new
   end
 
   def create
-    @study = current_user.experiences.build(study_params)
+    @study = current_user.studies.build(study_params)
 
     if current_user.save
       redirect_to back_or_default(edit_my_profile_path), notice: "Study created."
@@ -47,11 +45,7 @@ class My::StudiesController < ApplicationController
   private
 
   def study_params
-    params.require(:study).permit(:at, :website, :from, :to, :ongoing, :type)
-  end
-
-  def set_experience_type_in_params
-    params[:study].merge!(type: 'Study')
+    params.require(:study).permit(:at, :website, :from, :to, :ongoing)
   end
 
 end
