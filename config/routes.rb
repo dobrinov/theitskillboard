@@ -9,8 +9,12 @@ Theitskillboard::Application.routes.draw do
 
     resources :skill_categories, only: [:new, :create, :edit, :update, :destroy]
     resources :skills, only: [:new, :create, :edit, :update, :destroy]
+
     resources :studies, only: [:new, :create, :edit, :update, :destroy]
     resources :employments, only: [:new, :create, :edit, :update, :destroy]
+
+    resources :interests, only: [:new, :create, :edit, :update, :destroy]
+    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
 
     root to: "profiles#show"
   end

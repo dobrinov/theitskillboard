@@ -109,3 +109,45 @@ div class="form"
               = experience_period_for(experience)
               = link_to('Edit', experience_edit_path_for(experience), class: 'button')
               = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
+
+
+br
+
+/ # Interests #####################################################################
+
+div class="form"
+  h1 class="form__title" Interests
+
+  div class="form__actions_top"
+    = link_to('New interest', new_my_interest_path, class: "button")
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_12"
+        ul
+          - current_user.interests.each do |interest|
+            li
+              = interest.name
+              = link_to('Edit', edit_my_interest_path(interest), class: 'button')
+              = link_to('Delete', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
+
+
+br
+
+/ # Interests #####################################################################
+
+div class="form"
+  h1 class="form__title" Contacts
+
+  div class="form__actions_top"
+    = link_to('New contact', new_my_contact_path, class: "button")
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid_12"
+        ul
+          - current_user.contacts.each do |contact|
+            li
+              = contact.name
+              = link_to('Edit', edit_my_contact_path(contact), class: 'button')
+              = link_to('Delete', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
