@@ -5,7 +5,7 @@ class My::InterestsController < My::CommonController
   end
 
   def create
-    current_user.interests.build(interest_params)
+    @interest = current_user.interests.build(interest_params)
 
     if current_user.save
       redirect_to back_or_default(edit_my_profile_path), notice: "Interest created."
