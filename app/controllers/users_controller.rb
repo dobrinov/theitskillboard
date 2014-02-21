@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    @user.seed_initial_skill_tree
+
     if @user.save
       login(@user)
       redirect_to my_root_path, notice: 'User successfully created!'

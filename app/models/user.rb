@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  before_save :seed_initial_skill_tree, if: :new_record?
-
   # Associations
   has_many :skill_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
