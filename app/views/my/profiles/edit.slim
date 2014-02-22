@@ -102,13 +102,16 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        ul
+        ul class="timetable"
           - current_user.experiences.each do |experience|
-            li
-              = experience.at
-              = experience_period_for(experience)
-              = link_to('Edit', experience_edit_path_for(experience), class: 'button')
-              = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
+            li class="timetable__event" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
+              h2 class="timetable__event__place"
+                | #{experience_verb_for(experience)} at #{experience.at}
+              div class="timetable__event__period"
+                = experience_period_for(experience)
+              div class="timetable__actions"
+                = link_to('Edit', experience_edit_path_for(experience), class: 'timetable__action button')
+                = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action button button_danger')
 
 
 br

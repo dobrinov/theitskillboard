@@ -1,0 +1,11 @@
+.timetable__actions {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  visibility: hidden;
+
+  .timetable__event:hover & {
+    visibility: visible;
+  }
+}

@@ -1,5 +1,15 @@
 module ExperienceHelper
 
+  def experience_verb_for(experience)
+    if experience.employment?
+      experience.ongoing ? 'Works' : 'Worked'
+    elsif experience.study?
+      experience.ongoing ? 'Studies' : 'Studied'
+    else
+      raise "There is no verb for this type of experience."
+    end
+  end
+
   def experience_period_for(experience)
     from = experience.from.strftime('%d.%m.%Y')
     to = experience.ongoing? ? 'Present' : experience.to.strftime('%d.%m.%Y')

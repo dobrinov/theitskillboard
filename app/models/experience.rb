@@ -7,6 +7,14 @@ class Experience < ActiveRecord::Base
     self.to = nil
   end
 
+  def to
+    self.ongoing ? Date.today : super
+  end
+
+  def bar
+    return self.original_bar || Bar.last
+  end
+
   def employment?
     false
   end
