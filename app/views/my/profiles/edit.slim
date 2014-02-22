@@ -106,7 +106,7 @@ div class="form"
           - current_user.experiences.each do |experience|
             li class="timetable__event" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
               h2 class="timetable__event__place"
-                | #{experience_verb_for(experience)} at #{experience.at}
+                = link_to_if(true, "#{experience_verb_for(experience)} at #{experience.at}", experience.website)
               div class="timetable__event__period"
                 = experience_period_for(experience)
               div class="timetable__actions"
