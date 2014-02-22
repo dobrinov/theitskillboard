@@ -11,6 +11,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'slim'
 gem 'redirectr', '~> 0.0.8'
 gem "paperclip", "~> 3.0"
+gem 'font-awesome-sass'
 
 group :doc do
   gem 'sdoc', require: false
