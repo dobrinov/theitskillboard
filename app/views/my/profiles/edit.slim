@@ -127,17 +127,15 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        ul
+        ul class="badge-list badge-list_horizontal"
           - current_user.interests.each do |interest|
-            li
+            li class="badge"
               = interest.name
-              = link_to('Edit', edit_my_interest_path(interest), class: 'button')
-              = link_to('Delete', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
 
 
 br
 
-/ # Interests #####################################################################
+/ # Contacts ######################################################################
 
 div class="form"
   h1 class="form__title" Contacts

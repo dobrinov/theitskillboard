@@ -5,5 +5,7 @@
   line-height: 1;
   box-sizing: border-box;
   background-color: $white;
+  border: 1px solid $gray_6;
+  cursor: default;
   @include border-radius(12px);
 }
