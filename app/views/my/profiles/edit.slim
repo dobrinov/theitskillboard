@@ -129,8 +129,11 @@ div class="form"
       div class="form__group grid_12"
         ul class="badge-list badge-list_horizontal"
           - current_user.interests.each do |interest|
-            li class="badge"
-              = interest.name
+            li class="badge badge_editable"
+              span class="badge__value" #{interest.name}
+              span class="badge__actions"
+                = link_to('', edit_my_interest_path(interest), class: 'badge__action fa fa-pencil')
+                = link_to('', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
 
 
 br
