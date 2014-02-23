@@ -2,4 +2,9 @@
   padding-right: 4px;
   height: 34px;
   @include border-radius(17px);
+
+  &:hover {
+    border-color: $gray_5;
+    background-color: $gray_6;
+  }
 }
