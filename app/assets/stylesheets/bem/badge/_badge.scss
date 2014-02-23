@@ -1,0 +1,9 @@
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  height: 24px;
+  line-height: 1;
+  box-sizing: border-box;
+  background-color: $white;
+  @include border-radius(12px);
+}
