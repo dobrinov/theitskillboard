@@ -164,12 +164,14 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        ul
+        ul class="badge-list badge-list_horizontal"
           - current_user.contacts.each do |contact|
-            li
-              = "#{contact.address} (#{contact_type_label_for(contact.ctype)})"
-              = link_to('Edit', edit_my_contact_path(contact), class: 'button')
-              = link_to('Delete', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
+            li class="badge badge_editable"
+              span class="badge__label" #{contact_type_label_for(contact.ctype)}
+              span class="badge__value" #{contact.address}
+              span class="badge__actions"
+                = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
+                = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
 
   div class="form__actions"
     div class="row"
