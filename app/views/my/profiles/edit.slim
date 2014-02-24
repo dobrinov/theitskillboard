@@ -87,6 +87,11 @@ div class="form"
     div class="form__group grid_12"
      = skill_tree(@skill_tree)
 
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
+
 
 br
 
@@ -113,6 +118,11 @@ div class="form"
                 = link_to('Edit', experience_edit_path_for(experience), class: 'timetable__action button')
                 = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action button button_danger')
 
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
+
 
 br
 
@@ -135,6 +145,11 @@ div class="form"
                 = link_to('', edit_my_interest_path(interest), class: 'badge__action fa fa-pencil')
                 = link_to('', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
 
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
+
 
 br
 
@@ -155,3 +170,8 @@ div class="form"
               = "#{contact.address} (#{contact_type_label_for(contact.ctype)})"
               = link_to('Edit', edit_my_contact_path(contact), class: 'button')
               = link_to('Delete', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button_danger')
+
+  div class="form__actions"
+    div class="row"
+      div class="form__group_actions grid_12"
+        = link_to('Back to your profile', my_profile_path, class: "button form__action_cancel")
