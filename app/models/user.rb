@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
                     default_url: 'placeholders/profile_picture/:style.png'
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def age
+    ((DateTime.now - self.birth_date) / 365.25).to_i
+  end
+
   def seed_initial_skill_tree
     # Root skill categories
     it_skills_category       = self.skill_categories.build({name: 'IT skills'})

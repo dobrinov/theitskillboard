@@ -21,7 +21,26 @@ br
 div class="row"
   div class="pp pp_gender-and-locationgrid grid_12"
     h2 class="pp__heading" General information
-    | Gender, living location and nationality
+    ul class="badge-list badge-list_horizontal"
+      - if @user.birth_date?
+        li class="badge"
+          span class="badge__label" Age
+          span class="badge__value" #{@user.age}
+
+      - if @user.gender?
+        li class="badge"
+          span class="badge__label" Gender
+          span class="badge__value" #{@user.gender}
+
+      - if @user.city? || @user.country?
+        li class="badge"
+          span class="badge__label" Location
+          span class="badge__value" #{@user.city}#{', ' if @user.city?}#{@user.country}
+
+      - if @user.nationality?
+        li class="badge"
+          span class="badge__label" Nationality
+          span class="badge__value" #{@user.nationality}
 
 
 br
