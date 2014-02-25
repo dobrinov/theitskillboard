@@ -7,7 +7,7 @@
 / ### Profile picture, name and definition
 
 div class="row"
-  div class="pp_pic-and-name grid grid_12"
+  div class="pp pp_pic-and-name grid grid_12"
     = profile_picture_for(@user, :small)
     div class="profile-names"
       div class="profile-names__name" #{@user.name}
@@ -19,7 +19,8 @@ br
 / ### Gender, living location and nationality
 
 div class="row"
-  div class="grid grid_12"
+  div class="pp pp_gender-and-locationgrid grid_12"
+    h2 class="pp__heading" General information
     | Gender, living location and nationality
 
 
@@ -27,7 +28,8 @@ br
 / ### Skill tree
 
 div class="row"
-  div class="grid grid_12"
+  div class="pp pp_skill-tree grid grid_12"
+    h2 class="pp__heading" Skill tree
     | Skill tree
 
 
@@ -35,15 +37,17 @@ br
 / ### Experience time table
 
 div class="row"
-  div class="grid grid_12"
-    | Experience time table
+  div class="pp pp_timetable grid grid_12"
+    h2 class="pp__heading" Experience timetable
+    | Experience timetable
 
 
 br
 / ### Interests
 
 div class="row"
-  div class="grid grid_12"
+  div class="pp pp_interests grid grid_12"
+    h2 class="pp__heading" Interests
     | Interests
 
 
@@ -51,5 +55,6 @@ br
 / ### Contacts
 
 div class="row"
-  div class="grid grid_12"
+  div class="pp pp_contacts grid grid_12"
+    h2 class="pp__heading" Contacts
     | Contacts
