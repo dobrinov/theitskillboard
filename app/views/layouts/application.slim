@@ -14,9 +14,10 @@ html class="no-js"
         = link_to(my_root_path, class: "l-logo #{bem_class_for(:logo)}")
           = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
-        = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
-          = content_tag(:li)
-            = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+        - if logged_in?
+          = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
+            = content_tag(:li)
+              = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
 
         == yield(:header)
 
