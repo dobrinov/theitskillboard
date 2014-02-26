@@ -31,4 +31,19 @@ class ApplicationController < ActionController::Base
       redirect_to my_root_path
     end
   end
+
+  def build_skill_tree(categories, skills, category_id=nil)
+    category = categories.select { |c| c.id == category_id }.first
+    sub_categories = categories.select { |c| c.parent_skill_category_id == category_id }
+
+    skill_tree = {
+      sub_categories: sub_categories.map { |sc| build_skill_tree(categories, skills, sc.id) },
+      skills: skills.select { |s| s.skill_category_id == category_id }
+    }
+
+    skill_tree[:id]   = category.id   if category.present?
+    skill_tree[:name] = category.name if category.present?
+
+    skill_tree
+  end
 end

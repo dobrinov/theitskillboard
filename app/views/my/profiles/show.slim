@@ -3,4 +3,4 @@
     = content_tag(:li)
       = link_to('Edit your profile', edit_my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
 
-= render partial: "profile", locals: { user: current_user }
+= render partial: "profile", locals: { user: current_user, skill_tree: @skill_tree }
