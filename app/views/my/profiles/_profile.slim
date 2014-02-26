@@ -52,7 +52,16 @@ br
 div class="row"
   div class="pp pp_timetable grid grid_12"
     h2 class="pp__heading" Experience timetable
-    | Experience timetable
+    ul class="timetable"
+      - user.experiences.each do |experience|
+        li class="timetable__event" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
+          h2 class="timetable__event__place"
+            = link_to_if(true, "#{experience_verb_for(experience)} at #{experience.at}", experience.website)
+          div class="timetable__event__period"
+            = experience_period_for(experience)
+          div class="timetable__actions"
+            = link_to('Edit', experience_edit_path_for(experience), class: 'timetable__action button')
+            = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action button button_danger')
 
 
 br
@@ -74,7 +83,7 @@ div class="row"
   div class="pp pp_contacts grid grid_12"
     h2 class="pp__heading" Contacts
     ul class="badge-list badge-list_horizontal"
-          - user.contacts.each do |contact|
-            li class="badge"
-              span class="badge__label" #{contact_type_label_for(contact.ctype)}
-              span class="badge__value" #{contact.address}
+      - user.contacts.each do |contact|
+        li class="badge"
+          span class="badge__label" #{contact_type_label_for(contact.ctype)}
+          span class="badge__value" #{contact.address}
