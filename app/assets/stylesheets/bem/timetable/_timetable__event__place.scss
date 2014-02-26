@@ -1,11 +1,11 @@
 .timetable__event__place {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   display: block;
   margin: 0;
   padding: 0;
 
   &, a{
-    color: $gray_1;
+    color: $black;
   }
 }
