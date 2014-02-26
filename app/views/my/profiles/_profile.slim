@@ -62,9 +62,9 @@ div class="row"
   div class="pp pp_interests grid grid_12"
     h2 class="pp__heading" Interests
     ul class="badge-list badge-list_horizontal"
-          - current_user.interests.each do |interest|
-            li class="badge"
-              span class="badge__value" #{interest.name}
+      - current_user.interests.each do |interest|
+        li class="badge"
+          span class="badge__value" #{interest.name}
 
 
 br
