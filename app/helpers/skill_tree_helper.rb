@@ -71,7 +71,7 @@ module SkillTreeHelper
 
   def new_category_element(parent_category_id, level)
     content_tag(:li, class: "skill-tree__element skill-tree__element_new skill-tree__element_category") do
-      link_to(content_tag("h#{level+1}", 'Add new sub category', class: 'skill-tree__category-name'), new_my_skill_category_path(parent_skill_category_id: parent_category_id), title: 'Add new category...')
+      link_to(content_tag("h#{level+1}", 'Add new sub category', class: 'skill-tree__category-name'), new_my_skill_category_path(parent_skill_category_id: parent_category_id), title: 'Add new sub category...')
     end
   end
 
