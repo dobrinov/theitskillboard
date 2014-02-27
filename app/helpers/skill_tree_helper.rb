@@ -85,7 +85,7 @@ module SkillTreeHelper
     content_tag(:li, class: 'skill-tree__element skill-tree__element_new') do
       [
         'Add',
-        link_to('new category', new_my_skill_category_path(parent_skill_category_id: category_id)),
+        link_to('new sub category', new_my_skill_category_path(parent_skill_category_id: category_id)),
         'or',
         link_to('new skill', new_my_skill_path(skill_category_id: category_id))
       ].join(' ').html_safe
