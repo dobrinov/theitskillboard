@@ -95,7 +95,7 @@ module SkillTreeHelper
   def skill_tree_category_actions(category_id)
     content_tag(:div, class: 'skill-tree__element__actions') do
       [
-        link_to('', edit_my_skill_category_path(category_id), title: 'Edit', class: 'skill-tree__element__action fa fa-pencil'),
+        link_to('', edit_my_skill_category_path(category_id), title: 'Edit...', class: 'skill-tree__element__action fa fa-pencil'),
         link_to('', my_skill_category_path(category_id), title: 'Delete...', data: { confirm: 'Are you sure?' }, method: :delete, class: 'skill-tree__element__action skill-tree__element__action_delete fa fa-trash-o')
       ].join.html_safe
     end
@@ -104,7 +104,7 @@ module SkillTreeHelper
   def skill_tree_skill_actions(skill_id)
     content_tag(:div, class: 'skill-tree__element__actions') do
       [
-        link_to('', edit_my_skill_path(skill_id), title: 'Edit', class: 'skill-tree__element__action fa fa-pencil'),
+        link_to('', edit_my_skill_path(skill_id), title: 'Edit...', class: 'skill-tree__element__action fa fa-pencil'),
         link_to('', my_skill_path(skill_id), title: 'Delete...', data: { confirm: 'Are you sure?' }, method: :delete, class: 'skill-tree__element__action skill-tree__element__action_delete fa fa-trash-o')
       ].join.html_safe
     end
