@@ -1,7 +1,7 @@
 .skill-tree__element_new {
   display: inline-block;
 
-  a {
+  &, a {
     color: $gray_5;
   }
 

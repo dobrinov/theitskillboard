@@ -7,16 +7,24 @@ module SkillTreeHelper
       contents << skill_tree_categories(tree[:sub_categories], editable, level)
       contents << skill_tree_skills(tree[:skills], editable)
 
-      if editable && level == 1 && tree[:skills].empty?
+      if can_add_new_category?(editable, level, tree[:skills]) && can_add_new_skill?(editable, level, tree[:sub_categories])
+        contents << new_category_or_skill_element(tree[:id])
+      elsif can_add_new_category?(editable, level, tree[:skills])
         contents << new_category_element(tree[:id], level)
-      end
-
-      if editable && level >= 1 && tree[:sub_categories].empty?
+      elsif can_add_new_skill?(editable, level, tree[:sub_categories])
         contents << new_skill_element(tree[:id])
       end
 
       contents.join.html_safe
     end
+  end
+
+  def can_add_new_category?(editable, level, skills)
+    editable && level == 1 && skills.empty?
+  end
+
+  def can_add_new_skill?(editable, level, sub_categories)
+    editable && level >= 1 && sub_categories.empty?
   end
 
   def skill_tree_categories(categories, editable, level)
@@ -70,6 +78,17 @@ module SkillTreeHelper
   def new_skill_element(category_id)
     content_tag(:li, class: "skill-tree__element skill-tree__element_new skill-tree__element_skill") do
       link_to(skill_bar('Add new skill', 1), new_my_skill_path(skill_category_id: category_id), title: 'Add new skill...')
+    end
+  end
+
+  def new_category_or_skill_element(category_id)
+    content_tag(:li, class: 'skill-tree__element skill-tree__element_new') do
+      [
+        'Add',
+        link_to('new category', new_my_skill_category_path(parent_skill_category_id: category_id)),
+        'or',
+        link_to('new skill', new_my_skill_path(skill_category_id: category_id))
+      ].join(' ').html_safe
     end
   end
 
