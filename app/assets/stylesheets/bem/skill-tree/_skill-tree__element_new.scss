@@ -19,17 +19,17 @@
   }
 
   a:hover {
-    color: $gray_4;
+    color: $gray_2;
 
     .skill-bar {
-      border-color: $gray_4;
+      border-color: $gray_2;
 
       .skill-bar__name {
-        color: $gray_4;
+        color: $gray_2;
       }
 
       .skill-bar__level {
-        background-color: $gray_4;
+        background-color: $gray_2;
       }
     }
   }
