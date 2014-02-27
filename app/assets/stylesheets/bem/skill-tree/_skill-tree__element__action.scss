@@ -1,0 +1,17 @@
+.skill-tree__element__action {
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1;
+  height: 24px;
+  width: 24px;
+  text-align: center;
+  display: inline-block;
+  color: $gray_5;
+  text-decoration: none;
+  @include border-radius(12px);
+
+  &:hover {
+    background-color: $gray_2;
+    color: $gray_6;
+  }
+}

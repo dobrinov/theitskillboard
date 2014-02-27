@@ -1,3 +1,18 @@
 .skill-tree__category-name {
-  display: inline-block;
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+
+  .skill-tree__element__actions {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  &:hover {
+    .skill-tree__element__actions {
+      visibility: visible;
+    }
+  }
 }

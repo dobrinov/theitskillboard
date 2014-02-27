@@ -1,0 +1,18 @@
+.skill-tree__element_skill {
+  float: left;
+  width: 24%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+
+  .skill-tree__element__actions {
+    position: absolute;
+    top: -8px;
+    right: 0px;
+  }
+
+  &:hover {
+    > .skill-tree__element__actions {
+      visibility: visible;
+    }
+  }
+}

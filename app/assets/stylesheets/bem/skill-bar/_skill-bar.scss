@@ -2,9 +2,9 @@
   display: block;
   position: relative;
   padding: 1px;
-  margin: 20px 0 0 0;
+  margin: 18px 0 0 0;
+  background-color: $white;
   border: 1px solid $gray_3;
-  cursor: default;
   box-sizing: border-box;
   @include border-radius(4px);
 }

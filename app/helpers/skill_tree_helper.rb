@@ -1,70 +1,94 @@
 module SkillTreeHelper
 
-  def skill_tree(skill_tree, level=0)
-    content_tag(:ul, class: "skill-tree skill-tree_level-#{level} row") do
+  def skill_tree(tree, editable=false, level=0)
+    content_tag(:ul, class: "skill-tree skill-tree_level-#{level}") do
       contents = []
-      contents << skill_tree_categories_list(skill_tree[:sub_categories], level)
-      contents << skill_tree_skills_list(skill_tree[:skills])
 
-      if (level == 1) && skill_tree[:skills].empty?
-        contents << content_tag(:li, link_to('New sub category', new_my_skill_category_path(parent_skill_category_id: skill_tree[:id])), class: "skill-tree__element skill-tree__element_new")
+      contents << skill_tree_categories(tree[:sub_categories], editable, level)
+      contents << skill_tree_skills(tree[:skills], editable)
+
+      if editable && level == 1 && tree[:skills].empty?
+        contents << new_category_element(tree[:id], level)
       end
 
-      if (level != 0) && skill_tree[:sub_categories].empty?
-        contents << content_tag(:li, link_to('New skill', new_my_skill_path(skill_category_id: skill_tree[:id])), class: "skill-tree__element skill-tree__element_new")
+      if editable && level >= 1 && tree[:sub_categories].empty?
+        contents << new_skill_element(tree[:id])
       end
 
       contents.join.html_safe
     end
   end
 
-  def skill_tree_categories_list(categories, level)
+  def skill_tree_categories(categories, editable, level)
     categories.map do |category|
-      content_tag(:li) do
-        [
-          skill_tree_category_name(category, level),
-          skill_tree(category, level+1)
-        ].join.html_safe
-      end
-    end.join.html_safe
-  end
-
-  def skill_tree_category_name(category, level)
-    content_tag(:div, class: "skill-tree__category") do
-      contents = []
-
-      contents << content_tag("h#{level+1}", category[:name], class: "skill-tree__category-name")
-      contents << skill_tree_category_actions(category)
-
-      contents.join.html_safe
-    end
-  end
-
-  def skill_tree_category_actions(category)
-    [
-      link_to('Edit', edit_my_skill_category_path(category[:id]), class: 'button'),
-      link_to('Delete', my_skill_category_path(category[:id]), data: { confirm: 'Delete skill category?' }, method: :delete, class: 'button button_danger')
-    ].join.html_safe
-  end
-
-  def skill_tree_skills_list(skills)
-    skills.map do |skill|
-      content_tag(:li, class: 'skill-tree__element skill-tree__skill') do
+      next unless editable or skills_in_tree?(category)
+      content_tag(:li, class: "skill-tree__element skill-tree__element_category") do
         contents = []
 
-        contents << skill_bar(skill.name, skill.level)
-        contents << skill_tree_skill_actions(skill)
+        contents << skill_tree_category_name(category, editable, level)
+        contents << skill_tree(category, editable, level+1)
 
         contents.join.html_safe
       end
     end.join.html_safe
   end
 
-  def skill_tree_skill_actions(skill)
-    [
-      link_to('Edit', edit_my_skill_path(skill), class: 'button'),
-      link_to('Delete', my_skill_path(skill), data: { confirm: 'Delete skill?' }, method: :delete, class: 'button button_danger')
-    ].join.html_safe
+  def skill_tree_skills(skills, editable)
+    skills.map do |skill|
+      content_tag(:li, class: "skill-tree__element skill-tree__element_skill") do
+        contents = []
+
+        contents << skill_bar(skill.name, skill.level)
+        contents << skill_tree_skill_actions(skill.id) if editable
+        
+        contents.join.html_safe
+      end
+    end.join.html_safe
+  end
+
+  def skill_tree_category_name(category, editable, level)
+    content_tag("h#{level+1}", class: 'skill-tree__category-name') do
+      contents = []
+
+      contents << content_tag(:span, category[:name])
+      contents << skill_tree_category_actions(category[:id]) if editable
+
+      contents.join.html_safe
+    end
+  end
+
+  def skills_in_tree?(tree)
+    tree[:skills].any? || tree[:sub_categories].map { |c| skills_in_tree?(c) }.any?
+  end
+
+  def new_category_element(parent_category_id, level)
+    content_tag(:li, class: "skill-tree__element skill-tree__element_new skill-tree__element_category") do
+      link_to(content_tag("h#{level+1}", 'Add new category', class: 'skill-tree__category-name'), new_my_skill_category_path(parent_skill_category_id: parent_category_id))
+    end
+  end
+
+  def new_skill_element(category_id)
+    content_tag(:li, class: "skill-tree__element skill-tree__element_new skill-tree__element_skill") do
+      link_to(skill_bar('Add new skill', 1), new_my_skill_path(skill_category_id: category_id))
+    end
+  end
+
+  def skill_tree_category_actions(category_id)
+    content_tag(:div, class: 'skill-tree__element__actions') do
+      [
+        link_to('', edit_my_skill_category_path(category_id), title: 'Edit', class: 'skill-tree__element__action fa fa-pencil'),
+        link_to('', my_skill_category_path(category_id), title: 'Delete...', data: { confirm: 'Are you sure?' }, method: :delete, class: 'skill-tree__element__action skill-tree__element__action_delete fa fa-trash-o')
+      ].join.html_safe
+    end
+  end
+
+  def skill_tree_skill_actions(skill_id)
+    content_tag(:div, class: 'skill-tree__element__actions') do
+      [
+        link_to('', edit_my_skill_path(skill_id), title: 'Edit', class: 'skill-tree__element__action fa fa-pencil'),
+        link_to('', my_skill_path(skill_id), title: 'Delete...', data: { confirm: 'Are you sure?' }, method: :delete, class: 'skill-tree__element__action skill-tree__element__action_delete fa fa-trash-o')
+      ].join.html_safe
+    end
   end
 
 end

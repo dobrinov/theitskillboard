@@ -1,2 +1,37 @@
 .skill-tree__element_new {
+  display: inline-block;
+
+  a {
+    color: $gray_5;
+  }
+
+  .skill-bar {
+    border-color: $gray_5;
+
+    .skill-bar__name {
+      text-decoration: none;
+      color: $gray_5;
+    }
+
+    .skill-bar__level {
+      background-color: $gray_5;
+    }
+  }
+
+  a:hover {
+    color: $gray_4;
+
+    .skill-bar {
+      border-color: $gray_4;
+
+      .skill-bar__name {
+        color: $gray_4;
+      }
+
+      .skill-bar__level {
+        background-color: $gray_4;
+      }
+    }
+  }
+
 }
