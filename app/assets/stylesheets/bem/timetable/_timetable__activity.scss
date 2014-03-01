@@ -1,6 +1,7 @@
 .timetable__activity {
   .js & {
     position: absolute;
+    z-index: 1;
     border: 1px solid $red_4;
     @include border-radius(10px);
   }
