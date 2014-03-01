@@ -103,7 +103,6 @@ Timetable.prototype.calculateColumns = function(){
 
 Timetable.prototype.calculateActivityWidth = function(){
   var width = this.node.outerWidth() - this.left_padding - (this.columns - 1) * this.activity_space;
-  console.log(width);
   var activity_width = width / this.columns;
 
   return activity_width;
@@ -143,11 +142,11 @@ function TimetableActivity(node, timetable){
 }
 
 TimetableActivity.prototype.parseAt = function(){
-  return 'TODO';
+  return this.node.find('.timetable__activity__at').html();
 }
 
 TimetableActivity.prototype.parseWebsite = function(){
-  return 'www.todo.com';
+  return this.node.find('a').attr('href');
 }
 
 TimetableActivity.prototype.parseFrom = function(){
