@@ -1,7 +1,18 @@
 .timetable__activity {
+
+  a {
+    color: $gray_1;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
   .js & {
     position: absolute;
     z-index: 1;
+    padding: 10px;
     border: 1px solid $red_4;
     @include border-radius(10px);
   }

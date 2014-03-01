@@ -55,8 +55,17 @@ div class="row"
       ul class="timetable__activities"
         - user.experiences.order(to: :desc).order(from: :asc).each do |experience|
           li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
-            h2 class="timetable__activity__place"
-              = link_to_if(experience.website.present?, "#{experience_verb_for(experience)} at #{experience.at}", experience.website)
+            - if experience.website.present?
+              = link_to(experience.website) do
+                h2
+                  span class="timetable__activity__verb" #{experience_verb_for(experience)}&nbsp;
+                  span class="timetable__activity__at" #{experience.at}
+
+            - else
+                h2
+                  span class="timetable__activity__verb" #{experience_verb_for(experience)}&nbsp;
+                  span class="timetable__activity__at" #{experience.at}
+
             div class="timetable__activity__period"
               = experience_period_for(experience)
 
