@@ -1,20 +1,26 @@
 function Timetable(node){
-  this.node = $(node);
+  var self = this;
 
-  this.month_height   =  6; // px
-  this.left_padding   = 70; // px
-  this.activity_space =  5; // px
+  self.node = $(node);
 
-  this.columns = 0;
-  this.activities = new Array(); this.parseActivities();
-  this.columns = this.calculateColumns();
-  this.setActivityWidth();
+  self.month_height   =  6; // px
+  self.left_padding   = 70; // px
+  self.activity_space =  5; // px
 
-  this.from_date = this.calculateFromDate();
-  this.to_date = this.calculateToDate();
+  self.columns = 0;
+  self.activities = new Array(); self.parseActivities();
+  self.columns = self.calculateColumns();
+  self.setActivityWidth();
+
+  $(window).resize(function(){
+    self.setActivityWidth();
+  });
+
+  self.from_date = self.calculateFromDate();
+  self.to_date = self.calculateToDate();
 
   // Init
-  this.render();
+  self.render();
 }
 
 Timetable.prototype.render = function(){
@@ -97,6 +103,7 @@ Timetable.prototype.calculateColumns = function(){
 
 Timetable.prototype.calculateActivityWidth = function(){
   var width = this.node.outerWidth() - this.left_padding - (this.columns - 1) * this.activity_space;
+  console.log(width);
   var activity_width = width / this.columns;
 
   return activity_width;
