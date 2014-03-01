@@ -1,0 +1,5 @@
+.timetable__activity_active {
+  .js & {
+    @include border-top-radius(0px);
+  }
+}
