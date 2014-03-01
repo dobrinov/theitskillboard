@@ -1,7 +1,8 @@
 .timetable__activity {
   .js & {
     position: absolute;
-    outline: 1px dotted red;
+    border: 1px solid $red_4;
+    @include border-radius(10px);
   }
 
   .no-js & {
