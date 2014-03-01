@@ -8,6 +8,7 @@ function Timetable(node){
   this.columns = 0;
   this.activities = new Array(); this.parseActivities();
   this.columns = this.calculateColumns();
+  this.setActivityWidth();
 
   this.from_date = this.calculateFromDate();
   this.to_date = this.calculateToDate();
@@ -94,6 +95,24 @@ Timetable.prototype.calculateColumns = function(){
   return columns;
 }
 
+Timetable.prototype.calculateActivityWidth = function(){
+  var width = this.node.outerWidth() - this.left_padding - (this.columns - 1) * this.activity_space;
+  var activity_width = width / this.columns;
+
+  return activity_width;
+}
+
+Timetable.prototype.setActivityWidth = function(){
+  var width = this.calculateActivityWidth();
+  var activities = this.activities;
+
+  for(var i=0; i<activities.length; i++){
+    activities[i].node.width = width;
+    activities[i].node.css('width', width + 'px');
+    activities[i].node.css('left', this.left_padding + activities[i].column * this.activity_space + activities[i].column * width + 'px' );
+  }
+}
+
 
 /// Timetable activity
 
@@ -137,11 +156,11 @@ TimetableActivity.prototype.calculateColumn = function(){
   var activities = this.timetable.activities;
 
   for(var i=0; i<activities.length; i++){
-    if(this.overlaps(activities[i])){
+    if(column == activities[i].column && this.overlaps(activities[i])){
       column++;
     }
   }
-
+  
   return column;
 }
 
@@ -150,7 +169,7 @@ TimetableActivity.prototype.calculateHeight = function(){
 }
 
 TimetableActivity.prototype.overlaps = function(activity){
-  return this.from_date <= activity.to_date && this.to_date >= activity.from_date;
+  return this.from_date < activity.to_date && this.to_date > activity.from_date;
 }
 
 TimetableActivity.prototype.months = function(){
@@ -158,10 +177,8 @@ TimetableActivity.prototype.months = function(){
 }
 
 TimetableActivity.prototype.applyStyle = function(){
-  this.node.css('width', this.width + 'px');
   this.node.css('height', this.height + 'px');
   // this.node.css('line-height', this.height + 'px');
-  this.node.css('left', this.timetable.left_padding + this.width * this.column + this.timetable.activity_space * this.column + 'px');
   this.node.css('top', milliseconds_to_months(Date.UTC(new Date().getFullYear()+1,0,1,-1,-1,-1,-1) - this.to_date) * this.timetable.month_height + 'px');
 }
 

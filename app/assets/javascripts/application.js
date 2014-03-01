@@ -5,8 +5,11 @@
 
 //= require timetable
 
-$(document).ready(function(){
+function ready() {
   $('.timetable').each(function(){
     var timetable = new Timetable($(this));
   });
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
