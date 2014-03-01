@@ -5,7 +5,7 @@
 
   visibility: hidden;
 
-  .timetable__event:hover & {
+  .timetable__activity:hover & {
     visibility: visible;
   }
 }

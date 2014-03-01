@@ -1,0 +1,12 @@
+.timetable__activity {
+  .js & {
+    position: absolute;
+    outline: 1px dotted red;
+  }
+
+  .no-js & {
+    position: relative;
+    margin: 0 0 5px 0;
+    padding: 0;
+  }
+}
