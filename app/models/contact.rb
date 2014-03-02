@@ -16,6 +16,9 @@ class Contact < ActiveRecord::Base
   end
 
   # Validations
+  validates :address,
+            :presence => true
+
   validates :ctype,
             :presence  => true,
             :inclusion => { :in => types.collect { |type| type.second.to_s } }
