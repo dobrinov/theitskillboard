@@ -106,17 +106,29 @@ div class="form"
 
   div class="form__content"
     div class="row"
-      div class="form__group grid_12"
-        ul class=""
-          - current_user.experiences.each do |experience|
-            li class="" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
-              h2 class="timetable__activity__place"
-                = link_to_if(experience.website.present?, "#{experience_verb_for(experience)} at #{experience.at}", experience.website)
-              div class="timetable__activity__period"
-                = experience_period_for(experience)
-              div class=""
-                = link_to('Edit', experience_edit_path_for(experience), class: 'timetable__action button')
-                = link_to('Delete', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action button button_danger')
+      div class="grid_12"
+        div class="timetable"
+          ul class="timetable__activities"
+            - current_user.experiences.order(to: :desc).order(from: :asc).each do |experience|
+              li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
+                - if experience.website.present?
+                  = link_to(experience.website) do
+                    h2
+                      span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                      | &nbsp;at&nbsp;
+                      span class="timetable__activity__at" #{experience.at}
+
+                - else
+                    h2
+                      span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                      | &nbsp;at&nbsp;
+                      span class="timetable__activity__at" #{experience.at}
+
+                div class="timetable__activity__period"
+                  = experience_period_for(experience)
+                div class="timetable__actions"
+                  = link_to('', experience_edit_path_for(experience), class: 'timetable__action fa fa-pencil')
+                  = link_to('', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action timetable__action_delete fa fa-trash-o')
 
   div class="form__actions"
     div class="row"
