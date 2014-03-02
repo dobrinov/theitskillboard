@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
     # Skills
     english_speaking_skill      = self.skills.build({name: 'Speaking', level: 5})
-    english_writting_skill      = self.skills.build({name: 'Writting', level: 5})
+    english_writting_skill      = self.skills.build({name: 'Writing', level: 5})
     english_understanding_skill = self.skills.build({name: 'Understanding', level: 5})
 
     english_category.skills << english_speaking_skill
