@@ -1,5 +1,6 @@
 .timetable__activity_active {
   .js & {
+    // border-top-style: dotted;
     @include border-top-radius(0px);
   }
 }

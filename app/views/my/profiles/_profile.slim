@@ -58,12 +58,14 @@ div class="row"
             - if experience.website.present?
               = link_to(experience.website) do
                 h2
-                  span class="timetable__activity__verb" #{experience_verb_for(experience)}&nbsp;
+                  span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                  | &nbsp;at&nbsp;
                   span class="timetable__activity__at" #{experience.at}
 
             - else
                 h2
-                  span class="timetable__activity__verb" #{experience_verb_for(experience)}&nbsp;
+                  span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                  | &nbsp;at&nbsp;
                   span class="timetable__activity__at" #{experience.at}
 
             div class="timetable__activity__period"
