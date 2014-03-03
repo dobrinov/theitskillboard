@@ -1,7 +1,24 @@
 class Experience < ActiveRecord::Base
   before_save :unset_to_date, if: :ongoing?
 
+  # Associations
   belongs_to :user
+
+  # Validations
+  validates :at,
+            :presence => true
+
+  validates :from,
+            :presence => true
+
+  validates :to,
+            :presence => true, unless: :ongoing?
+
+  validates :type,
+            :presence => true
+
+  validates :user,
+            :presence => true
 
   def unset_to_date
     self.to = nil
