@@ -70,4 +70,12 @@ class User < ActiveRecord::Base
     english_category.skills << english_understanding_skill
   end
 
+  def seed_initial_interests
+    self.interests.build({name: 'Programming'})
+  end
+
+  def seed_initial_contacts
+    self.contacts.build({ctype: 'email', address: self.email})
+  end
+
 end
