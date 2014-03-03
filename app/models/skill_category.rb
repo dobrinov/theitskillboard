@@ -9,4 +9,7 @@ class SkillCategory < ActiveRecord::Base
   # Validations
   validates :user,
             :presence => true
+
+  validates :name,
+            :presence => true
 end
