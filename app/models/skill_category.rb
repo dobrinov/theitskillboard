@@ -7,9 +7,6 @@ class SkillCategory < ActiveRecord::Base
   has_many   :skills, dependent: :destroy
 
   # Validations
-  validates :user,
-            :presence => true
-
   validates :name,
             :presence => true
 end

@@ -17,9 +17,6 @@ class Experience < ActiveRecord::Base
   validates :type,
             :presence => true
 
-  validates :user,
-            :presence => true
-
   def unset_to_date
     self.to = nil
   end

@@ -16,8 +16,6 @@ class Contact < ActiveRecord::Base
   end
 
   # Validations
-  validates :user,
-            :presence => true
 
   validates :address,
             :presence => true
