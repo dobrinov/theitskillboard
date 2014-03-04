@@ -85,7 +85,10 @@ div class="form"
   div class="form__content"
   div class="row"
     div class="form__group grid_12"
-     = skill_tree(@skill_tree, true)
+      - if @skill_tree[:sub_categories].any? || @skill_tree[:skills].any?
+        = skill_tree(@skill_tree, true)
+      - else
+        p You still havent added any skills or categories.
 
   div class="form__actions"
     div class="row"
@@ -108,27 +111,30 @@ div class="form"
     div class="row"
       div class="grid_12"
         div class="timetable"
-          ul class="timetable__activities"
-            - current_user.experiences.order(to: :desc).order(from: :asc).each do |experience|
-              li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
-                - if experience.website.present?
-                  = link_to(experience.website) do
-                    h2
-                      span class="timetable__activity__verb" #{experience_verb_for(experience)}
-                      | &nbsp;at&nbsp;
-                      span class="timetable__activity__at" #{experience.at}
+          - if current_user.experiences.any?
+            ul class="timetable__activities"
+              - current_user.experiences.order(to: :desc).order(from: :asc).each do |experience|
+                li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
+                  - if experience.website.present?
+                    = link_to(experience.website) do
+                      h2
+                        span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                        | &nbsp;at&nbsp;
+                        span class="timetable__activity__at" #{experience.at}
 
-                - else
-                    h2
-                      span class="timetable__activity__verb" #{experience_verb_for(experience)}
-                      | &nbsp;at&nbsp;
-                      span class="timetable__activity__at" #{experience.at}
+                  - else
+                      h2
+                        span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                        | &nbsp;at&nbsp;
+                        span class="timetable__activity__at" #{experience.at}
 
-                div class="timetable__activity__period"
-                  = experience_period_for(experience)
-                div class="timetable__actions"
-                  = link_to('', experience_edit_path_for(experience), class: 'timetable__action fa fa-pencil')
-                  = link_to('', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action timetable__action_delete fa fa-trash-o')
+                  div class="timetable__activity__period"
+                    = experience_period_for(experience)
+                  div class="timetable__actions"
+                    = link_to('', experience_edit_path_for(experience), class: 'timetable__action fa fa-pencil')
+                    = link_to('', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action timetable__action_delete fa fa-trash-o')
+          - else
+            p You still havent added any experiences.
 
   div class="form__actions"
     div class="row"
@@ -149,13 +155,16 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        ul class="badge-list badge-list_horizontal"
-          - current_user.interests.each do |interest|
-            li class="badge badge_editable"
-              span class="badge__value" #{interest.name}
-              span class="badge__actions"
-                = link_to('', edit_my_interest_path(interest), class: 'badge__action fa fa-pencil')
-                = link_to('', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
+        - if current_user.interests.any? 
+          ul class="badge-list badge-list_horizontal"
+            - current_user.interests.each do |interest|
+              li class="badge badge_editable"
+                span class="badge__value" #{interest.name}
+                span class="badge__actions"
+                  = link_to('', edit_my_interest_path(interest), class: 'badge__action fa fa-pencil')
+                  = link_to('', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
+        - else
+          p You still havent added any interests.
 
   div class="form__actions"
     div class="row"
@@ -176,14 +185,17 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        ul class="badge-list badge-list_horizontal"
-          - current_user.contacts.each do |contact|
-            li class="badge badge_editable"
-              span class="badge__label" #{contact_type_label_for(contact.ctype)}
-              span class="badge__value" #{contact.address}
-              span class="badge__actions"
-                = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
-                = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
+        - if current_user.contacts.any? 
+          ul class="badge-list badge-list_horizontal"
+            - current_user.contacts.each do |contact|
+              li class="badge badge_editable"
+                span class="badge__label" #{contact_type_label_for(contact.ctype)}
+                span class="badge__value" #{contact.address}
+                span class="badge__actions"
+                  = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
+                  = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
+        - else
+          p You still havent added any contacts.
 
   div class="form__actions"
     div class="row"
