@@ -15,61 +15,69 @@ br
 div class="row"
   div class="pp pp_gender-and-locationgrid grid_12"
     h2 class="pp__heading" General information
-    ul class="badge-list badge-list_horizontal"
-      - if user.birth_date?
-        li class="badge"
-          span class="badge__label" Age
-          span class="badge__value" #{user.age}
+    - if user.birth_date? || user.gender? || user.city? || user.country? || user.nationality?
+      ul class="badge-list badge-list_horizontal"
+        - if user.birth_date?
+          li class="badge"
+            span class="badge__label" Age
+            span class="badge__value" #{user.age}
 
-      - if user.gender?
-        li class="badge"
-          span class="badge__label" Gender
-          span class="badge__value" #{user.gender}
+        - if user.gender?
+          li class="badge"
+            span class="badge__label" Gender
+            span class="badge__value" #{user.gender}
 
-      - if user.city? || user.country?
-        li class="badge"
-          span class="badge__label" Location
-          span class="badge__value" #{user.city}#{', ' if user.city?}#{user.country}
+        - if user.city? || user.country?
+          li class="badge"
+            span class="badge__label" Location
+            span class="badge__value" #{user.city}#{', ' if user.city?}#{user.country}
 
-      - if user.nationality?
-        li class="badge"
-          span class="badge__label" Nationality
-          span class="badge__value" #{user.nationality}
-
+        - if user.nationality?
+          li class="badge"
+            span class="badge__label" Nationality
+            span class="badge__value" #{user.nationality}
+    - else
+      span This user havent added any general information yet.
 
 br
 / ### Skill tree
 
-div class="row"
-  div class="pp pp_skill-tree grid grid_12"
-    = skill_tree(skill_tree)
+- if skill_tree[:sub_categories].any? || skill_tree[:skills].any?
+  div class="row"
+    div class="pp pp_skill-tree grid grid_12"
+      = skill_tree(skill_tree)
 
 
-br
+  br
+
+
 / ### Experience time table
 
 div class="row"
   div class="pp pp_timetable grid grid_12"
     h2 class="pp__heading" Experience timetable
-    div class="timetable"
-      ul class="timetable__activities"
-        - user.experiences.order(to: :desc).order(from: :asc).each do |experience|
-          li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
-            - if experience.website.present?
-              = link_to(experience.website) do
-                h2
-                  span class="timetable__activity__verb" #{experience_verb_for(experience)}
-                  | &nbsp;at&nbsp;
-                  span class="timetable__activity__at" #{experience.at}
+    - if user.experiences.any?
+      div class="timetable"
+        ul class="timetable__activities"
+          - user.experiences.order(to: :desc).order(from: :asc).each do |experience|
+            li class="timetable__activity #{'timetable__activity_active' if experience.ongoing?}" data-from="#{date_in_ms(experience.from)}" data-to="#{date_in_ms(experience.to)}"
+              - if experience.website.present?
+                = link_to(experience.website) do
+                  h2
+                    span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                    | &nbsp;at&nbsp;
+                    span class="timetable__activity__at" #{experience.at}
 
-            - else
-                h2
-                  span class="timetable__activity__verb" #{experience_verb_for(experience)}
-                  | &nbsp;at&nbsp;
-                  span class="timetable__activity__at" #{experience.at}
+              - else
+                  h2
+                    span class="timetable__activity__verb" #{experience_verb_for(experience)}
+                    | &nbsp;at&nbsp;
+                    span class="timetable__activity__at" #{experience.at}
 
-            div class="timetable__activity__period"
-              = experience_period_for(experience)
+              div class="timetable__activity__period"
+                = experience_period_for(experience)
+    - else
+      span This user has no experiences.
 
 
 br
@@ -78,10 +86,13 @@ br
 div class="row"
   div class="pp pp_interests grid grid_12"
     h2 class="pp__heading" Interests
-    ul class="badge-list badge-list_horizontal"
-      - user.interests.each do |interest|
-        li class="badge"
-          span class="badge__value" #{interest.name}
+    - if user.interests.any? 
+      ul class="badge-list badge-list_horizontal"
+        - user.interests.each do |interest|
+          li class="badge"
+            span class="badge__value" #{interest.name}
+    - else
+      span This user has no interests.
 
 
 br
@@ -90,8 +101,11 @@ br
 div class="row"
   div class="pp pp_contacts grid grid_12"
     h2 class="pp__heading" Contacts
-    ul class="badge-list badge-list_horizontal"
-      - user.contacts.each do |contact|
-        li class="badge"
-          span class="badge__label" #{contact_type_label_for(contact.ctype)}
-          span class="badge__value" #{contact.address}
+    - if user.contacts.any?
+      ul class="badge-list badge-list_horizontal"
+        - user.contacts.each do |contact|
+          li class="badge"
+            span class="badge__label" #{contact_type_label_for(contact.ctype)}
+            span class="badge__value" #{contact.address}
+    - else
+      span This user has no contacts.

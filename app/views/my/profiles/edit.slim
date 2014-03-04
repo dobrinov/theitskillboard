@@ -88,7 +88,7 @@ div class="form"
       - if @skill_tree[:sub_categories].any? || @skill_tree[:skills].any?
         = skill_tree(@skill_tree, true)
       - else
-        p You still havent added any skills or categories.
+        span You still havent added any skills or categories.
 
   div class="form__actions"
     div class="row"
@@ -134,7 +134,7 @@ div class="form"
                     = link_to('', experience_edit_path_for(experience), class: 'timetable__action fa fa-pencil')
                     = link_to('', experience_path_for(experience), data: { confirm: 'Are you sure?' }, method: :delete, class: 'timetable__action timetable__action_delete fa fa-trash-o')
           - else
-            p You still havent added any experiences.
+            span You still havent added any experiences.
 
   div class="form__actions"
     div class="row"
@@ -164,7 +164,7 @@ div class="form"
                   = link_to('', edit_my_interest_path(interest), class: 'badge__action fa fa-pencil')
                   = link_to('', my_interest_path(interest), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
         - else
-          p You still havent added any interests.
+          span You still havent added any interests.
 
   div class="form__actions"
     div class="row"
@@ -195,7 +195,7 @@ div class="form"
                   = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
                   = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
         - else
-          p You still havent added any contacts.
+          span You still havent added any contacts.
 
   div class="form__actions"
     div class="row"
