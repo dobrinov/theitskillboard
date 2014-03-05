@@ -1,6 +1,10 @@
 - content_for(:header)
   = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
-    = content_tag(:li, class: 'navigation__item navigation__item_first')
-      = link_to('Create an account', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
     = content_tag(:li, class: 'navigation__item navigation__item_last')
       = link_to('Log in', new_session_path, class: bem_class_for(:button))
+
+div class="row"
+  div class="grid_12 site-present"
+    h1 class="site-present__primary-text" Present your IT skills
+    h3 class="site-present__secondary-text" Present your self with a resume specially designed for IT guys.
+    = link_to('Create an account', new_user_path, class: "site-present__primary-link button button_primary button_large")
