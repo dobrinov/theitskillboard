@@ -8,18 +8,25 @@ html class="no-js"
     = csrf_meta_tags
 
   body
+
+    / ### HEADER
+
     header class="l-header"
       div class="l-top-line"
-      div class="container container_centered"
-        = link_to(my_root_path, class: "l-logo #{bem_class_for(:logo)}")
-          = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
+      div class="row"
+        div class="grid_12"
+          = link_to(logged_in? ? my_root_path : root_path, class: "l-logo #{bem_class_for(:logo)}")
+            = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
-        - if logged_in?
-          = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
-            = content_tag(:li)
-              = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+          == yield(:header)
 
-        == yield(:header)
+          - if logged_in?
+            = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
+              = content_tag(:li)
+                = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+
+
+    / ### NOTIFICATIONS
 
     - if flash.any?
       = content_tag(:div, class: "l-messages container container_centered")
@@ -27,8 +34,14 @@ html class="no-js"
         = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
         = danger_notification  "Error",   flash[:error]  if flash[:error].present?
 
+
+    / ### BODY
+
     div class="l-body container container_centered"
       == yield
+
+
+    / ### FOOTER
 
     footer class="l-footer"
       div class="container container_centered"
