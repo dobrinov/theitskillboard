@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  layout 'landingpage'
+
   def new
     @user = User.new
   end
