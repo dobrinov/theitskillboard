@@ -4,18 +4,25 @@ html class="no-js"
     title The IT skill board
     meta name="viewport" content="width=device-width, user-scalable=no"
     = favicon_link_tag "favicon.ico"
-    = stylesheet_link_tag    "unauthenticated", media: "all"
-    = javascript_include_tag "unauthenticated"
+    = stylesheet_link_tag    "landingpage", media: "all"
+    = javascript_include_tag "landingpage"
     = csrf_meta_tags
 
   body
+
+    / ### HEADER
+
     header class="l-header"
       div class="l-top-line"
-      div class="container container_centered"
-        = link_to(root_path, class: "l-logo #{bem_class_for(:logo)}")
-          = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
+      div class="row"
+        div class="grid_12"
+          = link_to(root_path, class: "l-logo #{bem_class_for(:logo)}")
+            = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
-        == yield(:header)
+          == yield(:header)
+
+
+    / ### NOTIFICATIONS
 
     - if flash.any?
       = content_tag(:div, class: "l-messages container container_centered")
@@ -23,8 +30,14 @@ html class="no-js"
         = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
         = danger_notification  "Error",   flash[:error]  if flash[:error].present?
 
+
+    / ### BODY
+
     div class="l-body container container_centered"
       == yield
+
+
+    / ### FOOTER
 
     footer class="l-footer"
       div class="container container_centered"

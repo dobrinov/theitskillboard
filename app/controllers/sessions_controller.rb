@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  layout 'unauthenticated'
-
   before_action :require_login,    only: [:destroy]
   before_action :require_no_login, only: [:new, :create]
 

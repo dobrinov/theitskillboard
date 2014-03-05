@@ -5,9 +5,10 @@
 }
 
 .l-header {
-  > .container {
-    margin-top: 5px;
-    height: 60px;
+  > .row {
+    text-align: center;
+    margin-top: 10px;
+        height: 60px;
   }
 }
 
@@ -15,9 +16,14 @@
   float: left;
 }
 
-.l-user-navigation {
-  float: right;
+.l-profile-navigation {
+  display: inline-block !important;
   margin-top: 10px !important;
+}
+
+.l-user-navigation {
+  margin-top: 10px !important;
+  float: right;
 }
 
 .l-messages {
@@ -25,7 +31,8 @@
 }
 
 .l-body {
-  margin-top: 15px !important;
+  margin-top: 25px !important;
+  margin-bottom: 25px !important;
 }
 
 .l-footer {

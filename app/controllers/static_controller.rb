@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 
-  layout 'unauthenticated'
+  layout 'landingpage'
 
   before_action :require_no_login
 

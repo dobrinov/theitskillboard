@@ -6,7 +6,7 @@
 /* Normalize.css */
 @import "normalize";
 
-/* Iconic webfont */
+/* Iconic webfonts */
 @import "font-awesome";
 @import "fonts/opensans";
 
@@ -17,19 +17,13 @@
 @import "base";
 
 /* Layout */
-@import "layout/unauthenticated";
+@import "layout/landingpage";
 
 /* ********** BEM ********** */
-@import "bem/badge/*";
-@import "bem/badge-list/*";
 @import "bem/button/*";
 @import "bem/container/*";
-@import "bem/form/*";
 @import "bem/grid/*";
 @import "bem/logo/*";
 @import "bem/navigation/*";
 @import "bem/notification/*";
-@import "bem/profile-picture/*";
 @import "bem/row/*";
-@import "bem/skill-bar/*";
-@import "bem/timetable/*";

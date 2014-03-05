@@ -1,7 +1,5 @@
 class StyleguidesController < ApplicationController
 
-  layout 'unauthenticated'
-
   def grid
   end
 
