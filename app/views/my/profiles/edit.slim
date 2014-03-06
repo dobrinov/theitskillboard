@@ -45,7 +45,7 @@ br
 
     div class="row"
       div class="form__group grid_8"
-        label class="form__label" Birthdate
+        label class="form__label" Birth date
         = date_select(:user, :birth_date,
                        start_year: Time.now.year, end_year: Time.now.year - 100,
                        order: [:day, :month, :year], with_css_classes: true, include_blank: true)

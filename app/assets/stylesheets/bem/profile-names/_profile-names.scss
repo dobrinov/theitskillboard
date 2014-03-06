@@ -1,9 +1,7 @@
 .profile-names {
-  display: inline-block;
+  display: block;
   position: relative;
+  text-align: center;
   margin: 0;
-  padding: 0 0 9px 0;
-  font-size: 30px;
-  font-weight: bold;
-  @include clrfix;
+  padding: 0;
 }

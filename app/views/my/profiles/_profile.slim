@@ -2,13 +2,16 @@
 
 div class="row"
   div class="pp pp_pic-and-name grid grid_12"
-    = profile_picture_for(user, :small)
+    = image_tag(asset_path(user.avatar(:small)), class: 'profile-picture profile-picture_small') if user.avatar?
+
     div class="profile-names"
       div class="profile-names__name" #{user.name}
       div class="profile-names__surname" #{user.surname}
       div class="profile-names__definition" #{user.definition}
 
 
+br
+hr
 br
 / ### Gender, living location and nationality
 
