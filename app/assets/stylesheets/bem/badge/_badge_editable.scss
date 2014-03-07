@@ -1,11 +1,9 @@
 .badge_editable {
-  padding-right: 4px;
-  height: 34px;
-  border: 1px solid $gray_5;
-  @include border-radius(17px);
+  padding-right: 9px;
+  height: 38px;
+  @include border-radius(19px);
 
   &:hover {
-    border-color: $gray_5;
     background-color: $gray_6;
   }
 }
