@@ -12,8 +12,10 @@ div class="row"
 
 br
 hr
-br
+
 / ### Gender, living location and nationality
+br
+br
 
 div class="row"
   div class="pp pp_gender-and-locationgrid grid_12"
@@ -42,12 +44,15 @@ div class="row"
     - else
       span This user havent added any general information yet.
 
-br
+
 / ### Skill tree
+br
+br
 
 - if skill_tree[:sub_categories].any? || skill_tree[:skills].any?
   div class="row"
     div class="pp pp_skill-tree grid grid_12"
+      h2 class="pp__heading" Skills
       = skill_tree(skill_tree)
 
 
@@ -83,8 +88,9 @@ div class="row"
       span This user has no experiences.
 
 
-br
 / ### Interests
+br
+br
 
 div class="row"
   div class="pp pp_interests grid grid_12"
@@ -98,8 +104,9 @@ div class="row"
       span This user has no interests.
 
 
-br
 / ### Contacts
+br
+br
 
 div class="row"
   div class="pp pp_contacts grid grid_12"
