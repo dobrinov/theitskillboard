@@ -175,7 +175,7 @@ DEPENDENCIES
   font-awesome-sass
   jquery-rails
   paperclip (~> 3.0)
-  pg
+  pg (~> 0.17.1)
   rails (= 4.0.2)
   rails3_serve_static_assets!
   rails_12factor
