@@ -6,6 +6,7 @@
   background-color: $gray_5;
   border: 3px solid $gray_6;
   box-sizing: border-box;
+  @include border-radius(5px);
 }
 
 /* Dynamic modifiers */
