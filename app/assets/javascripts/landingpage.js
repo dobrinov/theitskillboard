@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require modernizr
 
 //= require google_analytics
