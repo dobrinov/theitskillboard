@@ -4,6 +4,7 @@
 //= require modernizr
 
 //= require timetable
+//= require google_analytics
 
 function ready() {
   $('.timetable').each(function(){
@@ -13,3 +14,4 @@ function ready() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+$(document).on('page:load', sendGoogleAnalyticsEvents);
