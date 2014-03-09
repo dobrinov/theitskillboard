@@ -48,4 +48,5 @@ html class="no-js"
       div class="container container_centered"
         | The IT skill board / 2014
 
-    = render 'layouts/shared/environment'
+    javascript:
+      var ENV = "#{Rails.env}"

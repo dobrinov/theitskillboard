@@ -1,6 +1,5 @@
 function doGoogleAnalytics(){
   if(ENV != 'production'){ console.log('Skipping tracking ...'); return false; }
-  console.log('das');
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -10,5 +9,5 @@ function doGoogleAnalytics(){
   ga('create', 'UA-38580361-1', 'theitskillboard.com');
 
   console.log("sending pageview...");
-  ga('send', 'pageview'); 
+  ga('send', 'pageview');
 }

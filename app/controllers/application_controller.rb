@@ -46,4 +46,5 @@ class ApplicationController < ActionController::Base
 
     skill_tree
   end
+
 end
