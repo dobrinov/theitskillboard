@@ -20,8 +20,6 @@ set :rbenv_roles, :all
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}"
 
-set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets public/system}
-
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
 
