@@ -2,7 +2,7 @@
   display: inline-block;
 
   &, a {
-    color: $gray_5;
+    color: $gray_4;
   }
 
   .skill-bar {
@@ -19,17 +19,18 @@
   }
 
   a:hover {
-    color: $gray_2;
+    color: $gray_3;
 
     .skill-bar {
-      border-color: $gray_2;
+      border-color: $gray_6;
+      background-color: $gray_5;
 
       .skill-bar__name {
-        color: $gray_2;
+        color: $gray_4;
       }
 
       .skill-bar__level {
-        background-color: $gray_2;
+        background-color: $gray_4;
       }
     }
   }
