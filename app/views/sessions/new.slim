@@ -10,7 +10,7 @@
     div class="row"
       div class="form__group grid_6"
         = label_tag(:email, 'Email', class: 'form__label')
-        = text_field_tag(:email, params[:email], placeholder: 'Enter your email', class: 'input_block')
+        = email_field_tag(:email, params[:email], placeholder: 'Enter your email', class: 'input_block')
 
       div class="form__group grid_6"
         = label_tag(:password, 'Password', class: 'form__label')
