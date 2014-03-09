@@ -12,6 +12,11 @@ gem 'redirectr', '~> 0.0.8'
 gem "paperclip", "~> 3.0"
 gem 'font-awesome-sass'
 
+gem 'capistrano',  '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', "~> 2.0"
+
 group :doc do
   gem 'sdoc', require: false
 end
