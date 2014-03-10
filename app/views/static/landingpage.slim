@@ -3,9 +3,22 @@
     = content_tag(:li, class: 'navigation__item navigation__item_last')
       = link_to('Log in', new_session_path, class: bem_class_for(:button))
 
+div id="fb-root"
+javascript:
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
 div class="row"
   div class="grid_12 site-present"
     h1 class="site-present__primary-text" Creative resumes for software developers
     h3 class="site-present__secondary-text" Present your skills and experience with a resume designed for needs of every software developer.
     = link_to('Create an account', new_user_path, class: "site-present__primary-link button button_primary button_large")
     = link_to('Demo with a random user', profile_path(:demo), class: "site-present__demo-link button button_large")
+
+  div class="grid_12 site-present__like-button"
+    div class="fb-like" data-href="http://www.facebook.com/theitskillboard" data-send="false" data-layout="button_count" data-width="300" data-show-faces="true"
