@@ -2,10 +2,11 @@ class ProfilesController < ApplicationController
 
   def show
     if params[:id] == 'demo'
-      params[:id] = (1..User.count).to_a.sample
+      @user = User.joins(:skills).group("users.id").having("count(skills.id) > 6").sample
+    else
+      @user = User.find(params[:id])
     end
 
-    @user = User.find(params[:id])
     @skill_tree = build_skill_tree(@user.skill_categories, @user.skills.order(level: :desc))
   end
 
