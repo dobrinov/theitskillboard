@@ -166,7 +166,7 @@ TimetableActivity.prototype.calculateColumn = function(){
       column++;
     }
   }
-  
+
   return column;
 }
 

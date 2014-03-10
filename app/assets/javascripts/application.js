@@ -13,5 +13,3 @@ function ready() {
 
 $(document).ready(ready);
 $(document).ready(doGoogleAnalytics);
-$(document).on('page:load', ready);
-$(document).on('page:load', doGoogleAnalytics);
