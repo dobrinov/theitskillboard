@@ -7,8 +7,10 @@
   }
 
   h2 {
+    font-family: OpenSansBold;
     font-size: 14px;
     font-weight: bold;
+    color: $black;
   }
 
   .js & {
@@ -16,7 +18,7 @@
     position: absolute;
     z-index: 1;
     padding: 10px;
-    background-color: $gray_6;
+    background-color: $gray_5;
     @include opacity(0.6);
     @include border-radius(10px);
     border: none;
