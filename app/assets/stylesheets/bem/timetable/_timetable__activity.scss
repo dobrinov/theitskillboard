@@ -18,10 +18,11 @@
     position: absolute;
     z-index: 1;
     padding: 10px;
-    background-color: $gray_5;
-    @include opacity(0.6);
+    background-color: $gray_6;
+    border: 1px solid $gray_5;
+    @include box-sizing('border-box');
+    @include opacity(0.7);
     @include border-radius(10px);
-    border: none;
 
     .timetable__activity__period {
       display: none;
