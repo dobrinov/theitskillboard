@@ -8,6 +8,9 @@ html class="no-js"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
+    - if flash[:fb_register_pixel]
+      = render 'layouts/shared/fb_register_pixel.html'
+
   body
 
     / ### HEADER
