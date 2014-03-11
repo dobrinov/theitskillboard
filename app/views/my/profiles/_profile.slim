@@ -50,7 +50,7 @@ div class="row"
             span class="badge__label" Nationality
             span class="badge__value" #{user.nationality}
     - else
-      span This user have not added any general information yet.
+      span This user has not added any general information yet.
 
 
 / ### Skill tree
@@ -93,7 +93,7 @@ div class="row"
               div class="timetable__activity__period"
                 = experience_period_for(experience)
     - else
-      span This user have not added any experiences yet.
+      span This user has not added any experience yet.
 
 
 / ### Interests
@@ -109,7 +109,7 @@ div class="row"
           li class="badge"
             span class="badge__value" #{interest.name}
     - else
-      span This user have not added any interests yet.
+      span This user has not added any interests yet.
 
 
 / ### Contacts
@@ -126,4 +126,4 @@ div class="row"
             span class="badge__label" #{contact_type_label_for(contact.ctype)}
             span class="badge__value" #{contact.address}
     - else
-      span This user have not added any contacts yet.
+      span This user has not added any contacts yet.
