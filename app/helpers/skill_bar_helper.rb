@@ -10,7 +10,7 @@ module SkillBarHelper
   end
 
   def skill_bar_slider(form)
-    form.number_field(:level, placeholder: 'Level of experience', class: 'input_block', in: (0..10))
+    form.number_field(:level, placeholder: 'Level of experience (0-10)', class: 'input_block', in: (0..10))
   end
 
 end
