@@ -21,10 +21,12 @@ Theitskillboard::Application.routes.draw do
 
   resources :profiles, only: [:show]
 
+  get "sitemap" => "sitemaps#index", as: "sitemap", defaults: { format: "xml" }
   get ":action" => "static#:action"
   root to: "static#landingpage"
 
   scope '/styleguide' do
     get ":action" => "styleguides#:action"
   end
+
 end
