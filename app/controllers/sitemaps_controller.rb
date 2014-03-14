@@ -6,6 +6,8 @@ class SitemapsController < ApplicationController
         root_path
       ]
 
+      @users = User.all
+
       format.xml { render :layout => false }
     end
   end
