@@ -7,6 +7,7 @@ class StaticController < ApplicationController
   after_action :allow_iframe, only: :landingpage
 
   def landingpage
+    @title = "Welcome"
   end
 
   def allow_iframe

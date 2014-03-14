@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   layout 'landingpage'
 
   def new
+    @title = "Join now"
     @user = User.new
   end
 

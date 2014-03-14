@@ -1,11 +1,13 @@
 class My::ProfilesController < My::CommonController
 
   def show
+    @title = "Preview your profile"
     @user = current_user
     @skill_tree = build_skill_tree(@user.skill_categories, @user.skills.order(level: :desc))
   end
 
   def edit
+    @title = "Edit your profile"
     @user = current_user
     @skill_tree = build_skill_tree(@user.skill_categories, @user.skills.order(level: :desc))
   end
