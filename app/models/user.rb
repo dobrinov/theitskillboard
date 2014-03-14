@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 
     # Sub skill categories
     programming_category = self.skill_categories.build({name: 'Programming'})
-    frameworks_category  = self.skill_categories.build({name: 'Framewors'})
+    frameworks_category  = self.skill_categories.build({name: 'Frameworks'})
     db_category          = self.skill_categories.build({name: 'Databases'})
     os_category          = self.skill_categories.build({name: 'Operating systems'})
 
