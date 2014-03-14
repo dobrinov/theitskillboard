@@ -15,10 +15,11 @@ javascript:
 
 div class="row"
   div class="grid_12 site-present"
-    h1 class="site-present__primary-text" Creative resumes for software developers
-    h3 class="site-present__secondary-text" Present your skills and experience with a resume designed for needs of every software developer.
-    = link_to('Create an account', new_user_path, target: "_top", class: "site-present__primary-link button button_primary button_large")
-    = link_to('Demo with a random user', profile_path(:demo), target: "_top", class: "site-present__demo-link button button_large")
+    h1 class="site-present__primary-text" Present your programming skills and experience
+    h3 class="site-present__secondary-text" Create a technology resume designed for the needs of every software developer.
+    = link_to('See demo with a random user', profile_path(:demo), target: "_top", class: "site-present__demo-link button button_large")
+    span class="site-present__or" or
+    = link_to('Join now', new_user_path, target: "_top", class: "site-present__primary-link button button_primary button_large")
 
   div class="grid_12 site-present__like-button"
     div class="fb-like" data-href="http://www.facebook.com/theitskillboard" data-send="false" data-layout="button_count" data-width="300" data-show-faces="true"

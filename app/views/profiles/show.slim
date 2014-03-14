@@ -2,6 +2,6 @@
   - content_for(:header)
     = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-profile-navigation")
       = content_tag(:li)
-        = link_to('Create your own skill board', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
+        = link_to('Join now', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
 
 = render partial: "my/profiles/profile", locals: { user: @user, skill_tree: @skill_tree }
