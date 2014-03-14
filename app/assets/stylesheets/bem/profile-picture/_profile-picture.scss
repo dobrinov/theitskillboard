@@ -1,8 +1,7 @@
 .profile-picture {
   position: relative;
   display: inline-block;
-  border-style: solid;
-  border-color: $gray_5;
+  border: none;
   overflow: hidden;
   @include box-sizing('border-box');
   vertical-align: middle;
