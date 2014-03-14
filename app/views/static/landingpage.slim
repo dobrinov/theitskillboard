@@ -1,7 +1,7 @@
 - content_for(:header)
   = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
     = content_tag(:li, class: 'navigation__item navigation__item_last')
-      = link_to('Log in', new_session_path, class: bem_class_for(:button))
+      = link_to('Log in', new_session_path, target: "_top", class: bem_class_for(:button))
 
 div id="fb-root"
 javascript:
@@ -17,8 +17,8 @@ div class="row"
   div class="grid_12 site-present"
     h1 class="site-present__primary-text" Creative resumes for software developers
     h3 class="site-present__secondary-text" Present your skills and experience with a resume designed for needs of every software developer.
-    = link_to('Create an account', new_user_path, class: "site-present__primary-link button button_primary button_large")
-    = link_to('Demo with a random user', profile_path(:demo), class: "site-present__demo-link button button_large")
+    = link_to('Create an account', new_user_path, target: "_top", class: "site-present__primary-link button button_primary button_large")
+    = link_to('Demo with a random user', profile_path(:demo), target: "_top", class: "site-present__demo-link button button_large")
 
   div class="grid_12 site-present__like-button"
     div class="fb-like" data-href="http://www.facebook.com/theitskillboard" data-send="false" data-layout="button_count" data-width="300" data-show-faces="true"
