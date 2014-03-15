@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    @title = @user.name || @user.surname ? "#{@user.name} #{@user.surname}" : "Random user"
+    @title = @user.name || @user.surname ? "#{@user.name} #{@user.surname}" : "Random developer"
 
     @skill_tree = build_skill_tree(@user.skill_categories, @user.skills.order(level: :desc))
   end
