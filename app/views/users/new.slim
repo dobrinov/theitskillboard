@@ -5,7 +5,7 @@
 
 
 = form_for(@user, html: { class: 'form' }) do |f|
-  h1 class="form__title" Create an account
+  h1 class="form__title" Create a profile
 
   div class="form__content"
     div class="row"
@@ -24,5 +24,5 @@
   div class="form__actions"
     div class="row"
       div class="form__group_actions grid_12"
-        = f.submit('Create your account', class: 'button button_primary button_large form__action_proceed')
+        = f.submit('Create your profile', class: 'button button_primary button_large form__action_proceed')
         = link_to('Cancel', root_path, class: "button form__action_cancel")
