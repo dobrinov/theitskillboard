@@ -1,0 +1,5 @@
+h1 About
+
+p Hey there! My name is #{link_to("Deyan Dobrinov", profile_path(User.where(email: 'deyan.dobrinov@gmail.com').first))} and I am a software developer from #{link_to("Sofia", "http://en.wikipedia.org/wiki/Sofia")}, #{link_to("Bulgaria", "http://en.wikipedia.org/wiki/Bulgaria")}. A while ago when I had to update my tech resume I saw for myself that the European CV template (#{link_to("Europass", "http://europass.cedefop.europa.eu/")}) is not the best way to present the skills and experience of a programmer. So I decided to create my own format and to make it available to other people. This is how the IT skill board project started.
+
+p If you think, that such a platform could be useful to you too feel free to #{link_to("join", new_user_path)}.

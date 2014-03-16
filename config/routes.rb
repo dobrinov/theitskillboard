@@ -22,7 +22,8 @@ Theitskillboard::Application.routes.draw do
   resources :profiles, only: [:show]
 
   get "sitemap" => "sitemaps#index", as: "sitemap", defaults: { format: "xml" }
-  get ":action" => "static#:action"
+  get "about" => "static#about"
+  get "contact" => "static#contact"
   root to: "static#landingpage"
 
   scope '/styleguide' do

@@ -1,7 +1,13 @@
+html {
+  height: 100%;
+}
+
 body {
-  // background: asset-url('background.png') repeat;
   font-family: OpenSansLight, Arial, Helvetica, sans-serif;
   font-size: 14px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 * {
@@ -14,6 +20,15 @@ body {
 
   > div {
     display: inline;
+  }
+}
+
+// Text links
+a {
+  color: $gray_3;
+
+  &:hover {
+    color: $red_3;    
   }
 }
 

@@ -10,6 +10,16 @@ class StaticController < ApplicationController
     @title = "Welcome"
   end
 
+  def about
+    @title = "About"
+  end
+
+  def contact
+    @title = "Contact"
+  end
+
+  private
+
   def allow_iframe
     response.headers.except! 'X-Frame-Options'
   end
