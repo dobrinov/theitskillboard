@@ -3,7 +3,8 @@ class SitemapsController < ApplicationController
   def index
     respond_to do |format|
       @static_paths = [
-        root_path
+        root_path,
+        about_path
       ]
 
       @users = User.all
