@@ -8,6 +8,7 @@ class StaticController < ApplicationController
 
   def landingpage
     @title = "Welcome"
+    @meta_description = "Present your programming skills and experience. Create a technology resume designed for the needs of every software developer."
   end
 
   def about

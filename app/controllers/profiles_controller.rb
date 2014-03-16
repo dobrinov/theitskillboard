@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
     end
 
     @title = @user.name || @user.surname ? "#{@user.name} #{@user.surname}" : "Random developer"
+    @meta_description = meta_description_for_user(@user)
 
     @skill_tree = build_skill_tree(@user.skill_categories, @user.skills.order(level: :desc))
   end

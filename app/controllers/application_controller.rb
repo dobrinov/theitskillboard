@@ -47,4 +47,12 @@ class ApplicationController < ActionController::Base
     skill_tree
   end
 
+  def meta_description_for_user(user)
+    description = "Profile of #{user.name} #{user.surname}; "
+    description << "Has experience with: #{user.skills.collect { |skill| skill.name }.join(', ').html_safe}; "
+    description << "Studied in: #{user.studies.collect { |study| study.at }.join(', ').html_safe}; "
+    description << "Worked for: #{user.employments.collect { |employment| employment.at }.join(', ').html_safe};"
+
+  end
+
 end
