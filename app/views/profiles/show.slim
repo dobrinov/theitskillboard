@@ -4,4 +4,8 @@
       = content_tag(:li)
         = link_to('Join now', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
 
+    = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
+      = content_tag(:li, class: 'navigation__item navigation__item_last')
+        = link_to('Another user', profile_path(:demo), class: bem_class_for(:button))
+
 = render partial: "my/profiles/profile", locals: { user: @user, skill_tree: @skill_tree }
