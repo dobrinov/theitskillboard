@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       login(@user)
       flash[:fb_register_pixel] = true
-      redirect_to my_root_path, notice: 'User successfully created!'
+      redirect_to edit_my_profile_path, notice: 'User successfully created!'
     else
       flash.now[:error] = 'Please, fix the validation errors!'
       render :new
