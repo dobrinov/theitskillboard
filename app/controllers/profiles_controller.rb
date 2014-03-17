@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 
   def show
     if params[:id] == 'demo'
-      @user = User.joins(:skills).group("users.id").having("count(skills.id) > 6").sample
+      @user = User.joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL").group("users.id").having("count(skills.id) > 6").sample
     else
       @user = User.find(params[:id])
     end
