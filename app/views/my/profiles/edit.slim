@@ -3,6 +3,13 @@
     = content_tag(:li)
       = link_to('Preview your profile', my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
 
+/ # Public url ###############################################################
+div class="row"
+  div class="grid_12"
+    strong Profile public url
+    | : #{profile_url(@user)}
+
+br
 
 / # Profile picture ###############################################################
 
