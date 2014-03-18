@@ -21,5 +21,39 @@ div class="row"
     span class="site-present__or" or
     = link_to('Join now', new_user_path, target: "_top", class: "site-present__primary-link button button_primary button_large")
 
+br
+br
+br
+br
+br
+
+
+ul class="row site-present__benefits"
+  li class="grid_4 site-present__benefit"
+    h3 Get discovered
+    p Get discovered by companies and recruiters.
+  li class="grid_4 site-present__benefit"
+    h3 Be up to date
+    p Always have an up to date version of your resume.
+  li class="grid_4 site-present__benefit"
+    h3 Send easily
+    p Send easily your resume to other people.
+
+
+br
+
+
+div class="row site-present_latest-users"
+  h3 Latest users
+
+  ul class="grid_12 site-present__users"
+    - @latest_users.each do |user|
+      li class="grid_1 site-present__user"
+        = link_to(profile_path(user)) do
+          = image_tag(user.avatar(:thumb), class: 'profile-picture profile-picture_thumb')
+
+br
+br
+
   div class="grid_12 site-present__like-button"
     div class="fb-like" data-href="http://www.facebook.com/theitskillboard" data-share="true" data-send="false" data-layout="button_count" data-width="300" data-show-faces="true"
