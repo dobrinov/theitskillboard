@@ -1,0 +1,43 @@
+doctype html
+html class="no-js"
+  head
+    title  #{@title} | The IT skill board
+    meta name="viewport" content="width=device-width, user-scalable=no"
+    meta name="description" content="#{@meta_description}"
+
+    = favicon_link_tag "favicon.ico"
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+
+    / ### HEADER
+
+    header class="l-header"
+      div class="l-top-line"
+      div class="row"
+        div class="grid_12"
+          = link_to(logged_in? ? my_root_path : root_path, class: "l-logo #{bem_class_for(:logo)}")
+            = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
+
+    / ### NOTIFICATIONS
+
+    - if flash.any?
+      = content_tag(:div, class: "l-messages container container_centered")
+        = success_notification "Success", flash[:notice] if flash[:notice].present?
+        = warning_notification "Warning", flash[:alert]  if flash[:alert].present?
+        = danger_notification  "Error",   flash[:error]  if flash[:error].present?
+
+
+    / ### BODY
+
+    div class="l-body container container_centered"
+      == yield
+
+
+    / ### FOOTER
+
+    footer class="l-footer"
+      div class="container container_centered"
+        | The IT skill board / 2014

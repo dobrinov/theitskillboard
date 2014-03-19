@@ -19,6 +19,10 @@ Theitskillboard::Application.routes.draw do
     root to: "profiles#show"
   end
 
+  namespace :admin do
+    resources :users, only: :index
+  end
+
   resources :profiles, only: [:show]
 
   get "sitemap" => "sitemaps#index", as: "sitemap", defaults: { format: "xml" }
