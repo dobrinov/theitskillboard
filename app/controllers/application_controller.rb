@@ -15,8 +15,11 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def login(user)
+  def login!(user)
     session[:current_user_id] = user.id
+    user.last_login_at = Time.now
+    user.login_count = (user.login_count || 0) + 1
+    user.save!
   end
 
   def require_login
