@@ -4,7 +4,8 @@ class SitemapsController < ApplicationController
     respond_to do |format|
       @static_paths = [
         root_path,
-        about_path
+        about_path,
+        contact_path
       ]
 
       @users = User.all
