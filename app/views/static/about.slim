@@ -3,3 +3,24 @@ h1 About
 p Hey there! My name is #{link_to("Deyan Dobrinov", profile_path(User.where(email: 'deyan.dobrinov@gmail.com').first))} and I am a software developer from #{link_to("Sofia", "http://en.wikipedia.org/wiki/Sofia")}, #{link_to("Bulgaria", "http://en.wikipedia.org/wiki/Bulgaria")}. A while ago when I had to update my tech resume I saw for myself that the European CV template (#{link_to("Europass", "http://europass.cedefop.europa.eu/")}) is not the best way to present the skills and experience of a programmer. So I decided to create my own format and to make it available to other people. This is how the IT skill board project started.
 
 p If you think, that such a platform could be useful to you too feel free to #{link_to("join", new_user_path)}.
+
+br
+br
+
+div class="grid_12 site-present__share"
+
+  span class="site-present__fb-share"
+    div class="fb-like" data-href="http://www.facebook.com/theitskillboard" data-share="true" data-send="false" data-layout="button_count" data-width="300" data-show-faces="true"
+    javascript:
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+  span class="site-present__twitter-share"
+    a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.theitskillboard.com" data-text="The IT skill board - Creative resumes for software developers." Tweet
+    javascript:
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
