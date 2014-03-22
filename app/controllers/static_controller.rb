@@ -9,7 +9,8 @@ class StaticController < ApplicationController
   def landingpage
     @title = "Welcome"
     @meta_description = "Present your programming skills and experience. Create a technology resume designed for the needs of every software developer."
-    @latest_users = User.order(created_at: :desc).limit(24)
+    # @latest_users = User.order(created_at: :desc).limit(24)
+    @random_users = User.joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL").group("users.id").having("count(skills.id) > 6")
   end
 
   def about

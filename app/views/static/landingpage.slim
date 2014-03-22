@@ -28,18 +28,18 @@ ul class="row site-present__benefits"
     h3 Be up to date
     p Always have an up to date version of your r&eacute;sum&eacute;.
   li class="grid_4 site-present__benefit"
-    h3 Send easily
-    p Send easily your r&eacute;sum&eacute; to other people.
+    h3 Share easily
+    p Share your r&eacute;sum&eacute; easily with other people.
 
 
 br
 
 
 div class="row site-present_latest-users"
-  h3 Latest users
+  h3 Random users
 
   ul class="grid_12 site-present__users"
-    - @latest_users.each do |user|
+    - @random_users.each do |user|
       li class="grid_1 site-present__user"
         = link_to(profile_path(user), title: user_names_for(user)) do
           = image_tag(user.avatar(:thumb), class: 'profile-picture profile-picture_thumb')
