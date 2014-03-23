@@ -31,19 +31,7 @@ ul class="row site-present__benefits"
     h3 Share easily
     p Share your resume easily with other people.
 
-
 br
-
-
-div class="row site-present_latest-users"
-  h3 Latest users
-
-  ul class="grid_12 site-present__users"
-    - @latest_users.each do |user|
-      li class="grid_1 site-present__user"
-        = link_to(profile_path(user), title: user_names_for(user)) do
-          = image_tag(user.avatar(:thumb), class: 'profile-picture profile-picture_thumb')
-
 br
 br
 
