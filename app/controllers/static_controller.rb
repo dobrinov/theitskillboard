@@ -1,3 +1,5 @@
+require 'net/http'
+
 class StaticController < ApplicationController
 
   layout 'landingpage'
@@ -28,7 +30,13 @@ class StaticController < ApplicationController
 
   def custom_domain_redirect
     if request.domain == 'www.dobrinov.eu' || request.domain == 'dobrinov.eu'
-      redirect_to(profile_path(User.where(email: 'deyan.dobrinov@gmail.com').first))
+      url = URI.parse("http://www.theitskillboard.com#{profile_path(User.where(email: 'deyan.dobrinov@gmail.com').first)}")
+      req = Net::HTTP::Get.new(url.path)
+      res = Net::HTTP.start(url.host, url.port) {|http|
+        http.request(req)
+      }
+
+      render text: res.body
     else
       # Do nothing
     end
