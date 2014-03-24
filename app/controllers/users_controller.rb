@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user.seed_initial_contacts
 
     if @user.save
-      login(@user)
+      login!(@user)
       flash[:fb_register_pixel] = true
       redirect_to edit_my_profile_path, notice: 'User successfully created!'
     else
