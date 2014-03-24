@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :custom_domain_redirect
-
   helper_method \
     :current_user,
     :logged_in?
@@ -34,14 +32,6 @@ class ApplicationController < ActionController::Base
   def require_no_login
     if logged_in?
       redirect_to my_root_path
-    end
-  end
-
-  def custom_domain_redirect
-    if request.domain == 'www.dobrinov.eu' || request.domain == 'dobrinov.eu'
-      redirect_to(profile_path(User.where(email: 'deyan.dobrinov@gmail.com').first))
-    else
-      # Do nothing
     end
   end
 
