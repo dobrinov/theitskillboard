@@ -55,7 +55,6 @@ class ApplicationController < ActionController::Base
     description << "Has experience with: #{user.skills.collect { |skill| skill.name }.join(', ').html_safe}; "
     description << "Studied in: #{user.studies.collect { |study| study.at }.join(', ').html_safe}; "
     description << "Worked for: #{user.employments.collect { |employment| employment.at }.join(', ').html_safe};"
-
   end
 
 end
