@@ -4,6 +4,8 @@
       = link_to('Create an account', new_user_path, class: bem_class_for(:button, ['primary', 'large']))
 
 = form_tag(session_path, class: 'form') do
+  = hidden_referrer_input_tag
+
   h1 class="form__title" Log in
 
   div class="form__content"
