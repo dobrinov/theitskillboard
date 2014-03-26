@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319213156) do
+ActiveRecord::Schema.define(version: 20140325083312) do
 
   create_table "contacts", force: true do |t|
     t.string   "ctype"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140319213156) do
     t.datetime "updated_at"
     t.datetime "last_login_at"
     t.integer  "login_count"
+    t.string   "domain"
   end
 
 end
