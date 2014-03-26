@@ -36,6 +36,11 @@ class User < ActiveRecord::Base
                     default_url: 'placeholders/profile_picture/:style.png'
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def self.demo_sample
+    r = joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL").group("users.id").having("count(skills.id) > 4")
+    r.limit(1).offset(rand(r.size.size)).first
+  end
+
   def age
     ((DateTime.now - self.birth_date) / 365.25).to_i
   end
