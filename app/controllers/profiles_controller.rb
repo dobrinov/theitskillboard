@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
 
   def show
-    if params[:id] == 'demo'
-      @user = User.joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL").group("users.id").having("count(skills.id) > 4").sample
+
+    if params[:id].present?
+      @user = (params[:id] == 'demo') ? User.demo_sample : User.find(params[:id])
     else
-      @user = User.find(params[:id])
+      @user = User.where(domain: request.domain).first
     end
 
     @title = @user.name || @user.surname ? "#{@user.name} #{@user.surname}" : "Random developer"
