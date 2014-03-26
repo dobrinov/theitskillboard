@@ -50,6 +50,10 @@ class ApplicationController < ActionController::Base
     skill_tree
   end
 
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
+
   def meta_description_for_user(user)
     description = "Profile of #{user.name} #{user.surname}; "
     description << "Has experience with: #{user.skills.collect { |skill| skill.name }.join(', ').html_safe}; "
