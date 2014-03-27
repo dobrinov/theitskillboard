@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def self.demo_sample
-    r = joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL").group("users.id").having("count(skills.id) > 4")
+    r = joins(:skills).where("users.name IS NOT NULL AND users.surname IS NOT NULL AND users.avatar_file_name IS NOT NULL").group("users.id").having("count(skills.id) > 4")
     r.limit(1).offset(rand(r.size.size)).first
   end
 
