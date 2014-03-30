@@ -1,15 +1,12 @@
-- content_for(:header)
-  = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-profile-navigation")
-    = content_tag(:li)
-      = link_to('Edit your profile', edit_my_profile_path, class: bem_class_for(:button, ['primary', 'large']))
+h1 My profile
+
+br
 
 ul class="nav nav_tabs"
   li class="nav__item nav_tabs__item nav_tabs__item_active"
-    a href="#" Preview
+    = link_to('Preview')
   li class="nav__item nav_tabs__item"
-    a href="#" Edit
-  li class="nav__item nav_tabs__item"
-    a href="#" Something else
+    = link_to('Edit', edit_my_profile_path)
 
 br
 br
