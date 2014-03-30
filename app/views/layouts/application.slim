@@ -24,12 +24,16 @@ html class="no-js"
           = link_to(logged_in? ? my_root_path : root_path, class: "l-logo #{bem_class_for(:logo)}")
             = image_tag('logo.png', class: 'logo__image', alt: 'The IT skill board')
 
-          == yield(:header)
 
-          - if logged_in?
-            = content_tag(:ul, class: "#{bem_class_for(:navigation, ['buttons'])} l-user-navigation")
-              = content_tag(:li)
-                = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+          ul class="nav nav_default l-main-navigation"
+            li class="nav__item nav_default__item"
+              a href="#" Profile
+            li class="nav__item nav_default__item"
+              a href="#" Messages
+            li class="nav__item nav_default__item"
+              a href="#" Settings
+            li class="nav__item nav_default__item_button"
+              = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
 
 
     / ### NOTIFICATIONS

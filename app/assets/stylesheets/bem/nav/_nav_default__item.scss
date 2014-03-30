@@ -1,0 +1,21 @@
+.nav_default__item {
+  margin: 0px 3px;
+
+  &:hover {
+    @include border-radius(6px);
+    background: $gray_6;
+
+    > a {
+      color: $black;
+    }
+  }
+
+  > a {
+    display: block;
+    padding: 20px 10px 20px 10px;
+    height: 60px;
+    line-height: 20px;
+    color: $gray_3;
+    text-decoration: none;
+  }
+}
