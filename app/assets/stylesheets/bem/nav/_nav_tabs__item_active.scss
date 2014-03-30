@@ -1,0 +1,15 @@
+.nav_tabs__item_active {
+
+  > a {
+    color: $black;
+    cursor: default;
+    border: 1px solid $gray_4;
+    border-bottom: none;
+    background-color: $white;
+    @include border-top-radius(6px);
+
+    &:hover {
+      color: $black;
+    }
+  }
+}
