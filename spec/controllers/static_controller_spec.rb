@@ -16,9 +16,9 @@ describe StaticController do
     context "when custom domain" do
       before { request.host = custom_host }
 
-      it 'redirects to theitskillboard.com' do
-        get :about
-        skip "Implement check and redirect"
+      it 'redirects to regular domain url' do
+        get :landingpage
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/")
       end
     end
 
@@ -36,9 +36,9 @@ describe StaticController do
     context "when custom domain" do
       before { request.host = custom_host }
 
-      it 'redirects to theitskillboard.com' do
+      it 'redirects to regular domain url' do
         get :about
-        skip "Implement check and redirect"
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/about")
       end
     end
 
@@ -56,9 +56,9 @@ describe StaticController do
     context "when custom domain" do
       before { request.host = custom_host }
 
-      it 'redirects to theitskillboard.com' do
-        get :about
-        skip "Implement check and redirect"
+      it 'redirects to regular domain url' do
+        get :contact
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/contact")
       end
     end
 
