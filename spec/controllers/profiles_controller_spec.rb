@@ -21,11 +21,11 @@ describe ProfilesController do
     end
 
     context "when custom domain" do
-      let(:domain) { 'custom.host' }
+      let(:custom_host){ "custom.host" }
 
       before do 
-        @request.host = domain
-        simple_user.update_attributes(domain: domain)
+        request.host = custom_host
+        simple_user.update_attributes(domain: custom_host)
       end
 
       it "should be 200" do
@@ -33,14 +33,14 @@ describe ProfilesController do
         expect(response).to be_success
       end
 
-      it "redirects to regular domain" do
+      it "redirects to regular domain url" do
         get :show, { id: simple_user.id }
-        expect(response).to redirect_to("http://test.host/profiles/#{simple_user.id}")
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/#{simple_user.id}")
       end
 
-      it "redirects to regular domain" do
+      it "redirects to regular domain url" do
         get :show, { id: 'demo' }
-        expect(response).to redirect_to("http://test.host/profiles/demo")
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/demo")
       end
 
     end
