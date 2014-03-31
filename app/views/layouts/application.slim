@@ -26,10 +26,17 @@ html class="no-js"
 
 
           ul class="nav nav_default l-main-navigation"
-            li class="nav__item nav_default__item"
-              a href="#" My profile
-            li class="nav__item nav_default__item_button"
-              = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+            - if logged_in?
+              li class="nav__item nav_default__item"
+                = link_to('My profile', my_profile_path)
+              li class="nav__item nav_default__item_button"
+                = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
+
+            - else
+              li class="nav__item nav_default__item"
+                = link_to('Another user', profile_path(id: 'demo'))
+              li class="nav__item nav_default__item_button"
+                = link_to('Join now', new_user_path, class: 'button button_primary')
 
 
     / ### NOTIFICATIONS
