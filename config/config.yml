@@ -7,8 +7,8 @@ development:
 
 test:
   <<: *defaults
-  domain: localhost
-  port: 3000
+  domain: test.host
+  port: 80
 
 production:
   <<: *defaults

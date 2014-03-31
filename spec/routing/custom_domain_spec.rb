@@ -10,7 +10,7 @@ describe "CustomDomain" do
     context "when custom domain" do
       let(:domain) { 'custom.host' }
 
-      before { User.first.update_attributes(domain: domain) }
+      before { simple_user.update_attributes(domain: domain) }
 
       it 'leads to the profile page' do
         expect(get: "http://#{domain}#{root_path}").to route_to(controller: "profiles", action: "show")

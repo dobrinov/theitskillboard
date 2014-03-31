@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     :current_user,
     :logged_in?
 
+  before_action :validate_custom_domain_locaiton, if: :custom_domain?
+
   def current_user
     @_current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
   end
@@ -48,6 +50,16 @@ class ApplicationController < ActionController::Base
     skill_tree[:name] = category.name if category.present?
 
     skill_tree
+  end
+
+  def custom_domain?
+    request.domain != APP_CONFIG['domain']
+  end
+
+  def validate_custom_domain_locaiton
+    unless params[:controller] == 'profiles' && params[:action] == 'show' && params[:id].nil?
+      redirect_to url_for(params.merge(host: "#{APP_CONFIG['domain']}"))
+    end
   end
 
   def allow_iframe
