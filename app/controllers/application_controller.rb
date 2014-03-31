@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     :current_user,
     :logged_in?
 
-  before_action :validate_custom_domain_locaiton, if: :custom_domain?
+  before_action :redirect_to_regular_domain_url_version, if: :out_of_custom_domain_scope?
 
   def current_user
     @_current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
@@ -56,10 +56,12 @@ class ApplicationController < ActionController::Base
     request.domain != APP_CONFIG['domain']
   end
 
-  def validate_custom_domain_locaiton
-    unless params[:controller] == 'profiles' && params[:action] == 'show' && params[:id].nil?
-      redirect_to url_for(params.merge(host: "#{APP_CONFIG['domain']}"))
-    end
+  def out_of_custom_domain_scope?
+    custom_domain? && !(params[:controller] == 'profiles' && params[:action] == 'show' && params[:id].nil?)
+  end
+
+  def redirect_to_regular_domain_url_version
+    redirect_to url_for(params.merge(host: "#{APP_CONFIG['domain']}"))
   end
 
   def allow_iframe

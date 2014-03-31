@@ -33,12 +33,12 @@ describe ProfilesController do
         expect(response).to be_success
       end
 
-      it "redirects to the regular domain" do
+      it "redirects to regular domain" do
         get :show, { id: simple_user.id }
         expect(response).to redirect_to("http://test.host/profiles/#{simple_user.id}")
       end
 
-      it "redirects to the regular domain" do
+      it "redirects to regular domain" do
         get :show, { id: 'demo' }
         expect(response).to redirect_to("http://test.host/profiles/demo")
       end
