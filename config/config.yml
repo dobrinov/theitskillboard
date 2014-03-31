@@ -1,0 +1,16 @@
+defaults: &defaults
+
+development:
+  <<: *defaults
+  domain: localhost
+  port: 3000
+
+test:
+  <<: *defaults
+  domain: localhost
+  port: 3000
+
+production:
+  <<: *defaults
+  domain: theitskillboard.com
+  port: 80
