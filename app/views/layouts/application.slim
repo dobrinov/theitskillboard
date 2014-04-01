@@ -29,6 +29,8 @@ html class="no-js"
             - if logged_in?
               li class="nav__item nav_default__item"
                 = link_to('My profile', my_profile_path)
+              li class="nav__item nav_default__item"
+                = link_to('Settings', my_settings_path)
               li class="nav__item nav_default__item_button"
                 = button_to('Log out', session_path, {:method => :delete, class: bem_class_for(:button, ['danger'])})
 

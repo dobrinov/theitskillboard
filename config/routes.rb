@@ -7,6 +7,8 @@ Theitskillboard::Application.routes.draw do
       resource :avatar, only: [:edit, :update, :destroy]
     end
 
+    resource :settings, only: [:show, :update]
+
     resources :skill_categories, only: [:new, :create, :edit, :update, :destroy]
     resources :skills, only: [:new, :create, :edit, :update, :destroy]
 
