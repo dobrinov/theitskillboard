@@ -50,7 +50,7 @@ describe SessionsController do
         it "renders validation errors" do
           post :create, { email: 'wrong', password: 'wrong' }
           expect(response).to be_success
-          expect(response).to render_template(:new) 
+          expect(response).to render_template(:new)
         end
       end
     end
