@@ -13,15 +13,19 @@ class ApplicationController < ActionController::Base
     @_current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
   end
 
-  def logged_in?
-    current_user.present?
-  end
-
   def login!(user)
     session[:current_user_id] = user.id
     user.last_login_at = Time.now
     user.login_count = (user.login_count || 0) + 1
     user.save!
+  end
+
+  def logout!(user)
+    @_current_user = session[:current_user_id] = nil
+  end
+
+  def logged_in?
+    current_user.present?
   end
 
   def require_login

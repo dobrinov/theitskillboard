@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @_current_user = session[:current_user_id] = nil
+    logout!(current_user)
     redirect_to new_session_path, notice: 'Signed out!'
   end
 

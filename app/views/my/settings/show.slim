@@ -31,4 +31,5 @@ ul class="settings-table"
     ul class="settings-table__row settings-table__row_last row"
       li class="settings-table__col grid grid_3" Delete profile
       li class="settings-table__col grid grid_7" &nbsp;
-      li class="settings-table__col grid grid_2" Delete
+      li class="settings-table__col grid grid_2"
+        = button_to('Delete', my_profile_path, {:method => :delete, confirm: 'Are you sure?', class: bem_class_for(:button, ['danger'])})
