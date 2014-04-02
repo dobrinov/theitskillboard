@@ -1,6 +1,7 @@
 class My::SettingsController < My::CommonController
 
   def show
+    @user = current_user
   end
 
   def update

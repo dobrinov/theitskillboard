@@ -1,1 +1,34 @@
 h1 Settings
+
+br
+
+ul class="settings-table"
+  li
+    ul class="settings-table__row settings-table__row_first row"
+      li class="settings-table__col grid grid_3" Public url
+      li class="settings-table__col grid grid_7" #{profile_url(@user)}
+      li class="settings-table__col grid grid_2" &nbsp;
+
+  / li
+  /   ul class="settings-table__row row"
+  /     li class="settings-table__col grid grid_3" Custom domain
+  /     li class="settings-table__col grid grid_7" #{@user.domain || 'not set'}
+  /     li class="settings-table__col grid grid_2" Edit
+
+  / li
+  /   ul class="settings-table__row row"
+  /     li class="settings-table__col grid grid_3" Email
+  /     li class="settings-table__col grid grid_7" #{@user.email}
+  /     li class="settings-table__col grid grid_2" Edit
+
+  / li
+  /   ul class="settings-table__row row"
+  /     li class="settings-table__col grid grid_3" Password
+  /     li class="settings-table__col grid grid_7" &#42;&#42;&#42;
+  /     li class="settings-table__col grid grid_2" Edit
+
+  li
+    ul class="settings-table__row settings-table__row_last row"
+      li class="settings-table__col grid grid_3" Delete profile
+      li class="settings-table__col grid grid_7" &nbsp;
+      li class="settings-table__col grid grid_2" Delete
