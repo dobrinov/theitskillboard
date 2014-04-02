@@ -12,14 +12,6 @@ br
 br
 
 
-/ # Public url ###############################################################
-div class="row"
-  div class="grid_12"
-    strong Profile public url
-    | : #{profile_url(@user)}
-
-br
-
 / # Profile picture ###############################################################
 
 = form_for(@user, url: my_profile_avatar_path, html: { class: 'form' }) do |f|
