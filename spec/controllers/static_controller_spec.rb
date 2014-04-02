@@ -63,5 +63,14 @@ describe StaticController do
     end
 
   end
+
+  describe "GET bye" do
+
+    it 'has a 200 status code' do
+      get :bye
+      expect(response).to be_success
+    end
+
+  end
   
 end

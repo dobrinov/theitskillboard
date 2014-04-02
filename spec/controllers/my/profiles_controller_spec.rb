@@ -33,7 +33,7 @@ describe My::ProfilesController do
       delete :destroy
       expect { User.find(simple_user.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       expect(session[:current_user_id]).to be_nil
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to bye_path
     end
   end
 

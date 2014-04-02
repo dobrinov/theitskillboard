@@ -30,7 +30,7 @@ class My::ProfilesController < My::CommonController
     logout!(user)
     user.destroy
 
-    redirect_to root_path
+    redirect_to bye_path
   end
 
   private

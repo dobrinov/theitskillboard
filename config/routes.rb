@@ -29,6 +29,7 @@ Theitskillboard::Application.routes.draw do
 
   get "sitemap" => "sitemaps#index", as: "sitemap", defaults: { format: "xml" }
   get "about" => "static#about"
+  get "bye" => "static#bye"
   get "contact" => "static#contact"
 
   root to: "profiles#show", as: :custom_domain_root, constraints: CustomDomain.new

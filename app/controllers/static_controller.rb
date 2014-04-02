@@ -19,4 +19,8 @@ class StaticController < ApplicationController
     @title = "Contact"
   end
 
+  def bye
+    @title = "Bye, bye"
+  end
+
 end
