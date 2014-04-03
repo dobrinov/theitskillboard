@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe My::ProfilesController do
 
+  fixtures :users
+
   before { login(simple_user) }
 
   describe "GET show" do

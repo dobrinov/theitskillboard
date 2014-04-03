@@ -2,6 +2,8 @@ require "spec_helper"
 
 describe ProfilesController do
 
+  fixtures :users
+
   before do
     allow(User).to receive(:demo_sample).and_return(simple_user)
   end
@@ -9,14 +11,18 @@ describe ProfilesController do
   describe "GET show" do
 
     context "when regular domain" do
-      it "renders a user by id" do
-        get :show, { id: simple_user.id }
-        expect(response).to be_success
+      context "when user by id" do
+        it "has a 200 status code" do
+          get :show, { id: simple_user.id }
+          expect(response).to be_success
+        end
       end
 
-      it "renders a demo user" do
-        get :show, { id: 'demo' }
-        expect(response).to be_success
+      context "when demo user" do
+        it "has a 200 status code" do
+          get :show, { id: 'demo' }
+          expect(response).to be_success
+        end
       end
     end
 
@@ -28,19 +34,23 @@ describe ProfilesController do
         simple_user.update_attributes(domain: custom_host)
       end
 
-      it "should be 200" do
+      it "has a 200 status code" do
         get :show
         expect(response).to be_success
       end
 
-      it "redirects to regular domain url" do
-        get :show, { id: simple_user.id }
-        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/#{simple_user.id}")
+      context "when user by id" do
+        it "redirects to regular domain url" do
+          get :show, { id: simple_user.id }
+          expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/#{simple_user.id}")
+        end
       end
 
-      it "redirects to regular domain url" do
-        get :show, { id: 'demo' }
-        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/demo")
+      context "when demo user" do
+        it "redirects to regular domain url" do
+          get :show, { id: 'demo' }
+          expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/profiles/demo")
+        end
       end
 
     end

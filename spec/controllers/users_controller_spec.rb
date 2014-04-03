@@ -4,7 +4,9 @@ describe UsersController do
 
   describe "GET new" do
 
-    it 'has 200 status code' do
+    it 'has a 200 status code' do
+      get :new
+      expect(response).to be_success
     end
 
   end

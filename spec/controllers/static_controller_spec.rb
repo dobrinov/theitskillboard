@@ -66,9 +66,20 @@ describe StaticController do
 
   describe "GET bye" do
 
-    it 'has a 200 status code' do
-      get :bye
-      expect(response).to be_success
+    context "when regular domain" do
+      it 'has a 200 status code' do
+        get :bye
+        expect(response).to be_success
+      end
+    end
+
+    context "when custom domain" do
+      before { request.host = custom_host }
+
+      it 'redirects to regular domain url' do
+        get :bye
+        expect(response).to redirect_to("http://#{APP_CONFIG['domain']}/bye")
+      end
     end
 
   end

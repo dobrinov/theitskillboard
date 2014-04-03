@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe SessionsController do
 
+  fixtures :users
+
   describe "GET new" do
 
     context "when authenticated" do

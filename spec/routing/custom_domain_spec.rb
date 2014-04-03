@@ -1,4 +1,7 @@
 describe "CustomDomain" do
+
+  fixtures :users
+
   describe "GET root_path" do
 
     context "when regular domain" do
