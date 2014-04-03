@@ -1,0 +1,8 @@
+h1 New message
+
+- if @sender.present?
+  p from #{@sender.name} #{@sender.surname}
+- else
+  p from Anonnymous
+
+p to #{@receiver.name} #{@receiver.surname}
