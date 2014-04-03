@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
 
   def new
+    @message = Message.new
+
     @receiver = User.find(params[:profile_id])
     @sender = current_user
 

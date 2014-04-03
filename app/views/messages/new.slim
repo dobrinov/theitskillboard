@@ -1,8 +1,16 @@
 h1 New message
 
-- if @sender.present?
-  p from #{@sender.name} #{@sender.surname}
-- else
-  p from Anonnymous
+br
 
-p to #{@receiver.name} #{@receiver.surname}
+= form_for(@message, url: profile_messages_path(profile_id: @receiver.id)) do |f|
+  div class="row"
+    div class="grid grid_6"
+      - if @sender.present?
+        p from #{@sender.name} #{@sender.surname}
+      - else
+        = f.label(:sender_name, 'Sender name', class: 'form__label')
+        = f.text_field(:sender_name, class: 'input_block')
+    div class="grid grid_6"
+      p to #{@receiver.name} #{@receiver.surname}
+
+  = f.submit('Send', class: 'button button_primary button_large form__action_proceed')
