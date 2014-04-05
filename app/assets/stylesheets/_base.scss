@@ -76,6 +76,14 @@ input, select, textarea {
   }
 }
 
+.field_with_errors {
+  input, select, textarea {
+    background-color: $red_6;
+    border-color: $red_3;
+    color: $red_3;
+  }
+}
+
 .input_block {
   width: 100%;
   display: block;

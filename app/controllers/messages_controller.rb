@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
 
   def new
+    @title = "New message"
+
     @message = Message.new
 
     @receiver = User.find(params[:profile_id])
@@ -10,11 +12,11 @@ class MessagesController < ApplicationController
       @message.sender_name  = "#{@sender.name} #{@sender.surname}"
       @message.sender_email = @sender.email 
     end
-
-    @title = "New message"
   end
 
   def create
+    @title = "New message"
+
     @receiver = User.find(params[:profile_id])
     @sender = current_user
 
@@ -31,7 +33,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to profile_path(@receiver.id), notice: 'Message sent.'
     else
-      flash.now[:error] = 'You must fill all required fields.'
+      flash.now[:error] = 'The message was not sent. Fix the validation errors!'
       render :new
     end
 
