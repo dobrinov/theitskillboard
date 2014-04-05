@@ -61,12 +61,19 @@ hr {
 
 // Inputs
 
-input, select {
+input, select, textarea {
   @include input-default;
   display: inline-block;
   border: 1px solid $gray_4;
   background-color: $white;
-  // height: 28px;
+  resize: none;
+}
+
+input, select, textarea {
+  &[disabled]{
+    color: $gray_4;
+    background-color: $gray_6;
+  }
 }
 
 .input_block {

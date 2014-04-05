@@ -8,6 +8,10 @@ module ControllerHelpers
     @_simple_user ||= User.where(email: 'simple.user@example.com').first
   end
 
+  def simple_user_two
+    @_simple_user_two ||= User.where(email: 'simple.user.two@example.com').first
+  end
+
 end
 
 RSpec.configure do |config|
