@@ -30,6 +30,11 @@ describe MessagesController do
           get :new, { profile_id: simple_user.id }
           expect(response).to redirect_to(my_profile_path)
         end
+
+        it "shows an alert message" do
+          get :new, { profile_id: simple_user.id }
+          expect(flash[:alert]).to be_present
+        end
       end
     end
 
@@ -126,6 +131,19 @@ describe MessagesController do
                         }
 
           expect(response).to redirect_to(my_profile_path)
+        end
+
+        it "shows an alert message" do
+          post :create, { profile_id: simple_user.id,
+                          message: {
+                            sender_name:  message.sender_name,
+                            sender_email: message.sender_email,
+                            subject:      message.subject,
+                            body:         message.body
+                          }
+                        }
+
+          expect(flash[:alert]).to be_present
         end
       end
 

@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
 
   def prevent_self_messaging
     if logged_in? && (current_user.id == params[:profile_id].to_i)
-      redirect_to back_or_default(my_profile_path)
+      redirect_to back_or_default(my_profile_path), alert: 'You cannot send a message to your self.'
     end
   end
 
