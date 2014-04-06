@@ -2,4 +2,19 @@ h1 Messages
 
 br
 
-= @messages.inspect
+- if @messages.any?
+  table
+    thead
+      tr
+        th From
+        th Subject
+        th Date
+    tbody
+      - @messages.each do |message|
+        tr
+          td #{message.sender_name}(#{message.sender_email})
+          td #{message.subject}
+          td #{message.created_at}
+
+- else
+  You have no messages in your inbox.
