@@ -24,6 +24,13 @@ describe MessagesController do
         get :new, { profile_id: simple_user_two.id }
         expect(response).to be_success
       end
+
+      context "when sending message to yourself" do
+        it "redirects to profile preview" do
+          get :new, { profile_id: simple_user.id }
+          expect(response).to redirect_to(my_profile_path)
+        end
+      end
     end
 
     describe 'POST create' do
@@ -105,6 +112,21 @@ describe MessagesController do
           expect(flash[:error]).to be_present
         end
 
+      end
+
+      context "when sending message to yourself" do
+        it "redirects to profile preview" do
+          post :create, { profile_id: simple_user.id,
+                          message: {
+                            sender_name:  message.sender_name,
+                            sender_email: message.sender_email,
+                            subject:      message.subject,
+                            body:         message.body
+                          }
+                        }
+
+          expect(response).to redirect_to(my_profile_path)
+        end
       end
 
     end

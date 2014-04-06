@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :prevent_self_messaging
+
   def new
     @title = "New message"
 
@@ -43,6 +45,12 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:sender_name, :sender_email, :subject, :body)
+  end
+
+  def prevent_self_messaging
+    if logged_in? && (current_user.id == params[:profile_id].to_i)
+      redirect_to back_or_default(my_profile_path)
+    end
   end
 
 end
