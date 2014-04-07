@@ -5,11 +5,11 @@ module ControllerHelpers
   end
 
   def simple_user
-    @_simple_user ||= User.where(email: 'simple.user@example.com').first
+    @_simple_user = User.where(email: 'simple.user@example.com').first
   end
 
   def simple_user_two
-    @_simple_user_two ||= User.where(email: 'simple.user.two@example.com').first
+    @_simple_user_two = User.where(email: 'simple.user.two@example.com').first
   end
 
 end

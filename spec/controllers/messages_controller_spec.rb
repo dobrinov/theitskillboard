@@ -4,35 +4,38 @@ describe MessagesController do
 
   fixtures :users
 
+  let(:user)       { users(:simple_user)}
+  let(:other_user) { users(:other_simple_user)}
+
   let(:message) do
     Message.new(
-                sender_name:  "#{simple_user.name} #{simple_user.surname}",
-                sender_email: simple_user.email,
+                sender_name:  "#{user.name} #{user.surname}",
+                sender_email: user.email,
                 subject:      'Testing hi',
                 body:         'Hi just testing',
-                receiver_id:  simple_user_two.id
+                receiver_id:  other_user.id
               )
   end
 
   context 'when authenticated' do
 
-    before { login(simple_user) }
+    before { login(user) }
 
     describe 'GET new' do
 
       it "has a 200 status code" do
-        get :new, { profile_id: simple_user_two.id }
+        get :new, { profile_id: other_user.id }
         expect(response).to be_success
       end
 
       context "when sending message to yourself" do
         it "redirects to profile preview" do
-          get :new, { profile_id: simple_user.id }
+          get :new, { profile_id: user.id }
           expect(response).to redirect_to(my_profile_path)
         end
 
         it "shows an alert message" do
-          get :new, { profile_id: simple_user.id }
+          get :new, { profile_id: user.id }
           expect(flash[:alert]).to be_present
         end
       end
@@ -43,7 +46,7 @@ describe MessagesController do
       context "when valid form data" do
 
         it "redirects to receiver profile" do
-          post :create, { profile_id: simple_user_two.id,
+          post :create, { profile_id: other_user.id,
                           message: {
                             sender_name:  message.sender_name,
                             sender_email: message.sender_email,
@@ -52,12 +55,12 @@ describe MessagesController do
                           }
                         }
 
-          expect(response).to redirect_to(profile_path(simple_user_two.id))
+          expect(response).to redirect_to(profile_path(other_user.id))
         end
 
         it "sends a message to the receiver" do
           expect do
-            post :create, { profile_id: simple_user_two.id,
+            post :create, { profile_id: other_user.id,
                             message: {
                               sender_name:  message.sender_name,
                               sender_email: message.sender_email,
@@ -69,7 +72,7 @@ describe MessagesController do
         end
 
         it "shows a success message" do
-          post :create, { profile_id: simple_user_two.id,
+          post :create, { profile_id: other_user.id,
                           message: {
                             sender_name:  message.sender_name,
                             sender_email: message.sender_email,
@@ -86,9 +89,9 @@ describe MessagesController do
       context "when invalid form data" do
 
         it "renders new message form" do
-          post :create, { profile_id: simple_user_two.id,
+          post :create, { profile_id: other_user.id,
                           message: {
-                            receiver_id: simple_user_two.id
+                            receiver_id: other_user.id
                           }
                         }
 
@@ -98,9 +101,9 @@ describe MessagesController do
 
         it "doesn't create a message" do
           expect do
-            post :create, { profile_id: simple_user_two.id,
+            post :create, { profile_id: other_user.id,
                             message: {
-                              receiver_id: simple_user_two.id
+                              receiver_id: other_user.id
                             }
                           }
           end.to change(Message, :count).by(0)
@@ -108,9 +111,9 @@ describe MessagesController do
         end
 
         it "shows an error message" do
-          post :create, { profile_id: simple_user_two.id,
+          post :create, { profile_id: other_user.id,
                           message: {
-                            receiver_id: simple_user_two.id
+                            receiver_id: other_user.id
                           }
                         }
 
@@ -121,7 +124,7 @@ describe MessagesController do
 
       context "when sending message to yourself" do
         it "redirects to profile preview" do
-          post :create, { profile_id: simple_user.id,
+          post :create, { profile_id: user.id,
                           message: {
                             sender_name:  message.sender_name,
                             sender_email: message.sender_email,
@@ -134,7 +137,7 @@ describe MessagesController do
         end
 
         it "shows an alert message" do
-          post :create, { profile_id: simple_user.id,
+          post :create, { profile_id: user.id,
                           message: {
                             sender_name:  message.sender_name,
                             sender_email: message.sender_email,
@@ -156,7 +159,7 @@ describe MessagesController do
     describe 'GET new' do
 
       it "has a 200 status code" do
-        get :new, { profile_id: simple_user_two.id }
+        get :new, { profile_id: other_user.id }
         expect(response).to be_success
       end
     end
@@ -164,7 +167,7 @@ describe MessagesController do
     describe 'POST create' do
 
       it "redirects to receiver profile" do
-        post :create, { profile_id: simple_user_two.id,
+        post :create, { profile_id: other_user.id,
                         message: {
                           sender_name:  message.sender_name,
                           sender_email: message.sender_email,
@@ -173,12 +176,12 @@ describe MessagesController do
                         }
                       }
 
-        expect(response).to redirect_to(profile_path(simple_user_two.id))
+        expect(response).to redirect_to(profile_path(other_user.id))
       end
 
       it "sends a message to the receiver" do
         expect do
-          post :create, { profile_id: simple_user_two.id,
+          post :create, { profile_id: other_user.id,
                           message: {
                             sender_name:  message.sender_name,
                             sender_email: message.sender_email,

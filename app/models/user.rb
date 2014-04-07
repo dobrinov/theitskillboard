@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :employments, dependent: :destroy
   has_many :studies, dependent: :destroy
 
+  has_many :messages, foreign_key: 'receiver_id', dependent: :destroy
+
   has_many :interests, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
@@ -77,10 +79,6 @@ class User < ActiveRecord::Base
 
   def seed_initial_interests
     self.interests.build({name: 'Programming'})
-  end
-
-  def seed_initial_contacts
-    self.contacts.build({ctype: 'email', address: self.email})
   end
 
 end

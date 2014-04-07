@@ -6,7 +6,7 @@ simple_user:
   email: simple.user@example.com
   password_digest: <%= password_digest %>
 
-simple_user_two:
+other_simple_user:
   name: Simple
   surname: Two
   email: simple.user.two@example.com

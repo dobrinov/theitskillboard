@@ -6,15 +6,26 @@ br
   table
     thead
       tr
-        th From
         th Subject
+        th From
+        th Email
         th Date
+        th &nbsp;
     tbody
       - @messages.each do |message|
         tr
-          td #{message.sender_name}(#{message.sender_email})
-          td #{message.subject}
+          td
+            = link_to(message.subject, my_message_path(message))
+          td
+            - if message.sender
+              = link_to(message.sender_name, profile_path(message.sender))
+            - else
+              = message.sender_name
+            end
+          td #{message.sender_email}
           td #{message.created_at}
+          td
+            = button_to('Delete', my_message_path(message), {:method => :delete, confirm: 'Are you sure?', class: bem_class_for(:button, ['danger'])})
 
 - else
-  You have no messages in your inbox.
+  | You have no messages in your inbox.

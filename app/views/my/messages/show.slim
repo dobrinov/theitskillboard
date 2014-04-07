@@ -1,0 +1,15 @@
+h1 #{@message.subject}
+
+| from 
+
+-if @message.sender
+  = link_to(@message.sender_name, profile_path(@message.sender))
+- else
+  = @message.sender_name
+
+= " (#{@message.sender_email})"
+
+br
+br
+
+= @message.body
