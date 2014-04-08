@@ -16,6 +16,17 @@ Theitskillboard::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # Mandrill configuration.
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587,
+    :enable_starttls_auto => true,
+    :user_name => MANDRILL['username'],
+    :password  => MANDRILL['password'],
+    :authentication => 'login',
+    :domain => 'theitskillboard.com'
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

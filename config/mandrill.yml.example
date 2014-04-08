@@ -1,0 +1,7 @@
+development:
+  username: change me
+  password: change me
+
+production:
+  username: change me
+  password: change me
