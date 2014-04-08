@@ -21,7 +21,7 @@ set :rbenv_roles, :all
 set :deploy_to, "/home/#{fetch(:deploy_user)}"
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/mandrill.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
