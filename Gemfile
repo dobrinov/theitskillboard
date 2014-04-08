@@ -11,6 +11,8 @@ gem 'slim'
 gem 'redirectr', '~> 0.0.8'
 gem "paperclip", "~> 3.0"
 gem 'font-awesome-sass'
+gem 'premailer-rails'
+gem 'nokogiri'
 
 gem 'capistrano',  '~> 3.1'
 gem 'capistrano-rails', '~> 1.1'
