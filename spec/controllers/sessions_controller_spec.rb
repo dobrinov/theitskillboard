@@ -20,6 +20,11 @@ describe SessionsController do
         get :new
         expect(response).to be_success
       end
+
+      it "has a title" do
+        get :new
+        expect(assigns(:title)).to be_present
+      end
     end
 
   end
@@ -49,10 +54,20 @@ describe SessionsController do
       end
 
       context "when wrong credentials" do
+        it "has a 200 status code" do
+          post :create, { email: 'wrong', password: 'wrong' }
+          expect(response).to render_template(:new)
+          expect(response).to be_success
+        end
+
         it "renders validation errors" do
           post :create, { email: 'wrong', password: 'wrong' }
-          expect(response).to be_success
-          expect(response).to render_template(:new)
+          expect(flash[:error]).to be_present
+        end
+
+        it "has a title" do
+          post :create, { email: 'wrong', password: 'wrong' }
+          expect(assigns(:title)).to be_present
         end
       end
     end

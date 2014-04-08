@@ -1,0 +1,39 @@
+h1 New message
+
+br
+
+= form_for(@message, url: profile_messages_path(profile_id: @receiver.id), html: { class: 'form' }) do |f|
+
+  div class="form__content"
+    div class="row"
+      div class="form__group grid grid_6"
+        = f.label(:sender_name, 'Sender name', class: 'form__label')
+        = f.text_field(:sender_name, class: 'input_block')
+
+      div class="form__group grid grid_6"
+        = label_tag(:receiver_name, 'Receiver name', class: 'form__label')
+        = text_field_tag(:receiver_name, "#{@receiver.name} #{@receiver.surname}", class: 'input_block', disabled: true)
+
+    div class="row"
+      div class="form__group grid grid_6"
+        = f.label(:sender_email, 'Sender email', class: 'form__label')
+        = f.text_field(:sender_email, class: 'input_block')
+
+      div class="form__group grid grid_6"
+        = label_tag(:receiver_email, 'Receiver email', class: 'form__label')
+        = text_field_tag(:receiver_email, 'Anonymised', class: 'input_block', disabled: true)
+
+    div class="row"
+      div class="form__group grid grid_12"
+        = f.label(:subject, 'Subject', class: 'form__label')
+        = f.text_field(:subject, class: 'input_block')
+
+    div class="row"
+      div class="form__group grid grid_12"
+        = f.label(:body, 'Body', class: 'form__label')
+        = f.text_area(:body, rows: '10', class: 'input_block')
+
+  div class="form__actions"
+    div class="row"
+      div class="grid grid_12"
+        = f.submit('Send', class: 'button button_primary button_large form__action_proceed')

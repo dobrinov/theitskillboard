@@ -1,0 +1,6 @@
+simple_message:
+  id: 1
+  sender_name: Example sender
+  sender_email: sender@example.com
+  subject: Example subject
+  body: Example body

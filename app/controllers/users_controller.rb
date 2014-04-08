@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
     @user.seed_initial_skill_tree
     @user.seed_initial_interests
-    @user.seed_initial_contacts
 
     if @user.save
       login!(@user)

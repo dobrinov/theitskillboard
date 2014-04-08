@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325083312) do
+ActiveRecord::Schema.define(version: 20140403105518) do
 
   create_table "contacts", force: true do |t|
     t.string   "ctype"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20140325083312) do
   create_table "interests", force: true do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "sender_name"
+    t.string   "sender_email"
+    t.string   "subject"
+    t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

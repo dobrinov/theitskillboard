@@ -103,7 +103,7 @@ br
 div class="row"
   div class="pp pp_interests grid grid_12"
     h2 class="pp__heading" Interests
-    - if user.interests.any? 
+    - if user.interests.any?
       ul class="badge-list badge-list_horizontal"
         - user.interests.each do |interest|
           li class="badge"
@@ -119,11 +119,13 @@ br
 div class="row"
   div class="pp pp_contacts grid grid_12"
     h2 class="pp__heading" Contacts
-    - if user.contacts.any?
-      ul class="badge-list badge-list_horizontal"
+    ul class="badge-list badge-list_horizontal"
+      li class="badge"
+        span class="badge__label" Internal mail
+        span class="badge__value"
+          = link_to('send message', new_profile_messages_path(user))
+
         - user.contacts.each do |contact|
           li class="badge"
             span class="badge__label" #{contact_type_label_for(contact.ctype)}
             span class="badge__value" #{contact.address}
-    - else
-      span This user has not added any contacts yet.

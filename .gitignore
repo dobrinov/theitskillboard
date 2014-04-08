@@ -20,3 +20,6 @@
 
 # Ignore paperclip uploaded files
 /public/system
+
+# Mandril mail delivery credentials
+/config/mandrill.yml

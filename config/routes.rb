@@ -7,6 +7,7 @@ Theitskillboard::Application.routes.draw do
       resource :avatar, only: [:edit, :update, :destroy]
     end
 
+    resources :messages, only: [:index, :show, :destroy]
     resource :settings, only: [:show, :update]
 
     resources :skill_categories, only: [:new, :create, :edit, :update, :destroy]
@@ -25,7 +26,9 @@ Theitskillboard::Application.routes.draw do
     resources :users, only: :index
   end
 
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show] do
+    resource :messages, only: [:new, :create]
+  end
 
   get "sitemap" => "sitemaps#index", as: "sitemap", defaults: { format: "xml" }
   get "about" => "static#about"

@@ -1,5 +1,13 @@
 <% password_digest = User.new(:password => 'qweqwe', :password_confirmation => 'qweqwe').password_digest %>
 
 simple_user:
+  name: Simple
+  surname: User
   email: simple.user@example.com
+  password_digest: <%= password_digest %>
+
+other_simple_user:
+  name: Simple
+  surname: Two
+  email: simple.user.two@example.com
   password_digest: <%= password_digest %>

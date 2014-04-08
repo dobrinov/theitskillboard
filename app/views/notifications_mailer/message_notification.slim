@@ -1,0 +1,19 @@
+- content_for(:page_style)
+  style
+    |  h1    { margin-bottom: 0; }
+    |  .signature   { color: #CCCCCC; font-style: italic; }
+    |  .signature a { color: #CCCCCC; }
+
+h1 #{@message.subject}
+
+br
+
+= @message.body
+br
+br
+
+div class="signature"
+  br
+  = @message.sender_name
+  br
+  = @message.sender_email

@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    style
+      |  body     { margin:0; padding:0; position:relative; background-color: #F5F5F5; border: 1px solid #F5F5F5; }
+      | .wrapper  { background-color: #FFFFFF; margin: 0px auto; width: 70%; padding: 0 0 20px 0; border: 1px solid #CCCCCC; border-top: none; }
+      | .header   { height: 60px; }
+      | .top-line { display: block; height: 5px; max-height: 5px; min-height: 5px; background-color: #CA302B; }
+      | .logo     { margin: 10px 0 0 10px; }
+      | .body     { margin: 20px 0px; padding: 0 10px; }
+      | .footer   { text-align: center; color: #CCCCCC; }
+      | a:hover   { color: #CA302B; }
+
+
+    == yield(:page_style)
+
+
+  body
+
+    div class="wrapper"
+      div class="header"
+        div class="top-line" &nbsp;
+        = image_tag(attachments['logo.png'].url, class: 'logo')
+
+      div class="body"
+        == yield
+
+      div class="footer"
+        | The IT skill board / 2014

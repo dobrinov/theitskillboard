@@ -193,17 +193,19 @@ div class="form"
   div class="form__content"
     div class="row"
       div class="form__group grid_12"
-        - if current_user.contacts.any? 
-          ul class="badge-list badge-list_horizontal"
-            - current_user.contacts.each do |contact|
-              li class="badge badge_editable"
-                span class="badge__label" #{contact_type_label_for(contact.ctype)}
-                span class="badge__value" #{contact.address}
-                span class="badge__actions"
-                  = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
-                  = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
-        - else
-          span You still havent added any contacts.
+        ul class="badge-list badge-list_horizontal"
+          li class="badge"
+            span class="badge__label" Internal mail
+            span class="badge__value"
+              = link_to('send message', new_profile_messages_path(profile_id: current_user.id, referrer_param => current_path))
+
+          - current_user.contacts.each do |contact|
+            li class="badge badge_editable"
+              span class="badge__label" #{contact_type_label_for(contact.ctype)}
+              span class="badge__value" #{contact.address}
+              span class="badge__actions"
+                = link_to('', edit_my_contact_path(contact), class: 'badge__action fa fa-pencil')
+                = link_to('', my_contact_path(contact), data: { confirm: 'Are you sure?' }, method: :delete, class: 'badge__action badge__action_delete fa fa-trash-o')
 
   div class="form__actions"
     div class="row"

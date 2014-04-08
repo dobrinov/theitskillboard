@@ -32,9 +32,27 @@ describe My::ProfilesController do
 
   describe "DELETE destroy" do
     it "deletes current user profile" do
+      user = simple_user
+
       delete :destroy
-      expect { User.find(simple_user.id) }.to raise_exception(ActiveRecord::RecordNotFound)
+
+      expect { User.find(user.id) }.to raise_exception(ActiveRecord::RecordNotFound)
+    end
+
+    it "destroys the active session" do
+      user = simple_user
+
+      delete :destroy
+
       expect(session[:current_user_id]).to be_nil
+      expect(response).to redirect_to bye_path
+    end
+
+    it "redirects to the bye bye page" do
+      user = simple_user
+
+      delete :destroy
+
       expect(response).to redirect_to bye_path
     end
   end

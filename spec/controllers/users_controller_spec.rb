@@ -14,17 +14,33 @@ describe UsersController do
   describe "POST create" do
 
     context "when valid form data" do
-      it 'redirects to the profile edit page' do
+      before do
         post :create, { user: {
                           email: 'new.user@example.com',
                           password: 'qweqwe',
                           password_confirmation: 'qweqwe'
                         }
                       }
+      end
 
+      it 'redirects to the profile edit page' do
         expect(response).to redirect_to(edit_my_profile_path)
+      end
+
+      it 'shows success message' do
         expect(flash[:notice]).to be_present
+      end
+
+      it 'renders Facebook conversion pixel' do
         expect(flash[:fb_register_pixel]).to be true
+      end
+
+      it 'seeds some skills' do
+        skip
+      end
+
+      it 'seeds some interests' do
+        skip
       end
     end
 

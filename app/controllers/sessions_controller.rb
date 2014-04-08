@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
 
   before_action :require_login,    only: [:destroy]
   before_action :require_no_login, only: [:new, :create]
+  before_action :set_meta_data
 
   def new
-    @title = "Log in"
   end
 
   def create
@@ -24,6 +24,19 @@ class SessionsController < ApplicationController
   def destroy
     logout!(current_user)
     redirect_to new_session_path, notice: 'Signed out!'
+  end
+
+  private
+
+  def set_meta_data
+    case params[:action]
+    when 'new'
+      @title = "Log in"
+    when 'create'
+      @title = "Log in"
+    when 'destroy'
+      @title = "Log in"
+    end
   end
 
 end
