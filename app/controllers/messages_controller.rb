@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
     end
 
     if @message.save
+      NotificationsMailer.message_notification(@message).deliver
       redirect_to profile_path(@receiver.id), notice: 'Message sent.'
     else
       flash.now[:error] = 'The message was not sent. Fix the validation errors!'
