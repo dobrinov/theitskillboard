@@ -10,7 +10,7 @@ class NotificationsMailer < ActionMailer::Base
 
     mail(
       to: @user.email,
-      subject: "You have just received a message from #{@message.sender_name}"
+      subject: "You have received a message from #{@message.sender_name}"
     )
   end
 
