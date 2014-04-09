@@ -40,6 +40,10 @@ describe My::MessagesController do
       expect(assigns(:title)).to be_present
     end
 
+    it "marks a message as read" do
+      skip
+    end
+
   end
 
   describe 'DELETE destroy' do

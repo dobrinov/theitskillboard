@@ -8,6 +8,7 @@ class My::MessagesController < My::CommonController
 
   def show
     @message = current_user.messages.find(params[:id])
+    @message.update_attributes(read_at: Time.now)
     @title   = "Message from #{@message.sender_name}"
   end
 

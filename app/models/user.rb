@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     r.limit(1).offset(rand(r.size.size)).first
   end
 
+  def unread_message_count
+    self.messages.where(read_at: nil).count
+  end
+
   def age
     ((DateTime.now - self.birth_date) / 365.25).to_i
   end

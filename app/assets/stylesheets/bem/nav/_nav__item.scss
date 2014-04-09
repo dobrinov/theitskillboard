@@ -1,4 +1,10 @@
 .nav__item {
   position: relative;
   display: inline-block;
+
+  .ntf-cnt {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+  }
 }

@@ -6,6 +6,7 @@ br
   table
     thead
       tr
+        th &nbsp;
         th Subject
         th From
         th Email
@@ -14,6 +15,8 @@ br
     tbody
       - @messages.each do |message|
         tr
+          td
+            i class="fa #{message.read_at? ? 'fa-envelope-o' : 'fa-envelope'}"
           td
             = link_to(message.subject, my_message_path(message))
           td

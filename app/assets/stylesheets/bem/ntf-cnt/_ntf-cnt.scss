@@ -1,0 +1,16 @@
+// Notification counter
+
+.ntf-cnt {
+  position: relative;
+  display: inline-block;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 11px;
+  padding: 0 4px;
+  text-align: center;
+  color: $white;
+  background-color: $red_3;
+
+  @include border-radius(9px);
+}

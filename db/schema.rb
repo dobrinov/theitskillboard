@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403105518) do
+ActiveRecord::Schema.define(version: 20140409225044) do
 
   create_table "contacts", force: true do |t|
     t.string   "ctype"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140403105518) do
     t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "read_at"
   end
 
   create_table "skill_categories", force: true do |t|
