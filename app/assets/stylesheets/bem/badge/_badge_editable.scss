@@ -3,6 +3,16 @@
   height: 38px;
   @include border-radius(19px);
 
+  .badge__label {
+    height: 24px;
+    line-height: 24px;
+  }
+
+  .badge__value {
+    height: 24px;
+    line-height: 24px;
+  }
+
   &:hover {
     background-color: $gray_6;
   }
