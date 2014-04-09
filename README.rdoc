@@ -3,3 +3,5 @@
 * Ruby version: 2.2.1
 * Dependencies: ImageMagic
 * Deployment instructions: cap production deploy; sudo service nginx restart
+
+* Mandrill setup - copy the config/mandrill.yml.example to config/mandrill.yml and setup correct environment and credentials
