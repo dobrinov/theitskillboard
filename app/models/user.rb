@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_secure_password
 
   # Associations
   has_many :skill_categories, dependent: :destroy
@@ -23,14 +22,7 @@ class User < ActiveRecord::Base
                 :message => "Enter valid email"
               }
 
-  validates :password,
-              :confirmation => true,
-              :length       => { :in => 6..20 },
-              :on           => :create
-
-  validates :password_confirmation,
-              :presence => true,
-              :on       => :create
+  has_secure_password
 
   # Avatar Paperclip configuration
   has_attached_file :avatar,

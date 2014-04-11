@@ -2,8 +2,9 @@ class UsersController < ApplicationController
 
   layout 'landingpage'
 
+  before_action :set_meta_data
+
   def new
-    @title = "Join now"
     @user = User.new
   end
 
@@ -27,6 +28,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def set_meta_data
+    case params[:action]
+    when 'new'
+      @title = "Create a profile"
+    when 'create'
+      @title = "Create a profile"
+    end
   end
 
 end

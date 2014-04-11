@@ -4,6 +4,10 @@
       = link_to('Log in', new_session_path, class: bem_class_for(:button))
 
 
+= validation_erros_for(@user)
+
+br
+
 = form_for(@user, html: { class: 'form' }) do |f|
   h1 class="form__title" Create a profile
 

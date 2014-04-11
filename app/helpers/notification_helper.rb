@@ -25,4 +25,8 @@ module NotificationHelper
     end
   end
 
+  def validation_erros_for(object)
+    render(partial: 'layouts/shared/validation_errors_for_object', locals: { object: object })
+  end
+
 end
